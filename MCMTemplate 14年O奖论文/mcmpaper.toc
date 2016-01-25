@@ -1,0 +1,74 @@
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}
+\contentsline {subsection}{\numberline {1.1}Restatement of the Problem}{5}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Literature Review}{6}{subsection.1.2}
+\contentsline {section}{\numberline {2}Assumptions and Justifications}{6}{section.2}
+\contentsline {section}{\numberline {3}Notations}{7}{section.3}
+\contentsline {section}{\numberline {4}Model Overview}{9}{section.4}
+\contentsline {section}{\numberline {5}The Keep-Right-Except-To-Pass Model}{9}{section.5}
+\contentsline {subsection}{\numberline {5.1}The Basic Lane-changing Model}{9}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Changing to the Left Lane}{10}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Changing Back to the Right Lane}{11}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}The Extended ``Ring Road'' Model}{12}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Assumptions of the Model}{12}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Characteristics of Vehicles}{14}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Laws Governing the Cellular Automaton}{15}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Modeling Using Periodic Boundary Conditions}{18}{subsubsection.5.2.4}
+\contentsline {subsection}{\numberline {5.3}The Refined Model with Ramps}{19}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Adding Entrance and Exit Ramps}{19}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Additional Assumptions in the Refined Model}{20}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Additional Laws}{20}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}Modeling Using Open Boundary Conditions}{20}{subsubsection.5.3.4}
+\contentsline {section}{\numberline {6}Results: Influencing Factors}{21}{section.6}
+\contentsline {subsection}{\numberline {6.1}Variables and Criteria}{21}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Number of Lanes}{23}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Flow Rate}{23}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Average Speed}{24}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Lane Utilization Ratio}{25}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Sharp Braking Frequency}{26}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}Shift Ratio}{27}{subsubsection.6.2.5}
+\contentsline {subsubsection}{\numberline {6.2.6}Satisfaction}{27}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Standard Deviation of Speed}{28}{subsubsection.6.2.7}
+\contentsline {subsection}{\numberline {6.3}Maximum Speed Limit}{28}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Flow Rate and Average Speed}{29}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Sharp Braking Frequency and Shift Ratio}{30}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Lane Utilization Ratio}{30}{subsubsection.6.3.3}
+\contentsline {subsection}{\numberline {6.4}Minimum speed limit}{31}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Flow Rate and Average Speed}{31}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2} Sharp Braking Frequency and Shift Ratio}{32}{subsubsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.3}Lane Utilization Ratio}{32}{subsubsection.6.4.3}
+\contentsline {subsection}{\numberline {6.5}Signal Before Shifting}{33}{subsection.6.5}
+\contentsline {subsubsection}{\numberline {6.5.1}Flow Rate and Average Speed}{33}{subsubsection.6.5.1}
+\contentsline {subsubsection}{\numberline {6.5.2}Sharp Braking Frequency and Shift Ratio}{34}{subsubsection.6.5.2}
+\contentsline {subsection}{\numberline {6.6}Conclusions}{34}{subsection.6.6}
+\contentsline {section}{\numberline {7}Results: the Optimal Rule}{35}{section.7}
+\contentsline {subsection}{\numberline {7.1}Basic Rules of Overtaking}{35}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Criteria and Single Criterion Analysis for Basic Rules}{35}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Traffic Flow Criteria: Flow Rate and Speed}{36}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Safety Criterion: Sharp Braking Frequency}{37}{subsubsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.3}Experience Criterion: Satisfaction and Standard Deviation of Speed}{38}{subsubsection.7.2.3}
+\contentsline {subsection}{\numberline {7.3}Fuzzy Synthetic Evaluation for Basic Rules}{38}{subsection.7.3}
+\contentsline {subsubsection}{\numberline {7.3.1}Identify Alternatives and Attributes}{39}{subsubsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.2}Determine Fuzzy Evaluation Matrix}{39}{subsubsection.7.3.2}
+\contentsline {subsubsection}{\numberline {7.3.3}Aggregate using a fuzzy operator}{40}{subsubsection.7.3.3}
+\contentsline {subsubsection}{\numberline {7.3.4}The Results}{40}{subsubsection.7.3.4}
+\contentsline {subsection}{\numberline {7.4}Improved Rules of Overtaking}{41}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}Fuzzy Synthetic Evaluation for All Rules}{41}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}Conclusions}{41}{subsection.7.6}
+\contentsline {section}{\numberline {8}Sensitivity Analysis}{42}{section.8}
+\contentsline {subsection}{\numberline {8.1}Percentages of Vehicles}{42}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Probability of Randomization}{43}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Probability of Willing to Change Lane}{44}{subsection.8.3}
+\contentsline {section}{\numberline {9}Further Discussions}{45}{section.9}
+\contentsline {subsection}{\numberline {9.1}Modifications for Countries Where Driving on the Left Is the Norm}{45}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Modifications for An Intelligent System}{46}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Flow Rate and Average Speed}{47}{subsubsection.9.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2}Sharp Braking Frequency and Shift Ratio}{47}{subsubsection.9.2.2}
+\contentsline {subsubsection}{\numberline {9.2.3}Lane Utilization Ratio}{48}{subsubsection.9.2.3}
+\contentsline {subsection}{\numberline {9.3}Additional Research on the Refined Model with Ramps}{49}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Flow Rate}{49}{subsubsection.9.3.1}
+\contentsline {subsubsection}{\numberline {9.3.2}Average Speed}{50}{subsubsection.9.3.2}
+\contentsline {subsubsection}{\numberline {9.3.3}Lane Utilization Ratio}{50}{subsubsection.9.3.3}
+\contentsline {subsubsection}{\numberline {9.3.4}Failure Ratio}{51}{subsubsection.9.3.4}
+\contentsline {section}{\numberline {10}Strengths and Weaknesses}{52}{section.10}
+\contentsline {subsection}{\numberline {10.1}Strengths}{52}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Weaknesses}{52}{subsection.10.2}

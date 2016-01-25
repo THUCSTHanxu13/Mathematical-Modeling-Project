@@ -1,0 +1,147 @@
+% !TEX encoding = UTF-8 Unicode
+
+%=====================µŒ=======ÑÔ==============================
+\documentclass[a4paper,12pt]{article}%\documentclass[a4paper,12pt,titlepage]{article}
+%======================Include Packages========================
+
+\usepackage[26333]{MCMthesis}  %¶ÓºÅÔÚÕâÀïÌîÐŽ
+%
+\usepackage{changepage}
+%±ížñ±êÌâ
+\usepackage[margin=10pt,font=small,
+            labelfont=bf,
+            labelsep=quad,figurename=Figure,
+            tablename=Table]{caption}
+%Ë«ÅÅÍŒÆ¬
+\usepackage{float}
+\usepackage{subfigure}
+
+%ÉÏ»®Ïß
+\usepackage{accents}
+\usepackage{statex}
+\makeatletter
+\def\wideubar{\underaccent{{\cc@style\underline{\mskip10mu}}}}
+\def\Wideubar{\underaccent{{\cc@style\underline{\mskip8mu}}}}
+\makeatother
+
+\makeatletter
+\def\widebar{\accentset{{\cc@style\underline{\mskip10mu}}}}
+\def\Widebar{\accentset{{\cc@style\underline{\mskip8mu}}}}
+\makeatother
+%È¥¶ÏÐÐ
+%Ä¿ÂŒ
+\setcounter{tocdepth}{2}
+%\usepackage{shorttoc}
+
+%===============ÉèÖÃÕýÎÄºÍÊýÑ§×ÖÌå=============================
+%×ÖÌå¶šÒå£¬ŽóŒÒ¿ÉÒÔ²Î¿ŽÍøÕŸ£ºhttp://www.tug.dk/FontCatalogue/
+%ÓÐ100¶à×ÖÌå£¬¿ÉÒÔžŽÖÆ·ÅÔÚÕâÀïÉèÖÃ×ÖÌå£¬Ò»°ãÓÃÄ¬ÈÏ×ÖÌåŒŽ¿É¡£
+%ÓÐÐ©×ÖÌåÐèÒª°²×°Ò»Ð©×ÖÌåÎÄŒþ£¬×¢Òâ±æ±ð¡£
+%ÎÒ²ÎÕÕ MCMÂÛÎÄŒ¯µÄ×ÖÌå Ê¹ÓÃÈçÏÂºê°üÀŽ¶šÖÆ×ÖÌå¡£
+\usepackage{palatino}
+
+%ÉèÖÃ¶ÎÂäÖ®ŒäµÄŸàÀë£¬Èô²»ÐèÒªÉŸ³ý»òÕß×¢ÊÍµôŒŽ¿É¡£
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%$$$$$$$==ÕýÎÄ¿ªÊŒ==$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%==========================ÂÛÎÄ±êÌâ===============================
+\title{Keep Right to Keep ``Right''}
+\author{\ Team $\#$26333}
+\date{\today}
+%=================================================================
+%==================================================================
+\begin{document}
+
+\maketitle
+%\thispagestyle{empty}
+%==================================================================
+
+%\vspace*{\fill}
+%====================Õª=======Òª===================================
+\input{abstract.tex}                                              %
+\newpage                                                          %
+%==================================================================
+
+
+%====================Éú=³É=Ä¿=ÂŒ===================================
+\tableofcontents
+%\shorttableofcontents{\textbf{Contents}}{2}                                                  %                                            %
+\setlength\parskip{.8\baselineskip}
+\setlength\parindent{0pt}
+
+\newpage                                                          %
+%==================================================================
+\input{body.tex}
+%\end{flushleft}
+
+\begin{thebibliography}{99}
+
+\bibitem{con}
+Wikipedia. \newblock Controlled-access highway.
+\newblock \url{https://en.wikipedia.org/wiki/Controlled_access_highway}
+
+\bibitem{pa}
+Wikipedia. \newblock Passing lane.
+\newblock \url{https://en.wikipedia.org/wiki/Passing_lane}
+
+\bibitem{A}
+Nagel, K., $\&$ Schreckenberg, M.
+\newblock (1992).
+\newblock A cellular automaton model for freeway traffic.
+\newblock \emph{Journal de Physique I}, 2(12), 2221-2229.
+
+\bibitem{tw}
+Rickert, M., Nagel, K., Schreckenberg, M., $\&$ Latour, A.
+\newblock (1996).
+\newblock Two lane traffic simulations using cellular automata.
+\newblock \emph{ Physica A: Statistical Mechanics and its Applications}, 231(4), 534-550.
+
+\bibitem{part}
+Chowdhury, D., Wolf, D. E., $\&$ Schreckenberg, M.
+\newblock (1997).
+\newblock  Particle hopping models for two-lane traffic with two kinds of vehicles: Effects of lane-changing rules.
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, 235(3), 417-439.
+
+\bibitem{dis}
+Knospe, W., Santen, L., Schadschneider, A., $\&$ Schreckenberg, M.
+\newblock (1999).
+\newblock Disorder effects in cellular automata for two-lane traffic.
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, 265(3), 614-633.
+
+\bibitem{shu}
+Wikipedia. \newblock Shoulder (road).
+\newblock \url{http://en.wikipedia.org/wiki/Shoulder_%28road%29}
+
+\bibitem{par}
+Chowdhury, D., Wolf, D. E., $\&$ Schreckenberg, M.
+\newblock (1997).
+\newblock Particle hopping models for two-lane traffic with two kinds
+of vehicles: Effects of lane-changing rules.
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, 235 417-439.
+
+\bibitem{Anhui}
+Anhui Expressway Company Limited Network. \newblock (2013).
+\newblock Traffic flow on Tianchang section of the  national road 205.
+\newblock \url{http://www.anhui-expressway.net/enterprise/quarterselect1.aspx?Year=2013&RoadID=205%u56fd%u9053%u5929%u957f%u6bb5}
+
+\bibitem{tr}
+Roess, R. P., Prassas, E. S, $\&$ Mcshane, W. R.
+\newblock (2004).
+\newblock \emph{Traffic Engineering Third Edition.}
+\newblock New Jersey: Pearson Education, Inc.
+
+\bibitem{ri}
+Sadiq, R., Husain, T., Veitch, B., $\&$ Bose, N.
+\newblock (2004).
+\newblock Risk-based decision--making for drilling waste
+discharges using a fuzzy synthetic evaluation technique.
+\newblock \emph{Ocean Engineering}, 31 31(16), 1929-1953.
+
+\end{thebibliography}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%===========THE END OF PAPER============%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
