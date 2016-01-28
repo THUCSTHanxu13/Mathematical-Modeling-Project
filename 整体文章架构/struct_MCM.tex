@@ -1,0 +1,89 @@
+%=====================导=======言==============================
+\documentclass[a4paper,12pt]{article}%\documentclass[a4paper,12pt,titlepage]{article}
+%======================Include Packages========================
+
+%本latex只说明整体文章架构，不涉及各部分具体语法，看语法请看原模板
+
+\usepackage[00000]{MCMthesis}  %队号在这里填写
+%
+\usepackage{changepage}
+%表格标题
+\usepackage[margin=10pt,font=small,
+            labelfont=bf,
+            labelsep=quad,figurename=Figure,
+            tablename=Table]{caption}
+%双排图片
+\usepackage{float}
+\usepackage{subfigure}
+
+%上划线
+\usepackage{accents}
+\usepackage{statex}
+\makeatletter
+\def\wideubar{\underaccent{{\cc@style\underline{\mskip10mu}}}}
+\def\Wideubar{\underaccent{{\cc@style\underline{\mskip8mu}}}}
+\makeatother
+
+\makeatletter
+\def\widebar{\accentset{{\cc@style\underline{\mskip10mu}}}}
+\def\Widebar{\accentset{{\cc@style\underline{\mskip8mu}}}}
+\makeatother
+%去断行
+%目录
+\setcounter{tocdepth}{2}
+%\usepackage{shorttoc}
+
+%===============设置正文和数学字体=============================
+%字体定义，大家可以参看网站：http://www.tug.dk/FontCatalogue/
+%有100多字体，可以复制放在这里设置字体，一般用默认字体即可。
+%有些字体需要安装一些字体文件，注意辨别。
+%我参照 MCM论文集的字体 使用如下宏包来定制字体。
+\usepackage{palatino}
+
+%设置段落之间的距离，若不需要删除或者注释掉即可。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%$$$$$$$==正文开始==$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%==========================论文标题===============================
+\title{The Whole Structure of Our Paper}
+\author{\ Team $\#$00000}
+\date{\today}
+%=================================================================
+%==================================================================
+\begin{document}
+
+\maketitle
+%\thispagestyle{empty}
+%==================================================================
+
+%\vspace*{\fill}
+%====================摘=======要===================================
+\input{abstract.tex}                                              %
+\newpage                                                          %
+%==================================================================
+
+
+%====================生=成=目=录===================================
+\tableofcontents
+%\shorttableofcontents{\textbf{Contents}}{2}                                                  %                                            %
+\setlength\parskip{.8\baselineskip}
+\setlength\parindent{0pt}
+
+\newpage                                                          %
+%==================================================================
+\input{body.tex}
+%\end{flushleft}
+
+\begin{thebibliography}{99}
+
+\bibitem{model}
+MCM O prize of 2014.
+
+\end{thebibliography}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%===========THE END OF PAPER============%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,14 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Restatement of the Problem}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Literature Review}{3}{subsection.1.2}
+\contentsline {section}{\numberline {2}Assumptions and Justifications}{3}{section.2}
+\contentsline {section}{\numberline {3}Notations}{4}{section.3}
+\contentsline {section}{\numberline {4}Model}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Model 1}{4}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Background of this model and Justification(Some further assumption for this specific model, if any)}{4}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}The mathematical description of the model and meanings of parameters}{5}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}The learning algorithm}{5}{subsubsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2}Model 2}{5}{subsection.4.2}
+\contentsline {section}{\numberline {5}Results}{5}{section.5}
+\contentsline {section}{\numberline {6}Sensitivity Analysis}{6}{section.6}
+\contentsline {section}{\numberline {7}Further Discussions}{6}{section.7}
