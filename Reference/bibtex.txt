@@ -1,0 +1,32 @@
+@article{lu2011small,
+  title={The small world yields the most effective information spreading},
+  author={L{\"u}, Linyuan and Chen, Duan-Bing and Zhou, Tao},
+  journal={New Journal of Physics},
+  volume={13},
+  number={12},
+  pages={123005},
+  year={2011},
+  publisher={IOP Publishing}
+}
+
+@article{miritello2011dynamical,
+  title={Dynamical strength of social ties in information spreading},
+  author={Miritello, Giovanna and Moro, Esteban and Lara, Rub{\'e}n},
+  journal={Physical Review E},
+  volume={83},
+  number={4},
+  pages={045102},
+  year={2011},
+  publisher={APS}
+}
+
+@article{gerberry2009seiqr,
+  title={An SEIQR model for childhood diseases},
+  author={Gerberry, David J and Milner, Fabio A},
+  journal={Journal of mathematical biology},
+  volume={59},
+  number={4},
+  pages={535--561},
+  year={2009},
+  publisher={Springer}
+}
