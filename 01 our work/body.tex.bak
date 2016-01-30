@@ -1,0 +1,1123 @@
+
+%======================第一章：问题介绍====================================
+\section{Introduction}
+%\begin{adjustwidth}{1cm}{0cm}
+A freeway is a highway designed for high-speed vehicles. It provides an unhindered flow of traffic with no traffic lights or intersections.\cite{con} Typically, a freeway has several advantages over common roads, such as the high speed and the high traffic volume. The Keep-Right-Except-To-Pass rule, also known as ``Slower Traffic Keep Right'', is often employed in right-hand traffic in order to raise the quality of traffic flow, especially the quality of traffic flow on freeways.\cite{pa} The effectiveness of the rule will not only increase utilization of freeways but also enhance driver satisfaction. Thus, it will be exhilarating if we can design another rule that can outperform the current rule. In this paper, we simulate different rules of overtaking and compare them so as to decide the optimal rule.
+%\end{adjustwidth}
+\subsection{Restatement of the Problem}
+We are required to build a mathematical model to analyze the performance of the keep-right-except-to-pass rule the other alternatives. We decompose the problem into two sub-problems:
+\begin{itemize}
+  \item Build a model that can simulate the overtaking process.
+  \item Propose a mathematical criterion to determine the performance of a specific rule.
+\end{itemize}
+In the first step, we seek to build a model with the inputs of speed limits and other factors. Most importantly, the model should reflect the mechanism of the given rule. Then we can change the inputs to do several simulations. Also, we can change the mechanism to apply alternative rules to our model. Finally, we can obtain the outputs of our model.
+
+In the second step, we seek to use the outputs of our model to propose a mathematical criterion to evaluate different rules. We will consider the trade-off between traffic flow, safety and other factors. We will design other rules and determine which rule is the best.
+
+Then we attempt to adjust our model and apply it to countries like Great Britain. We also consider the influence of intelligent system.
+\subsection{Literature Review}
+A model for the simulation of freeway traffic is inevitable to the study of the performance of the rule. German physicists Nagel and Schreckenberg built a theoretical model for the simulation of freeway traffic, which is a simple cellular automaton model for road traffic flow known as ``N-S model''.\cite{A} They defined a one-dimensional lane with two kinds of boundary conditions-open or periodic boundary conditions: In their model, each site may either be occupied by one vehicle or it may be empty. Each vehicle has an integer velocity with values between zero and $v_{max}$. During each time step, four sub-steps are performed: acceleration, slowing down, randomization and car motion.
+
+After the single-lane model was established, several scientists were devoted to building a multi-lane model. The main difficulty was to set up the rules for shifting to the neighboring lane. Rickert et al. introduced a two-lane model with two parallel lanes in their article.\cite{tw} Several conditions have to be fulfilled before the vehicle changing to other lanes: (1) another vehicle is in the way (2) other lanes are better and (3) collision will not happen. They also simulated the model using a cellular automaton, and the results were quite reasonable.
+
+As a matter of fact, a multi-lane model does not have to be symmetric. Difference may include different speed limits on each lane, different kinds of cars, etc. In 1997, Chowdhury et al. first simulated the model with different kinds of vehicles. \cite{part} In their model, different maximum possible speeds are introduced to different kinds of vehicles. The result shows that even if the portion of ``slow cars'' is relatively low, ``fast cars'' can only move in a low speed.
+
+Further studies are carried out based on the comparison between model and reality. Knospe, Santen suggested that the influence of ``slow cars'' might have been over-estimated.\cite{dis} They recommended to consider the impact of expectancy in the model.
+
+
+%======================第二章：假设====================================
+\section{Assumptions and Justifications}
+To simplify the problem, we make the following basic assumptions, each of which is properly justified.
+
+\begin{itemize}
+  \item \textbf{No pedestrian can affect the vehicles on freeways.} Usually, pedestrians have no access to freeways, let alone going across the freeways.
+  \item \textbf{We ignore the force of crosswind to a vehicle when it is changing lanes.}This impact is negligible compared with that of the head wind.
+  \item \textbf{Drivers cannot drive on the emergency lane.} Typically, the emergency lane is not for use of flowing traffic. \cite{shu}
+  \item \textbf{In our model, we only consider the freeway as completely flat, with no curve or slopes.} This assumption greatly simplify our model and allow us to focus on the nature of overtaking.
+  \item \textbf{We assume that all drivers act based on the same set of rules.} We classify drivers as aggressive and non-aggressive and both groups follow the relevant rules.
+\end{itemize}
+
+%======================第三章====================================
+\section{Notations}
+All the variables and constants used in this paper are listed in \textbf{Table \ref{tab3(1)}} and \textbf{Table \ref{tab3(2)}}.
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Symbol Table--Constants}
+\label{tab3(1)}
+\centerline{
+{\small
+\begin{tabular}{l l l}
+\toprule[1pt]
+Symbol& Definition& Units\\
+\midrule[2pt]
+\multicolumn{3}{c}{\textbf{Constants}}\\			
+$\lambda$	&Expectancy of poisson-distribution	&unitless\\
+$p_{slow}$	&Possibility that a vehicle slows down  randomly	                    &unitless\\
+$p_{left}$	&Possibility that a vehicle shift to the left lane when possible	&unitless\\
+$p_{right}$	&Possibility that a vehicle shift to the right lane when possible	&unitless\\
+$p_{exit}$	&Possibility that a vehicle need to move off through the exit ramp	&unitless\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Symbol Table--Variables}
+\label{tab3(2)}
+\centerline{
+{\small
+\begin{tabular}{l l l}
+\toprule[1pt]
+Symbol& Definition& Units\\
+\midrule[2pt]
+\multicolumn{3}{c}{\textbf{Variables}}\\		
+$v_{s}$      	 &Speed of $vehicle_{s}$	                        &cell/time-step\\
+$v_{expect}$	 &Expected speed of $vehicle_{s}$	                &cell/time-step\\
+$v_{lf}$	     &Speed of the vehicle on the left lane ahead	&cell/time-step\\
+$v_{lb}$	     &Speed of the vehicle on the left lane behind	&cell/time-step\\
+$v_{rf}$	     &Speed of the vehicle on the right lane ahead	&cell/time-step\\
+$v_{rb}$	     &Speed of the vehicle on the right lane behind	&cell/time-step\\
+$t$	             &Time	                                        &time-step\\
+&&\\
+$D_{l,f,gap}$	 &Left front gap	&cell\\
+$D_{l,b,gap}$	 &Left back gap	&cell\\
+$D_{r,f,gap}$	 &Right front gap  &cell\\
+$D_{r,b,gap}$	 &Right back gap	&cell\\
+$vehicle^{i}_{j}$	                 &The $j_{th}$ vehicle on the $i_{th}$ lane	          &unitless\\
+$v^{i}_{j}\left(t\right)$	         &Speed of $vehicle^{i}_{j}$ at $t_{th}$ time-step	   &cell/time-step\\
+$v^{i}_{j,expect}$	                 &Expcted speed of $vehicle^{i}_{j}$	               &cell/time-step\\
+$gap^{i}_{j}\left(t\right)$	         &Front gap of $vehicle^{i}_{j}$ at $t_{th}$ time-step  &cell\\
+$x^{i}_{j}\left(t\right)$	         &Location of $vehicle^{i}_{j}$ at $t_{th}$ time-step   &cell\\
+$lfgap^{i}_{j}$	                     &Left front gap of $vehicle^{i}_{j}$	               &cell\\
+$lbgap^{i}_{j}$	&Left back gap of $vehicle^{i}_{j}$	&cell\\
+$rfgap^{i}_{j}$	&Right front gap of $vehicle^{i}_{j}$	&cell\\
+$rbgap^{i}_{j}$	&Right back gap of $vehicle^{i}_{j}$	&cell\\
+$lbv^{i}_{j}$	&Speed of the vehicle behind $vehicle^{i}_{j}$ on the left lane	&cell/time-step\\
+$rbv^{i}_{j}$	&Speed of the vehicle behind $vehicle^{i}_{j}$ on the right lane	&cell/time-step\\
+&&\\
+$\overline {v}\left(t\right)$	&Average speed at $t_{th}$ time-step	                                      &cell/time-step\\
+$N$	                            &The number of vehicles passing a certain point on the highway	&unitless\\
+$N\left(t\right)$	                &The number of vehicles on the highway at $t_{th}$ time-step	    &unitless\\
+$N_{j}\left(t\right)$	            &The number of vehicles on the $j_{th}$ lane at $t_{th}$ time-step	&unitless\\
+$N_{shift}\left(t\right)$      	&The number of vehicles changing lanes at $t_{th}$ time-step	    &unitless\\
+$t_{expect}$	                    &Expected time	                                                &time-step\\
+$t_{actual}$	                    &Actual time	                                                    &time-step\\
+&&\\
+$a_{ij}$	&Value of the $j_{th}$ criterion of the $i{th}$ rule	            &uncertain\\
+$u^{0}_{j}$	&Value of the $j_{th}$ criterion of the ideal scheme	            &uncertain\\
+$r_{ij}$	&Relative deviation of the $j_{th}$ criterion of the $i_{th}$ rule	&unitless\\
+$v_{j}$	&coefficient of variation of the $j_{th}$ criterion	                &unitless\\
+$w_{j}$	&Weight of the $j_{th}$ criterion	                                    &unitless\\
+$F_{i}$	&Relative deviation of the $i_{th}$ rule	                            &unitless\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+%======================第四章====================================
+\section{Model Overview}
+Most research for traffic flow can be classified as microscopic and macroscopic. As macroscopic methods are difficult to apply to our problem, we approach the problem with microscopic techniques. Our study into the keep-right-except-to-pass rule takes several approaches.
+
+Our basic model allows us to have a close look at the lane-changing behavior. We focus on the incentive of changing lane and the conditions for a successful lane changing. We treat the changing-to-the-left-lane behavior and changing-to-the-right-lane behavior differently. This model gives us some intuition about the rule and serves as a stepping stone to our later study.
+
+The extended model views the problem from a wider perspective. We consider a section of freeway and divide it into lattices. Then we run a cellular automaton to simulate the behavior of vehicles. The essence of the model is the laws governing the cells. We derive the laws according to the analysis of our basic model. Moreover, using periodic boundary conditions, we treat the freeway as a ``ring road'' so as to accurately control the density. Thus, we call it a ``Ring Road'' model.
+
+Our refined model attempts to tackle a more realistic while more challenging problem. We add an entrance ramp and an exit ramp to our cellular automaton. The laws for the entering and exiting vehicles are also added. We use a Poisson distribution to simulate vehicles moving in from the start point.
+
+We use the extended ``Ring Road'' model as a standard model to analyze the problem and all results have this model at their cores.
+
+%======================第五章====================================
+\section{The Keep-Right-Except-To-Pass Model}
+We will start with the idea of the basic model. Then we present the cellular automaton and explain the algorithm. Finally, we introduce our additional work in the refined model.
+
+\subsection{The Basic Lane-changing Model}
+The basic model is a microscopic approach. A typical overtaking behavior consists of five actions: signal for three seconds, change lane, accelerate, signal back and change back to the former lane. Among these actions, lane-changing is the most crucial part. An analysis of lane-changing behavior might shed light on the nature of the quality of traffic flow.
+\subsubsection{Changing to the Left Lane}
+When making the decision of whether to overtake, the driver will first decide whether to change to the left lane. There are two main considerations \cite{par} :
+\begin{itemize}
+  \item 	A reason or a trigger consideration
+  \item 	A safety consideration
+\end{itemize}
+The former means that the vehicle ahead moves slowly enough, which will trigger the driver to overtake it. The latter indicates that he will take safety into account. In other words, if there is a high-speed vehicle driving on the left lane, he will choose to stay on the current lane to avoid collision. Based on these considerations, we can introduce some mathematical intuition into the problem. \textbf{Figure \ref{figure5.1.1}} illustrates the situation that the red car tends to change to the left lane.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5in,height=1.5in]{./picture/changeto_left.jpg}
+    \caption{Change-to-the-left-lane}
+    \label{figure5.1.1}
+\end{figure}
+
+\quad Based on the trigger consideration, the speed of the cars satisfies
+$$v_{expect} > v_s$$
+\quad In terms of safety, the left back gap should satisfy
+$$D_{l,b,gap} > (v_{lb}-v_s)t$$
+\quad Additionally, the red car attempts to accelerate. It is unreasonable if it changes to the passing lane while slowing down. This happens if there is a vehicle ahead. Therefore, the left front gap should satisfy
+$$D_{l,f,gap} > (v_s-v_{lf})t$$
+The  mathematical expressions above give the basic conditions of a change-to-the-left-lane behavior.
+
+\subsubsection{Changing Back to the Right Lane}
+After accelerating and passing the slow vehicle ahead, the driver tends to change back to the former lane due to the keep-right-except-to-pass rule. However, this lane-changing behavior will be subject to the following constraints:
+\begin{itemize}
+  \item \textbf{There is no incentive to pass the car in the current passing lane.} If so, and if it is a multi-lane freeway, the driver would prefer to continue to overtake the car ahead and change to the left passing lane rather than change back to the former lane.
+  \item \textbf{It is safe to change back.} This condition means that the driver should pass the slow car and ensure that he will not collide with the slow car when changing back.
+  \item \textbf{After changing back to the former lane, the driver can maintain his relatively high speed.} Otherwise, he will intend to pass more than one car in an overtaking process.
+\end{itemize}
+
+The first constraint can be treated as the changing-to-the-left-lane situation as mentioned above and the other conditions can be stated as the following mathematical expressions.
+
+\quad Due to the safety consideration, the right back gap should yield
+$$D_{r,b,gap} > (v_{rb}-v_s)t$$
+\quad Due to the intention to pass more cars, the right front gap should yield
+$$D_{r,b,gap} > (v_s-v_{rf})t$$
+\textbf{Figure \ref{figure5.1.2}} illustrates this change-back-to-the-right-lane situation.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/changeto_right.jpg}
+    \caption{Change-back-to-the-right-lane}
+    \label{figure5.1.2}
+\end{figure}
+
+\subsection{The Extended ``Ring Road'' Model}
+In order to understand how the rule works in a traffic flow, we have to analyze the behavior of vehicles in a relatively long way, which will be more like a freeway. One intuition for modeling the problem is to think of it as a stochastic process. Therefore, we use a cellular automaton to simulate the behavior of vehicles on a freeway.
+
+A cellular automaton is a discrete model that describes the time development of a system. It is referred to as a discrete model because it treats time as a discrete variable. The model requires an initial configuration and a set of fixed laws that determine how the system develops. At every time-step, the cellular automaton will advance incrementally and all the laws will be implemented.
+
+\subsubsection{Assumptions of the Model}
+The following general assumptions are made based on common sense and we use them throughout our model.
+
+\begin{itemize}
+  \item \textbf{Drivers obey the rules with a probability.} It is obvious in real life that a driver might not want to change lane even if all the conditions are satisfied. We assume that a driver change to the left lane and the right lane with the probability $p_{left}$ and $p_{right}$ respectively when possible.
+  \item \textbf{All drivers tend to drive as fast as possible while keeping a safe following distance.} Nearly every driver wants to drive faster on the freeway as long as there is enough time for him to react if the vehicle ahead decelerates. Also, the maximum speed is limited by the vehicle type and the speed limit of freeway.
+  \item \textbf{Drivers are ``myopic'', which means that they can only see one vehicle in front of him, one vehicle behind him and several vehicles on the neighboring lanes.} A driver can see the vehicle in front of him by eyes and see the vehicle behind him with the help of rearview mirrors. Moreover, he can turn his head to left and right to see the car on the neighboring lanes. He might see cars, say, on the left lane of the left lane, but he will not take this information into account when deciding whether to change lanes. Thus, we simply suppose that the drivers cannot see these vehicles and other vehicles much further.
+  \item \textbf{Drivers make decisions only according to his own interest.} Because drivers are ``myopic'', they cannot know the conditions of the whole freeway. Consequently, they make greedy decisions in order to pass the freeway in a shorter time.
+\end{itemize}
+
+Additionally, in order to implement cellular automaton on our problem, we propose the following assumptions:
+
+\begin{itemize}
+  \item \textbf{We assume that lane-changing does not cost additional time.} Obviously, vehicles change lanes while moving. Although the travelling distance of lane-changing seems longer compared with just moving in one lane, the drivers tend to accelerate to change lanes. Thus, we simply suppose that the lane-changing costs the same amount of time as moving in one lane. This assumption helps a lot to build a cellular automaton.
+  \item \textbf{Each cell represents a 4m*6m area. The road's length is 2000 cells. A lane's width is 1 cell.} We divide a multilane freeway into equally partitioned lanes. We choose a length of 12km to simulate because of the trade-off between time complexity and the completeness of the model.Also, each array of cells represents a lane.
+  \item \textbf{Every time-step represents 1 second.} Such an assumption is made by nearly all cellular automaton techniques.
+  \item \textbf{We run 20000 time-step and analyze the last 1000 steps.} This ensures us to obtain steady-state conditions.
+  \item \textbf{While all vehicles have a trend to reach the maximum speed, every single vehicle randomly slows down with probability $p$.} This randomization is a characteristic of traffic flow.
+  \item \textbf{Acceleration is done steadily while any kind of deceleration can be done in one time-step.} Steady acceleration is an energy-saving behavior and drivers will decelerate to avoid possible collisions.
+\end{itemize}
+
+\subsubsection{Characteristics of Vehicles}
+We classify the vehicles into three groups:
+
+\begin{itemize}
+  \item \textbf{Cars}: Cars are those small vehicles, which usually can have high speeds.
+  \item \textbf{Buses}: Buses are large vehicles used for carrying people, and their speeds can be relatively high.
+  \item \textbf{Trucks}: Trucks are large vehicles used for moving heavy articles, and they can only have lower speeds.
+\end{itemize}
+
+Then we define the characteristics of the three types of vehicles:
+
+\begin{itemize}
+  \item \textbf{Occupancy}: Each car occupies one cell. Since a typical car's length is 3.6m-4.6m. The car cannot fully occupy a cell. We place the car in the middle of the cell and treat the space in front of and behind the car as \textit{safe distance}. Accordingly, each bus and each truck occupies two cells with safe distance preserved.
+  \item \textbf{Maximum speed}: At each time-step, cars cannot move more than 6 cells, which means that its maximum speed is 129.6km/h. Similarly, buses cannot move more than 5 cells per time step, since they are large so that they cannot move at a higher speed. Lastly, trucks carry heavy goods so they have the lowest maximum speed. We suppose it is 3 cells per time-step, which equals 64.8km/h. The maximum speed here is based on the vehicles themselves. If they exceed the speed limit, vehicles can drive no more than the limit. In China, the maximum speed limit of freeway is 120km/h and the lowest speed limit of that is 60km/h. The role of speed limit is examined by comparing situations under different limits.
+  \item \textbf{Percentage}: We assume that cars account for 60$\%$ of the traffic flow, buses account for 30$\%$ and trucks account for 10$\%$. This assumption are based on the data collected by \cite{Anhui}
+\end{itemize}
+
+The characteristics are listed in \textbf{Table \ref{tab:table2}}.
+
+\begin{center}
+\begin{table}[htb]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Characteristics of Vehicles}
+\label{tab:table2}
+\centering
+\begin{tabular}{c c c c}
+\toprule[1pt]
+Type& Occupancy & Maximum speed& percentage\\
+\midrule[2pt]
+Car   &1 cell  &6 cells/sec &60$\%$\\
+Bus   &2 cells &5 cells/sec &30$\%$\\
+Truck &2 cells &3 cells/sec &10$\%$\\
+\bottomrule[1pt]
+\end{tabular}
+\end{table}
+\end{center}
+
+\subsubsection{Laws Governing the Cellular Automaton}
+Our cellular automaton is implemented by an algorithm, the essence of the algorithm is the set of laws sequentially implemented in every time-step. In this subsection, we will introduce the laws. These laws are based on the previous analysis and are expressed from a computational perspective.
+
+%\begin{adjustwidth}{0.5cm}{0cm}
+\begin{enumerate}[\textbf{Step} 1:]
+\item \textbf{moving}
+
+These laws are set based on the assumptions of the model and the characteristics of the vehicles. We denote the $j_{th}$ vehicle on lane $i$ by $vehicle_j^i$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=4.00in,height=2.80in]{./picture/figure1.jpg}
+    \caption{Clarification of some denotes}
+    \label{5.3.2}
+\end{figure}
+
+\begin{enumerate}
+\item Determine the speed
+
+Our three laws below was implemented sequentially, so we use $(t+\frac{1}{3}) , (t+\frac{2}{3})$ to denote the intermediate state.
+
+\begin{enumerate}
+\item Acceleration
+
+All drivers tend to drive as fast as possible:
+$$\text{If } v_j^i(t)<v_{j,expect}^{i} ,\quad \text{then } v_j^i(t+\frac{1}{3})=v_j^i(t)+1 $$
+Where $v_j^i(t)$ is the speed of $vehicle_j^i$ at time $t$, $v_{j,expect}^{i}$ means the expected speed of $vehicle_j^i$.
+
+\item Randomization
+
+Every vehicle randomly slows down by 1 with probability $p_{slow}$. Mathematically,
+$$v_j^i(t+\frac{2}{3})=v_j^i(t+\frac{1}{3})-1$$
+\item Deceleration(because of other vehicles)
+
+To maintain a safe following distance and to avoid collision, a cell cannot be occupied by more than one vehicle at the same time-step.
+$$\text{If } v_j^i(t+\frac{2}{3})>gap_j^i(t) ,\quad \text{then } v_j^i(t+1)=gap_j^i(t) $$
+Where $gap_j^i(t)$ is the gap between $vehicle_j^i$ and the vehicle ahead.
+\end{enumerate}
+
+\item Determine the location
+
+We derive the locations based on the speeds above:
+$$x_j^i(t+1)=x_j^i(t)+v_j^i(t+1)$$
+$$gap_j^i=x_j^{i+1}-x_j^i-1$$
+Where $x_j^i$ is the location of $vehicle_j^i$.
+
+
+\begin{figure}
+    \centering
+    \centerline{\includegraphics[width=6.5in]{./picture/figure2.jpg}}
+    \caption{Flow Chart of Cellular Cutomaton}
+    \label{figure2}
+\end{figure}
+\end{enumerate}
+
+\item \textbf{lane-changing}
+
+These rules are set based on
+\begin{enumerate}
+\item Changing to the left lane
+
+\begin{enumerate}
+\item Based on trigger criterion, the driver tends to change to the left if the vehicle ahead moves so slow that he fails to reach his expected speed.
+$$gap_j^i(t)<v_{j,expect}^{i}$$
+\item Then, take acceleration criterion into account, we have
+$$gap_j^i(t)<lfgap_j^i$$
+Where $lfgap_j^i$ is the left front gap of $vehicle_j^i$.
+
+\item Lastly, consider the factor of safety, we have
+$$lbgap_j^i>lbv_j^i$$
+Where $lbgap_j^i$ is the left back gap of $vehicle_j^i$, $lbv_j^i$ is the speed of the vehicle behind on the left lane.
+\end{enumerate}
+\item Changing to the right lane
+\begin{enumerate}
+\item To check the rules in 2.1 above, if any one of the rules are not satisfied, the driver cannot change to the left lane.
+
+\item To consider safety, we have
+$$rfgap_j^i>v_j^i$$
+Where $rfgap_j^i$ is the right front gap of $vehicle_j^i$.
+\item To consider another safety criterion, we have
+$$rbgap_j^i>rbv_j^i$$
+Where $rbgap_j^i$ is the right back gap of $vehicle_j^i$, $rbv_j^i$ is the speed of the vehicle behind on the right lane.
+
+The algorithm is diagrammed in \textbf{Figure \ref{figure2}}.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+%\end{adjustwidth}
+\subsubsection{Modeling Using Periodic Boundary Conditions}
+To run a cellular automaton, we need to specify the boundary conditions and the initial condition. Boundary conditions determine the way vehicles move into our system and the way they move out of our system. Likewise, an initial condition determines the distribution of vehicles in our system and the speeds of them.
+
+Inspired by Nagel and Schreckenberg's work \cite{A}, we tackle the problem with \textsl{periodic boundary conditions}. Periodic boundary conditions assume that the vehicles moving out of the freeway will immediately appear at the front of the system, so the total number of vehicles is a constant during the dynamics. Thus, we can accurately define a constant system density and study the performance of the rule with varying density. Moreover, periodic boundary conditions turn our road into a closed system, so it is similar to the case that all vehicles are moving on a circle. We, in turn, name our extended model as a ``Ring Road'' model.
+
+Although there is no such short ring road in reality, this model still holds true because we can imagine that a freeway is made up of several equally partitioned sections and the vehicles on all the sections are identical. Obviously, this situation satisfies periodic boundary conditions. This is how periodic boundary conditions relate theory with reality.
+\subsection{The Refined Model with Ramps}
+Even though the ``Ring Road'' model is good enough to solve the problem, it fails to consider the effect of ramps. Consequently, we refine our model by adding entrance and exit ramps and applying open boundary conditions.
+
+\subsubsection{Adding Entrance and Exit Ramps}
+Vehicles may also use an entrance ramp to enter the freeway. The entrance ramps give them a chance to accelerate to the expected speed. However, most ramps are too short to allow them to speed up to, say, 100km/h. As a result, the vehicles on the right-most lane might slow down to yield to the incoming vehicles or incoming vehicles might hard to enter the freeway. Both cases might have deleterious effects on the quality of traffic flow. Likewise, vehicles have to decelerate in order to enter an exit ramp, and similar problem will occur.
+
+\begin{figure}
+    \centering
+    \centerline{\includegraphics[width=4in,height=2.5in]{./picture/rampreal.jpg}}
+    \caption{A real freeway section containing ramps}
+    \label{figure5.3.1}
+\end{figure}
+
+\textbf{Figure \ref{figure5.3.1}} demonstrates a real freeway section containing ramps. We can see that an exit ramp was followed by an entrance ramp. We add the ramps based on this fact.
+
+The laws mentioned in the previous section are still valid, and the only difference is how the incoming vehicles enter the freeway. We add some additional laws to instruct the behavior of incoming vehicles. To introduce the concept of ramps in our cellular automaton, we add the following assumptions.
+
+\subsubsection{Additional Assumptions in the Refined Model}
+
+\begin{itemize}
+  \item \textbf{The exit ramp}: We assume that the overlap between the freeway and the exit ramp ranges from the $850_{th}$ cell to the $900_{th}$ cell, which is 300m.
+  \item \textbf{The entrance ramp}: We assume that the overlap between the freeway and the entrance ramp ranges from the $1100_{th}$ cell to the $1500_{th}$ cell, which is 300m.
+\end{itemize}
+
+\subsubsection{Additional Laws}
+
+\begin{itemize}
+   \item \textbf{Off-ramp law}: If the vehicle wants to go off the free way(how to determine this will be discussed later), it is not allowed to change to left lane after it reaches the $700_{th}$ cell. At the same time, it will slow down to 3cell/s. If the vehicle is on the right-most lane between the $850_{th}$ cell and the $900_{th}$ cell, we assume that it can move into the ramp at the next time step if it wants to. Since in reality exit ramps usually contain two lanes and the ratio of vehicles exit at one ramp is low, this assumption is reasonable. If it misses the exit, it will not be governed by this additional law anymore.
+   \item \textbf{On-ramp law}: For a vehicle on the entrance lamp, if the laws of changing to the left lane are satisfied, it can go into the freeway during the next time-step. Otherwise, it will continue to move forward.
+\end{itemize}
+
+\subsubsection{Modeling Using Open Boundary Conditions}
+After we introduce ramps into our model, it is no longer reasonable to consider it as a closed system. Thus, we must use open boundary conditions to determine how the vehicles flow in. Considering that the amount of traffic is stochastic and the input of the system is discrete, a generally used approach is to model the input of vehicles as a Poisson process. Consequently, we assume that the number of vehicles flowing in from the starting point in any interval of length $t$ is Poisson-distributed with mean $\lambda t$.
+
+While moving into the system, vehicles tend to move off through the exit ramp with a probability $p_{exit}$. And the vehicles flowing in from the entrance ramp in any interval of length $t$ is 0-1-distributed with mean $\lambda t$. In other words, we try to let the number of vehicles from the entrance ramp equal the number of vehicles from the exit ramp. However, as discussed above, some vehicles may fail to exit the freeway and some others may fail to enter the freeway. We view both of them as bad characteristics of the traffic flow. We analyze these characteristics and we will discuss them in the next section.
+
+\section{Results: Influencing Factors}
+In this section, we first give a definition of light and heavy traffic. Then we explicitly define four factors and change one factor each time in order to analyze how this factor influence the performance of the Keep-Right-Except-To-Pass Rule.
+
+We run several simulations with cellular automaton and find that the traffic flow can be classified into two groups. The time space diagram (\textbf{Figure \ref{figure6.2.1(23)}}) demonstrates these two kinds of traffic flow. The diagram shows the trace of every vehicle in the simulation. A gentle trace indicates a low speed. Conversely, a steep trace indicates a high speed.
+%插图0交通状况
+\begin{figure}[H]
+    \centering
+      \subfigure[Time space diagram(occupancy=0.1)]{
+        \label{figure6.2.1(2)}
+        \includegraphics[width=0.48\textwidth,height=2.2in]{./picture/0/timespacediagram1.png}}
+      \subfigure[Time space diagram(occupancy=0.4)]{
+        \label{figure6.2.1(3)}
+        \includegraphics[width=0.48\textwidth,height=2.20in]{./picture/0/timespacediagram4.png}}
+    \caption{}
+    \label{figure6.2.1(23)}
+\end{figure}
+
+\begin{itemize}
+  \item From the left diagram, we can clearly see that the vehicles with a high speed can continue with the high speed which indicates that it is not constrained by slower vehicles. This is a situation of light traffic.
+  \item From the right diagram, we can see that no vehicle can reach a high speed, which indicates that there is a congestion. This is a situation of heavy traffic.
+\end{itemize}
+
+\subsection{Variables and Criteria}
+We choose number of lanes, the maximum speed limit, the minimum speed limit and signaling behavior as our variables. To judge the effectiveness of the rule, we propose the following criteria:
+
+\begin{itemize}
+  \item \textbf{Flow rate}: flow rate is the number of vehicles passing a point on a highway per unit time.\cite{tr}
+  $$ flow\; rate= \frac{N}{T}$$
+  where $N$ stands for the number of vehicles passing a point on the highway in the time of T.
+  \item \textbf{Average speed}: the average speed of all vehicles passing a point on a highway or a lane over some specified time period.
+  $$ average\; speed\; \Widebar{v}(t)= \frac{1}{N(t)}\sum_{j=1}^3\sum_{i=1}^{N_j(t)}v_j^i(t) $$
+  where $N(t)$ stands for the number of vehicles on the freeway, and $N_j(t)$ stands for the number of vehicles on $j_{th}$ lane.
+  \item \textbf{Lane utilization ratio}: lane utilization ratio is defined as the ratio between the number of vehicles on the lane to the total number of vehicle on the freeway.
+  $$ lane\; utilization\; ratio_i = \frac{N_j(t)}{N(t)}$$
+  \item \textbf{Sharp braking frequency}: we do not consider the occurrence of accidents in our simulation, since we view accidents as abnormal events and it is difficult to consider abnormal events in microscopic models. Instead, we use sharp braking frequency as an indicator of unsafety. Sharp braking frequency occurs when a vehicle's speed decreases by more than 2 cell/time-step. If this happens in our simulation, we assume that it is more likely to cause an accident in reality.
+  \item \textbf{Shift ratio}: the number of shifts per unit time.
+  $$ shift\; ratio= \frac{N_{shift}(t)}{N(t)}$$
+  where $N_{shift}(t)$ stands for the number of vehicles changing lanes at $t_{th}$ time step.
+  \item \textbf{Satisfaction}: if a vehicle fails to reach its maximum speed, the driver's satisfaction will decrease. We define the expected time $t_{expect}$ as the time it takes to drive with the maximum speed through a given distance. We define the actual time $t_{actual}$ as the time it actually takes to drive through the same distance. Then we derive the criteria by dividing expected time by actual time. The value of satisfaction ranges from 0 to 1.
+  $$ satisfaction= \frac{t_{expect}}{t_{actual}}$$
+  \item \textbf{Standard deviation of speed}: people might feel uncomfortable if the vehicle continues to accelerate and decelerate. We use standard deviation of speed to measure this kind of discomfort.
+  $$ Std.\; deviation\; of\; speed= \frac{1}{N(t)}\sum_{j=1}^3\sum_{i=1}^{N_j(t)}\sqrt{\sum_{t=1}^T[v_j^i(t)-\Widebar{v}(t)]^2}$$
+\end{itemize}
+
+%插表格
+\subsection{Number of Lanes}
+
+\subsubsection{Flow Rate}
+From the flow rate and occupancy figure, we can obtain an optimal occupancy. In a low occupancy situation, the number of cars are too low. Although they are more likely to reach their maximum speeds, the road resources are not fully utilized, so the total flow rate is low. In a high occupancy situation, the number of cars are too high, and it might cause a traffic congestion. We expect an optimal occupancy and view it as a watershed of light traffic and heavy traffic.
+%插1图total
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/1/1flowrate_total.png}
+    \caption{Total flow rate under the condition of different occupancies (3 $\&$ 4 lanes)}
+    \label{figure6.2.1(1)}
+\end{figure}
+
+From \textbf{Figure \ref{figure6.2.1(1)}}, we can see that the optimal occupancy for a 3-lane freeway and a 4-lane freeway is between 0.2 and 0.3. \textbf{Thus, in our following analysis, we choose an occupancy of 0.1 to represent a light traffic condition and an occupancy of 0.4 to represent a heavy traffic condition.}
+%插2图
+\begin{figure}[H]
+    \centering
+      \subfigure[Flow rate of each lane (3 lanes)]{
+        \label{figure6.2.1(2)}
+        \includegraphics[width=0.48\textwidth,height=2.2in]{./picture/1/1flowrate_three_lane.png}}
+      \subfigure[Flow rate of each lane (4 lanes)]{
+        \label{figure6.2.1(3)}
+        \includegraphics[width=0.48\textwidth,height=2.20in]{./picture/1/1flowrate_four_lane.png}}
+    \caption{}
+    \label{figure6.2.1(23)}
+\end{figure}
+
+We also calculate the flow rate of each lane and sequence them from left to right. From the figures, we conclude that the optimal occupancy of rightmost lane is lower than that of leftmost lane. This tendency holds true for both 3-lane and 4-lane freeways. However, it's not a significant difference.
+
+\subsubsection{Average Speed}
+%插1图
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/1/2speed_average.png}
+    \caption{Average speed under the condition of different occupancies (3 $\&$ 4 lanes)}
+    \label{figure6.2.2(1)}
+\end{figure}
+
+As occupancy increases, the average speed tends to decrease due to congestion. This common sense can be justified from the speed-occupancy \textbf{Figure \ref{figure6.2.2(1)}}. Surprisingly, the curves for 3-lane and 4-lane coincide! This result indicates that different lane numbers may hardly change the performance of the rule under the condition of the same occupancy.
+%插2图
+\begin{figure}[H]
+    \centering
+      \subfigure[Average speed of each lane (3 lanes)]{
+        \label{figure6.2.2(2)}
+        \includegraphics[width=0.48\textwidth,height=2.2in]{./picture/1/2speed_three_lane.png}}
+      \subfigure[Average speed of each lane (4 lanes)]{
+        \label{figure6.2.2(3)}
+        \includegraphics[width=0.48\textwidth,height=2.20in]{./picture/1/2speed_four_lane.png}}
+    \caption{}
+    \label{figure6.2.2(23)}
+\end{figure}
+
+From the average speed of each lane, we can conclude that the leftmost lane has the highest speed and the rightmost lane has the lowest speed. This is because the rule requires drivers to overtake from the left.
+
+\subsubsection{Lane Utilization Ratio}
+%插两图
+\begin{figure}[H]
+    \centering
+      \subfigure[Lane utilization ratio of each lane (3 lanes)]{
+        \label{figure6.2.3(1)}
+        \includegraphics[width=0.48\textwidth,height=2.2in]{./picture/1/3utilizationratio_three_lane.png}}
+      \subfigure[Lane utilization ratio of each lane (4 lanes)]{
+        \label{figure6.2.3(2)}
+        \includegraphics[width=0.48\textwidth,height=2.20in]{./picture/1/3utilizationratio_four_lane.png}}
+    \caption{}
+    \label{figure6.2.3(12)}
+\end{figure}
+From the \textbf{Figure \ref{figure6.2.3(12)}}, we can know that the lane utilization ratio of the leftmost lane increases as occupancy increases. It is reasonable because when occupancy increases, more vehicles use the leftmost lane to overtake. In contrast, in the light traffic situation, the lane utilization ratio of the rightmost lane decreases as occupancy increases. It is because more vehicles try to change to the middle lane to move faster. The increase tendency in the heavy traffic condition indicates the difficulty of overtaking.
+
+\subsubsection{Sharp Braking Frequency}
+%插1 图
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/1/4sharpbraking.png}
+    \caption{Sharp braking frequency under the condition of different occupancies (3 $\&$ 4 lanes)}
+    \label{figure6.2.4}
+\end{figure}
+
+There also exists a peak value in the sharp braking frequency curve. In the case of light traffic, the average speed is high. Therefore, as occupancy increases, sharp braking situation increases. In the case of heavy traffic, the average speed is low, so the frequency decreases correspondingly.
+\subsubsection{Shift Ratio}
+%插图
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/1/5shiftratio.png}
+    \caption{Shift ratio under the condition of different occupancies (3 $\&$ 4 lanes)}
+    \label{figure6.2.5}
+\end{figure}
+
+In the low occupancy case, the ratio is high, probably because of the low car number. In the high occupancy case, the ratio approximately keeps unchanged.
+\subsubsection{Satisfaction}
+%chatu
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/1/6satisfaction.png}
+    \captionsetup{justification=centering}
+    \caption{Satisfaction under the condition of different occupancies (3 $\&$ 4 lanes)}
+    \label{figure6.2.6}
+\end{figure}
+
+As the occupancy increases, it takes longer for drivers to pass a certain distance, so their satisfaction decreases. Again, the curves coincide, which means there is little difference between 3-lane and 4-lane freeway in terms of satisfaction under the condition of the same occupancy.
+\subsubsection{Standard Deviation of Speed}
+%chatu
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/1/7stddeviationofspeed.png}
+    \caption{Std. deviation of speed.png under the condition of different occupancies (3 $\&$ 4 lanes)}
+    \label{figure6.2.7}
+\end{figure}
+
+The shapes of the curves are similar to the speed curves and they are irrelevant to the lane number.
+
+\subsection{Maximum Speed Limit}
+We study the case in which the maximum speed limit of 4 cell/s (86.4km/h) and 5 cell/s (108km/h) and a case with no maximum speed limit.
+\subsubsection{Flow Rate and Average Speed}
+
+\begin{figure}[H]
+    \centering
+      \subfigure[Flow rate in light $\&$ heavy traffic (different maximum limit) ]{
+        \label{figure6.3.1(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/2/1flowrate_high.png}}
+      \subfigure[Average speed in light $\&$ heavy traffic (different maximum limit) ]{
+        \label{figure6.3.1(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/2/1speed_high.png}}
+    \caption{}
+    \label{figure6.3.1(12)}
+\end{figure}
+
+Vehicles can move in a high speed in a light traffic case, so the maximum speed limit must have a significant influence on the flow rate and speed. In a heavy traffic case, however, vehicles averagely maintain a low speed, and few of them can reach the maximum speed limit, so it can hardly influence the average speed. However, a maximum speed limit can avoid sharp changes of following distance, which is beneficial to the whole traffic flow. Therefore, a proper speed limit might result in a higher flow rate. We can clearly see that the results meet our expectations from the \textbf{Figure \ref{figure6.3.1(12)}}.
+\subsubsection{Sharp Braking Frequency and Shift Ratio}
+\begin{figure}[H]
+    \centering
+      \subfigure[Sharp braking frequency in light $\&$ heavy traffic (different maximum limit) ]{
+        \label{figure6.3.2(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/2/2sharpbraking_high.png}}
+      \subfigure[Shift ratio in light $\&$ heavy traffic (different maximum limit) ]{
+        \label{figure6.3.2(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/2/2shiftratio_high.png}}
+    \caption{}
+    \label{figure6.3.2(12)}
+\end{figure}
+
+\textbf{Figure \ref{figure6.3.2(12)}} demonstrate that the maximum speed limit can effectively reduce the sharp braking frequency and shift ratio in a light traffic case, which is beneficial to safety. Nevertheless, it has little impact in a heavy traffic case.
+\subsubsection{Lane Utilization Ratio}
+
+\begin{figure}[H]
+    \centering
+      \subfigure[Lane utilization ratio in light traffic (different maximum limit) ]{
+        \label{figure6.3.3(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/2/utilizationratio_light_high.png}}
+      \subfigure[Lane utilization ratio in heavy traffic (different maximum limit) ]{
+        \label{figure6.3.3(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/2/utilizationratio_heavy_high.png}}
+    \caption{}
+    \label{figure6.3.3(12)}
+\end{figure}
+
+From \textbf{Figure \ref{figure6.3.3(12)}}, we can conclude that the utilization ratio of the leftmost lane in a light traffic case decreases under a more strict speed limit because the limit reduces driver's willingness to overtake.
+
+\subsection{Minimum speed limit}
+We study the influence of minimum speed limit by presenting two cases: a case with a minimum speed limit of 3 cell/s (64.8 km/h). By minimum speed limit we mean that vehicles will not exceed the limit due to randomization. However, they can decelerate due to safety consideration.
+\subsubsection{Flow Rate and Average Speed}
+\begin{figure}[H]
+    \centering
+      \subfigure[Flow rate in light $\&$ heavy traffic (different minimum limit) ]{
+        \label{figure6.4.1(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/3/1flowrate_low.png}}
+      \subfigure[Average speed in light $\&$ heavy traffic (different minimum limit) ]{
+        \label{figure6.4.1(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/3/1speed_low.png}}
+    \caption{}
+    \label{figure6.4.1(12)}
+\end{figure}
+
+Opposite from the maximum speed limit case, the minimum speed limit plays an important role in a heavy traffic case and it is of little importance in a light traffic case. We can clearly conclude that from \textbf{Figure \ref{figure6.4.1(12)}}
+\subsubsection{ Sharp Braking Frequency and Shift Ratio}
+\begin{figure}[H]
+    \centering
+      \subfigure[Sharp braking frequency in light $\&$ heavy traffic (different minimum limit) ]{
+        \label{figure6.4.2(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/3/2sharpbraking_low.png}}
+      \subfigure[Shift ratio in light $\&$ heavy traffic (different minimum limit)]{
+        \label{figure6.4.2(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/3/2shiftratio_low.png}}
+    \caption{}
+    \label{figure6.4.2(12)}
+\end{figure}
+
+
+In the light traffic case, vehicles cannot slow down in advance due to the speed limit, which in turn increase the sharp braking frequency. In the heavy traffic case, the frequency decreases. The reason might lies in the low shift ratio and the fluent traffic flow. The condition for lane changing is difficult to satisfy. \textbf{Figure \ref{figure6.4.2(12)}} illustrates this conclusion.
+\subsubsection{Lane Utilization Ratio}
+\begin{figure}[H]
+    \centering
+      \subfigure[Lane utilization ratio in light traffic (different minimum limit) ]{
+        \label{figure6.4.3(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/3/utilizationratio_light_low.png}}
+      \subfigure[Lane utilization ratio in heavy traffic (different minimum limit) ]{
+        \label{figure6.4.3(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/3/utilizationratio_heavy_low.png}}
+    \caption{}
+    \label{figure6.4.3(12)}
+\end{figure}
+
+In the light traffic case, the ratio is of little influence. In the heavy traffic case, the ratio tends to evenly distribute between the three lanes due to the difficulty to change lane. The results are shown in \textbf{Figure \ref{figure6.4.3(12)}}.
+
+\subsection{Signal Before Shifting}
+
+In real life, it is a rule to signal before changing lane. We try to add this factor into our model. We assume that a driver must signal first if the lane-changing conditions are satisfied. Then the related vehicle might decelerate to give way to the driver. Then the driver can change the lane in the next time step. We compare the cases with and without this signal mechanism.
+\subsubsection{Flow Rate and Average Speed}
+\begin{figure}[H]
+    \centering
+      \subfigure[Flow rate in light $\&$ heavy traffic (with or without signaling) ]{
+        \label{figure6.5.1(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/4/1flowrate_signal.png}}
+      \subfigure[Average speed in light $\&$ heavy traffic (with or without signaling) ]{
+        \label{figure6.5.1(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/4/1speed_signal.png}}
+    \caption{}
+    \label{figure6.5.1(12)}
+\end{figure}
+
+When signaling is considered, acceleration will be constrained, which will reduce the flow rate and the speed of the traffic flow. \textbf{Figure \ref{figure6.5.1(12)}} illustrates this change.
+\subsubsection{Sharp Braking Frequency and Shift Ratio}
+
+\begin{figure}[H]
+    \centering
+      \subfigure[Sharp braking frequency in light $\&$ heavy traffic (with or without signaling) ]{
+        \label{figure6.5.2(1)}
+        \includegraphics[width=0.489\textwidth,height=2.30in]{./picture/4/2sharpbraking_signal.png}}
+      \subfigure[Shift ratio in light $\&$ heavy traffic (with or without signaling)]{
+        \label{figure6.5.2(2)}
+        \includegraphics[width=0.489\textwidth,height=2.30in]{./picture/4/2shiftratio_signal.png}}
+    \caption{}
+    \label{figure6.5.2(12)}
+\end{figure}
+Because vehicles' giving-way behavior, the shift ratio increases and vehicles have to respond to the signal behavior, which will increase sharp braking frequency and shift ratio. \textbf{Figure \ref{figure6.5.2(12)}} demonstrates this statement.
+\subsection{Conclusions}
+Based on the results, we can conclude that:
+\begin{itemize}
+  \item{The number of lanes is not an influential factor under any circumstances.}
+  \item{The maximum speed limit plays a significant role in light traffic while it is of no importance in heavy traffic.}
+  \item{The minimum speed limit plays a significant role in heavy traffic while it is of no importance in light traffic.}
+  \item{Signaling behavior reduce flow rate and average while enhancing safety.}
+\end{itemize}
+%============================第七章===================================================================
+\section{Results: the Optimal Rule}
+We examine five basic rules and design four improved rules. In order to determine the performance of the rules, we implement a fuzzy synthetic evaluation to consider all the criteria.
+\subsection{Basic Rules of Overtaking}
+We take a three-lane freeway as an example to state the rules, similar rules for other kind of freeway can be easily derived from these rules. Apart from the keep-right-except-to-pass rule, another four basic rules are presented as follows:
+\begin{itemize}
+  \item \textbf{The free-overtaking rule}: Drivers can overtake or change lane as they wish. In other words, there is no rule for overtaking.
+  \item \textbf{The no-overtaking rule}: It restricts the vehicles in their own lane. The vehicles randomly move into the freeway and once they are moving on the freeway, they must stick to their current lane. This rule can be implemented by replacing the dashed lines separating lanes with full lines. This lane marking bans drivers from changing lanes.
+  \item \textbf{The different-speed-limit-on-each-lane rule}:the maximum speed limit on the rightmost lane is the lowest. The maximum speed limit on the leftmost lane is the highest. The maximum speed limit on the middle lane is in the middle. This rule can be implemented by hanging corresponding speed limit sign over each lane, which will indicate the drivers to control their speeds.	
+  \item \textbf{The complete-assigned-lane rule}: Cars are assigned to the leftmost lane. Buses are assigned to the middle lane. Trucks are assigned to the rightmost lane. No vehicles can change lanes after it moves into the freeway. This rule can be implemented by hanging the corresponding guide sign over each lane.
+\end{itemize}
+
+\subsection{Criteria and Single Criterion Analysis for Basic Rules}
+We adopt flow rate and average speed as criteria for the quality of traffic flow and we use sharp braking frequency as a criterion for safety. Moreover, we use satisfaction and standard deviation of speed as criteria for people's experience of the trip. We analyze the five basic rules with every single criterion to see their performance in both light and heavy traffic.
+
+\subsubsection{Traffic Flow Criteria: Flow Rate and Speed}
+\begin{figure}[H]
+    \centering
+      \subfigure[Flow rate in light $\&$ heavy traffic (different rules) ]{
+        \label{figure7.2.1(1)}
+        \includegraphics[width=0.489\textwidth,height=2.3in]{./picture/5/flowrate_rules1.png}}
+      \subfigure[Average speed in light $\&$ heavy traffic (different rules)]{
+        \label{figure7.2.1(2)}
+        \includegraphics[width=0.489\textwidth,height=2.30in]{./picture/5/speed_rules1.png}}
+    \caption{}
+    \label{figure7.2.1(12)}
+\end{figure}
+
+We can see that the speed is coherent with the flow rate. In the light traffic case, the no-overtaking rule performs the worst because the road resources cannot be fully used. There is no significant difference between other rules.
+
+In the heavy traffic case, the complete-assigned-lane rule behaves the worst. In the simulation, the leftmost lane, which is assigned to cars, suffers bad congestion while the other two lanes are relatively available. The different-speed-limit-on-each-lane rule performs the best. The rule bans large vehicles from entering the passing lanes as well as prevents a large number of cars from entering the rightmost lane.
+
+\subsubsection{Safety Criterion: Sharp Braking Frequency}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.80in]{./picture/5/sharpbraking_rules1.png}
+    \caption{Sharp braking frequency in light $\&$ heavy traffic (different rules)}
+    \label{figure7.3.1}
+\end{figure}
+Higher sharp braking frequency indicates a higher risk of accidents in reality. The results are presented in \textbf{Figure \ref{figure7.3.1}}.
+
+In the light traffic case, the no-overtaking rule performs the worst because vehicles of high speeds can only press the brake instead of changing lane if they encounters slow vehicles ahead. The well-performed rules are the keep-right-except-to-pass rule and the complete-assigned-lane rule. The latter bans overtaking too, but the speed is relatively even, so the sharp braking situation seldom occurs.
+
+In the heavy traffic case, the free-overtaking rule performs the worst. The different-speed-limit-on-each-lane rule performs the best because the rule can reasonably allocate the vehicles to three lanes by speed. Thus, the traffic can flow fluently.
+
+\subsubsection{Experience Criterion: Satisfaction and Standard Deviation of Speed}
+
+\begin{figure}[H]
+    \centering
+      \subfigure[Satisfaction $\&$ heavy traffic (different rules) ]{
+        \label{figure7.4.1(1)}
+        \includegraphics[width=0.489\textwidth,height=2.3in]{./picture/5/satisfaction_rules1.png}}
+      \subfigure[Std. deviation of speed in light $\&$ heavy traffic (different rules)]{
+        \label{figure7.4.1(2)}
+        \includegraphics[width=0.489\textwidth,height=2.30in]{./picture/5/stddeviationofspeed_rules1.png}}
+    \caption{}
+    \label{figure7.4.1(12)}
+\end{figure}
+
+
+\textbf{Figure \ref{figure7.4.1(1)}} describes satisfaction and it is coherent with the speed \textbf{Figure \ref{figure7.2.1(1)}}. This coherence indicates that people feel more satisfied with higher speed.
+
+\textbf{Figure \ref{figure7.4.1(2)}} compares the standard deviation of different rules. In the light traffic, different-speed-limit-on-each-lane performs the best. Other rules' performance are almost the same. In the heavy traffic, the complete-assigned-lane rule obtains the minimum value, but this is because of low speed. In this case, the criterion cannot accurately indicate people's experience.
+
+\subsection{Fuzzy Synthetic Evaluation for Basic Rules}
+The main challenge of the judging process is that we can obtain different results using different criteria. If we want to obtain a unique answer, we have to combine criteria to get a new, unique criterion. The relative importance of the criteria is hard to determine. Since we have no other information, we implement a fuzzy synthetic evaluation (FSE).\cite{ri} FSE is a multiple-criteria-decision-making method. It can determine the weights of each criterion based on the data only. One way to determine the weights is the coefficient of variation method. If criterion can differentiate the rules evaluated, the method will assign a large weight to the criterion. We use this technique to analyze the performance of each rule.
+
+In the following subsections, we use the light traffic as a case to introduce the process of FSE. The case of heavy traffic can be processed in a similar way.
+
+\subsubsection{Identify Alternatives and Attributes}
+In our problem, the alternatives are the five basic rules and the attributes are the five criteria. The values of each attributes of each alternative are listed as follows:
+%biaoge
+\begin{table}[htb]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\label{tab7.3.1}
+\caption{Criteria of Basic Rules in Light Traffic}
+\centerline{
+{\small
+\begin{tabular}{m{3.5cm}| c c m{2.6cm}<{\centering} c m{2.5cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+keep-right-except-to-pass           &0.964&4.552&0.041&0.841&1.152\\
+\hline
+free-overtaking                     &0.928&4.201&0.077&0.785&1.357\\
+\hline
+no-overtaking                       &0.631&2.800&0.091&0.531&1.415\\
+\hline
+different-speed-limit-on-each-lane  &0.845&4.129&0.063&0.777&0.813\\
+\hline
+complete-assigned-lane              &0.932&4.256&0.033&0.808&1.481\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+Then we derive the ideal alternative from \textbf{Table \ref{tab7.3.1}}.
+$$u=(u_1^0,u_2^0,u_3^0,u_4^0,u_5^0)=(0.964, 	4.552, 	0.033, 	0.841, 	0.813)$$
+\subsubsection{Determine Fuzzy Evaluation Matrix}
+The membership function is defined as
+$$r_{ij}=\frac{|a_{ij}-u_i^0|}{\text{max}\{a_{ij}\}-\text{min}\{a_{ij}\}}$$
+Then we have the fuzzy evaluation matrix
+
+\begin{displaymath}
+\mathbf{R}=
+\left[\begin{array}{c c c c c}
+0.000 	&0.000 	&0.127 	&0.000 	&0.508\\
+0.108 	&0.201 	&0.750 	&0.180 	&0.814\\
+1.000 	&1.000 	&1.000 	&1.000 	&0.901\\
+0.357 	&0.242 	&0.504 	&0.205 	&0.000\\
+0.096 	&0.169 	&0.000 	&0.104 	&1.000\\
+\end{array}\right]
+\end{displaymath}
+Using coefficient of variation method, we define $v_j$ and $w_j$ as:
+$$v_j=\frac{s_j}{\Widebar{x_j}}, \qquad w_j=\frac{v_j}{\sum_{i=j}^5v_j}$$
+Then we calculate the weighted vector
+$$w=(0.243, 	0.226, 	0.164, 	0.251, 	0.117)$$
+\subsubsection{Aggregate using a fuzzy operator}
+Then we use a fuzzy operator to aggregate and obtain the relative deviation.
+$$F_i=\sum_{j=1}^5w_jr_{ij}$$
+The relative deviation measures the “distance” between a specific alternative to the ideal alternative. The lower the value is, the better the alternative is.
+
+\subsubsection{The Results}
+The relative deviation in both cases are listed below
+\begin{table}[h]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\label{tab:7.3.4(1)}
+\caption{Relative deviations of different rules in light traffic}
+\centerline{
+{\small
+\begin{tabular}{c| m{2.5cm}<{\centering} c c m{3.5cm}<{\centering} m{2.5cm}<{\centering}}
+\toprule[1pt]
+  &keep-right-except-to-pass    &free-overtaking  &no-overtaking  &different-speed-limit-on-each-lane &complete-assigned-lane\\
+\midrule[2pt]
+$F_i$&0.080&0.335&0.998&0.275&0.205\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+\begin{table}[h]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\label{tab:7.3.4(2)}
+\caption{Relative deviations of different rules in heavy traffic}
+\centerline{
+{\small
+\begin{tabular}{c| m{2.5cm}<{\centering} c c m{3.5cm}<{\centering} m{2.5cm}<{\centering}}
+\toprule[1pt]
+  &keep-right-except-to-pass    &free-overtaking  &no-overtaking  &different-speed-limit-on-each-lane &complete-assigned-lane\\
+\midrule[2pt]
+$F_i$&0.564&0.570&0.627&0.156&0.669\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+In the light traffic case, the keep-right-except-to-pass rule has an absolute advantage over other rules while in the heavy traffic case, the different-speed-limit-on-each-lane rule is the best.
+
+\subsection{Improved Rules of Overtaking}
+Based on the basic rules, we propose four improved rules by modifying or combining the five basic rules. When creating the rules, we consider not only the implementation of the rules but the overall quality of traffic flow, safety and experience as well.
+
+\begin{itemize}
+  \item  \textbf{The partial-assigned-lane rule}: cars are assigned to the middle lane and the leftmost lane with the permission to change between these two lanes. Buses and trucks are assigned to the rightmost lane and they are banned from changing lanes. This rule can be implemented by hanging the corresponding guide sign over each lane. We present this rule because cars account for 60$\%$ of the total vehicles and they have relatively high speed.
+  \item  \textbf{The truck-on-rightmost-lane-only rule}: It requires trucks to stick to the rightmost lane while cars and buses can change between the three lanes. This rule can be implemented by hanging the corresponding guide sign over each lane. We present this rule because trucks have the lowest speed and they may constrain the speed of others if they appear on the passing lane.
+  \item  \textbf{The minimum-speed-on-leftmost-lane rule}: It sets a special minimum speed for the leftmost lane. This rule can be implemented by hanging the special speed limit sign over each lane. We hope it will help increase the efficiency of the leftmost passing lane.
+  \item  \textbf{The partial-assigned-lane-and-keep-right rule}:  We combine the partial-assigned-lane rule and the keep-right-except-to-pass rule to make this rule. In other words, vehicles are assigned by the partial-assigned-lane rule and cars overtakes by the keep-right-except-to-pass rule. We hope this rule can have the merits of previous two rules.
+\end{itemize}
+
+\subsection{Fuzzy Synthetic Evaluation for All Rules}
+To test the performance of the improved rules, we apply a fuzzy synthetic evaluation to all rules.
+
+\begin{table}[h]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Relative deviations of different rules in light $\&$ heavy traffic}
+\label{tab:7.5}
+%\centerline{
+%{\small
+\centering
+\begin{tabular}{l| c c c}
+\toprule[1pt]
+ &light traffic  &heavy traffic &overall\\
+\midrule[2pt]
+keep-right-except-to-pass	               &0.141 	&0.519 	&0.269\\
+free-overtaking	                           &0.367 	&0.518 	&0.418\\
+no-overtaking	                           &0.991 	&0.576 	&0.851\\
+different-speed-limit-on-each-lane         &0.326 	&0.116 	&0.255\\
+complete-assigned-lane	                   &0.255 	&0.708 	&0.408\\
+partial-assigned-lane	                   &0.055 	&0.563 	&0.227\\
+trucks-on-rightmost-lane-only	           &0.170 	&0.527 	&0.291\\
+minimum-speed-on-leftmost-lane	           &0.233 	&0.320 	&0.262\\
+partial-assigned-lane-and-keep-right	   &0.000 	&0.562 	&0.190\\
+
+\bottomrule[1pt]
+\end{tabular}%}}
+\end{table}
+\subsection{Conclusions}
+We can make two conclusions from the results:
+\begin{itemize}
+  \item \textbf{The partial-assigned-lane-and-keep-right rule is the best in a light traffic situation.}
+  \item \textbf{The different-speed-limit-on-each-lane rule is the best in a heavy traffic situation.}
+\end{itemize}
+Based on the conclusions, we suggest that the different-speed-limit-on-each-lane rule should be used during the rush hour while the partial-assigned-lane-and-keep-right rule should be used at other times.
+
+%=========================================第八章===========================================================
+\section{Sensitivity Analysis}
+Some inputs of our model may be hard to obtain or there might be some uncertainty in our inputs. Both these kinds of deviation might influence the result of our model. To test the robustness of our model, we implement a sensitivity analysis. We test our model in both light traffic and heavy traffic case. The analysis proves that our model does not demonstrate a chaotic behavior, showing a good sensitivity.
+\subsection{Percentages of Vehicles}
+We obtain this data from a freeway company.\cite{Anhui} Although the data are accurately collected, the percentages of vehicles may vary on different freeways. Therefore, we change the percentage of large vehicles(40$\%$) by up to 15$\%$ to obtain the changes in our criteria.(\textbf{Table \ref{tab8.2.1(1)}} and \textbf{Table \ref{tab8.2.1(2)}}) We observe a 16.61$\%$ increase in sharp braking frequency in the light traffic case. The other criteria changes little. In the heavy traffic case, all criteria changes little. This indicates that our model can be used on freeways with varying percentages of vehicles.
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Sensitivity analysis---percentages of vehicles(light traffic)}
+\label{tab8.2.1(1)}
+\centerline{
+{\small
+\begin{tabular}{c| c c m{3cm}<{\centering} c m{3cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+-15\%	&0.0\%	&-5.9\%	&16.6\%	&-3.5\%	&6.4\%\\
+-10\%	&0.8\%	&-0.4\%	&6.3\%	&-0.6\%	&1.0\%\\
+-5\%	&-2.6\%	&-2.8\%	&13.8\%	&-2.5\%	&6.6\%\\
+ 0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%\\
+ 5\%	&-1.2\%	&0.6\%	&0.6\%	&-0.1\%	&1.0\%\\
+10\%	&-3.8\%	&-2.3\%	&0.2\%	&-0.1\%	&-1.7\%\\
+15\%	&-3.7\%	&0.3\%	&-5.5\%	&0.9\%	&-3.4\%\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Sensitivity analysis---percentages of vehicles(heavy traffic)}
+\label{tab8.2.1(2)}
+\centerline{
+{\small
+\begin{tabular}{c| c c m{3cm}<{\centering} c m{3cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+-15\%	&0.1\%	&-6.2\%	&-2.5\%	&-6.3\%	&-3.4\%\\
+-10\%	&-1.3\%	&-4.4\%	&-3.2\%	&-5.0\%	&-0.8\%\\
+-5\%	&4.8\%	&-0.8\%	&-1.3\%	&-1.5\%	&0.4\%\\
+ 0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%\\
+ 5\%	&7.0\%	&2.6\%	&-0.4\%	&2.0\%	&2.1\%\\
+10\%	&6.1\%	&3.6\%	&0.1\%	&4.6\%	&1.4\%\\
+15\%	&6.9\%	&4.4\%	&0.3\%	&5.8\%	&2.5\%\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+
+\subsection{Probability of Randomization}
+The probability of randomization $p_{slow}$ describes the random deceleration behavior of drivers. Obviously, this parameter is difficult to obtain and it may change severely under different circumstances. In our approach, we assume it to be 0.2 since very few data on this matter are available. We change it by up to 15$\%$ and the sharp braking frequency shows a 15.75$\%$ deviation, which is acceptable.(\textbf{Table \ref{tab8.2.2(1)}} and \textbf{Table \ref{tab8.2.2(2)}})
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Sensitivity analysis---probability of randomization(light traffic)}
+\label{tab8.2.2(1)}
+\centerline{
+{\small
+\begin{tabular}{c| c c m{3cm}<{\centering} c m{3cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+-15\%	&3.4\%	&0.2\%	&-1.4\%	&0.4\%	&0.3\%\\
+-10\%	&0.3\%	&0.6\%	&0.4\%	&0.0\%	&1.4\%\\
+-5\%	&1.6\%	&-1.8\%	&2.9\%	&-0.7\%	&1.8\%\\
+ 0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%\\
+ 5\%	&4.7\%	&2.3\%	&-4.7\%	&0.9\%	&-1.4\%\\
+10\%	&0.8\%	&-2.0\%	&3.2\%	&-0.8\%	&0.0\%\\
+15\%	&-4.6\%	&-4.9\%	&15.7\%	&-3.3\%	&6.5\%\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Sensitivity analysis---probability of randomization(heavy traffic)}
+\label{tab8.2.2(2)}
+\centerline{
+{\small
+\begin{tabular}{c| c c m{3cm}<{\centering} c m{3cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+-15\%	&7.3\%	&6.0\%	&3.6\%	&5.4\%	&0.4\%\\
+-10\%	&4.7\%	&3.1\%	&0.9\%	&3.0\%	&2.8\%\\
+-5\%	&3.6\%	&1.0\%	&-0.4\%	&1.2\%	&0.7\%\\
+ 0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%\\
+ 5\%	&-4.4\%	&-1.1\%	&-3.4\%	&-2.1\%	&2.4\%\\
+10\%	&-3.0\%	&-2.8\%	&-3.1\%	&-3.6\%	&0.9\%\\
+15\%	&-1.6\%	&-4.1\%	&-4.7\%	&-4.4\%	&0.8\%\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+\subsection{Probability of Willing to Change Lane}
+We consider the case that a driver might choose not to change lane even if all the other conditions are satisfied. Obviously, the data are hard to get and it may suffer from a severe change during a short period of time. We assume probability of willing to change to the left lane and right lane are 0.5 and 0.7 respectively in our model. Therefore, we change the probabilities by up to 15$\%$ proportionally. The maximum deviation is 7.05$\%$, which indicates a good robustness.
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Sensitivity analysis---probability of willing to change lane(light traffic)}
+\label{tab8.2.3(1)}
+\centerline{
+{\small
+\begin{tabular}{c| c c m{3cm}<{\centering} c m{3cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+-15\%	&1.9\%	&-0.4\%	&4.5\%	&-0.8\%	&2.4\%\\
+-10\%	&-3.9\%	&-1.5\%	&6.7\%	&-1.5\%	&4.5\%\\
+-5\%	&0.4\%	&-1.6\%	&4.1\%	&-0.7\%	&1.1\%\\
+ 0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%\\
+ 5\%	&1.9\%	&0.5\%	&0.0\%	&0.1\%	&0.0\%\\
+10\%	&-7.1\%	&-4.7\%	&6.6\%	&-3.2\%	&5.5\%\\
+15\%	&-2.7\%	&-2.4\%	&4.2\%	&-1.1\%	&1.7\%\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Sensitivity analysis---probability of willing to change lane(heavy traffic)}
+\label{tab8.2.3(2)}
+\centerline{
+{\small
+\begin{tabular}{c| c c m{3cm}<{\centering} c m{3cm}<{\centering}}
+\toprule[1pt]
+   & flow rate & average speed & sharp breaking frequency & satisfaction & std. deviation of speed\\
+\midrule[2pt]
+-15\%	&1.8\%	&0.7\%	&0.0\%	&-0.4\%	&1.4\%\\
+-10\%	&3.5\%	&0.5\%	&-0.9\%	&0.1\%	&1.1\%\\
+-5\%	&2.6\%	&-0.2\%	&-1.4\%	&-1.1\%	&1.9\%\\
+ 0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%	&0.0\%\\
+ 5\%	&3.8\%	&0.8\%	&-1.6\%	&-0.1\%	&2.2\%\\
+10\%	&3.9\%	&0.6\%	&-1.0\%	&-0.5\%	&1.8\%\\
+15\%	&-2.2\%	&-0.5\%	&-2.2\%	&-0.3\%	&1.1\%\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+%=========================================第九章===========================================================
+\section{Further Discussions}
+\subsection{Modifications for Countries Where Driving on the Left Is the Norm}
+Imagine there is a mirror standing in the middle of a two-way freeway in a country where driving on the right is the norm. What's happening in the mirror is similar to a freeway in a country where driving on the left is the norm. The ``passing lane'' is on the right. The drivers are sitting in the right side of their cars. The cars obeys the keep-left-except-to-pass rule. All the roads, vehicles and rules look like that in a country where driving on the left is the rule.
+
+However, there is one difference which is human beings. A left-handed person is always a left handed person, but in the ``mirror world'', he becomes a right-handed person and vice versa. This thought inspires us that we can modify our model to reflect this difference instead of simply changing the orientation. We assume in our model that the probability of willing to change to the left lane and right lane are 0.5 and 0.7 and this tendency do not change under any circumstances. Therefore, in a country like Great Britain, drivers still maintain this tendency, which means drivers have a higher tendency to move to the right lane -- the passing lane. This is exactly the same as the case that we swap the two probabilities in our original model.
+
+Based on the discussions above, we modify our model and run a simulation.(table…and table…. ) We observe a maximum change of 4.6$\%$ in our criteria. From this analysis, we can safely conclude that
+\begin{itemize}
+  \item \textbf{Simply changing the orientation is reasonable if the willingness of changing to the left lane equals the willingness of changing to the right lane.}
+  \item	\textbf{Even if the two values are different, the deviations are small enough to ignore.}
+\end{itemize}
+
+\subsection{Modifications for An Intelligent System}
+An intelligent system can fully control all the vehicles and let them strictly obey the rule, The keep-right-except-to-pass rule states that the vehicles must drive in the rightmost lane unless they are passing another vehicle, which means the vehicles \textbf{MUST} change to the right lane if the conditions are satisfied. In other words, the probability of willing to change to the right lane equals to 1. Based on this characteristic, we propose two intelligent systems:
+\begin{itemize}
+  \item \textbf{The semi-intelligent system}: this system forces vehicles to change to the right lane if the conditions are satisfied, while whether to change to the left lane relies upon human judgment.
+  \item \textbf{The complete intelligent system}: this system not only forces vehicles to change to the right lane if the conditions are satisfied, but also forces vehicles to change to the left lane if the corresponding conditions are satisfied.
+\end{itemize}
+We run the simulation to examine the performance of the intelligent systems.
+\subsubsection{Flow Rate and Average Speed}
+\begin{figure}[H]
+    \centering
+      \subfigure[Flow rate in light $\&$ heavy traffic (with or without intelligent system)]{
+        \label{figure9.2.1(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/6/1flowrate_intel.png}}
+      \subfigure[Average speed in light $\&$ heavy traffic (with or without intelligent system)]{
+        \label{figure9.2.1(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/6/1speed_intel.png}}
+    \caption{}
+    \label{figure9.2.1(12)}
+\end{figure}
+In the light traffic case, the flow rate of complete intelligent system increases slightly, while that of semi-intelligent system decreases slightly compared with the situation without intelligent system. The little impact is due to rich passing lane resources. In the heavy traffic case, the flow rates of intelligent systems increase. This is because forcing vehicles to move back to the rightmost lane release more passing lane resources. This is consistent with the speed figure.(\textbf{Figure \ref{figure9.2.1(12)}})
+\subsubsection{Sharp Braking Frequency and Shift Ratio}
+In the light traffic case, the shift ratio and sharp braking frequency change slightly. In the heavy traffic case, the shift ratio increases significantly as expected. The intelligent system will certainly increase shift ratio. (\textbf{Figure \ref{figure9.2.2(12)}})
+\begin{figure}[H]
+    \centering
+      \subfigure[Sharp braking frequency in light $\&$ heavy traffic (with or without intelligent system)]{
+        \label{figure9.2.2(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/6/2sharpbraking_intel.png}}
+      \subfigure[Shift ratio in light $\&$ heavy traffic (with or without intelligent system)]{
+        \label{figure9.2.2(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/6/2shiftratio_intel.png}}
+    \caption{}
+    \label{figure9.2.2(12)}
+\end{figure}
+In the light traffic case, the sharp braking frequency decreases greatly if a complete intelligent system is implemented. It is because if a driver is about to be constrained by the vehicle ahead, he can change to the left lane in time to avoid a sharp braking.
+\subsubsection{Lane Utilization Ratio}
+\begin{figure}[H]
+    \centering
+      \subfigure[Lane utilization ratio of each lane in light traffic (with or without intelligent system)]{
+        \label{figure9.2.3(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/6/utilizationratio_light_intel.png}}
+      \subfigure[Lane utilization ratio of each lane in heavy traffic (with or without intelligent system)]{
+        \label{figure9.2.3(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/6/utilizationratio_heavy_intel.png}}
+    \caption{}
+    \label{figure9.2.3(12)}
+\end{figure}
+For a semi-intelligent system, the vehicles tend to move to the left lane. For a complete intelligent system, the vehicles tend to move to the right lane. Both the light traffic case and the heavy traffic case have this tendency. The overall changes are relatively small.
+\subsection{Additional Research on the Refined Model with Ramps}
+In section 5.3, we present a refined model taking ramps into account. Due to open boundary conditions, we use $\lambda$ to control the occupancy, which determines whether the traffic is heavy or light. Then we vary the value of $p_{exit}$ to study the model. In the simulation, we have some interesting findings.
+\subsubsection{Flow Rate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/7/flowrate_ramp.png}
+    \caption{Flow rate in light $\&$ heavy traffic (different $p_{exit}$)}
+    \label{figure9.3.1}
+\end{figure}
+The probability to exit from ramp $p_{exit}$ has little, if any, impact on flow rate, partly because we equate the numbers of vehicles entering from the on-ramp with the numbers of vehicles exiting through the off-ramp.
+\subsubsection{Average Speed}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/7/speed_ramp.png}
+    \caption{Average speed in light $\&$ heavy traffic (different $p_{exit}$)}
+    \label{figure9.3.2}
+\end{figure}
+In the previous analysis, the average speed is always consistent with flow rate. Adding ramps, however, breaks this consistency, especially in the heavy traffic case. As $p_{exit}$ increases, a large number of vehicles need to exit through the off-ramp. They will decelerate in advance, which causes low average speed.
+\subsubsection{Lane Utilization Ratio}
+\begin{figure}[H]
+    \centering
+      \subfigure[Lane utilization ratio of each lane in light traffic (different $p_{exit}$)]{
+        \label{figure9.3.3(1)}
+        \includegraphics[width=0.489\textwidth,height=2.2in]{./picture/7/utilization_light_ramp.png}}
+      \subfigure[Lane utilization ratio of each lane in heavy traffic (different $p_{exit}$)]{
+        \label{figure9.3.3(2)}
+        \includegraphics[width=0.489\textwidth,height=2.20in]{./picture/7/utilization_heavy_ramp.png}}
+    \caption{}
+    \label{figure9.3.3(12)}
+\end{figure}
+In the heavy traffic case, $p_{exit}$ will increase the utilization ratio of the rightmost lane. This reasonable because a large number of vehicles tend to use the rightmost lane to move into the off-ramp.
+\subsubsection{Failure Ratio}
+A significant difference in our refined model is that some vehicles might fail to move to the exit of the freeway, a common situation in the real world. The failure ratio is defined as the ratio of the number of the vehicles failing to exit to the total number of vehicles. We seek to investigate how failure rate changes with varying $p_{exit}$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4.00in,height=2.50in]{./picture/7/failure_ramp.png}
+    \caption{Failure ratio in light $\&$ heavy traffic (different $p_{exit}$)}
+    \label{figure9.3.4}
+\end{figure}
+\textbf{Figure \ref{figure9.3.4}} demonstrate that in the case of light traffic, $p_{exit}$ is an irrelevant factor. The vehicles can move to the rightmost lane with ease. $p_{exit}$ plays an important role in the heavy traffic case. When $p_{exit}$ remains low, the average speed is relatively high, which makes moving to the rightmost lane extremely difficult. When $p_{exit}$ becomes high, the average speed slows down. Vehicles have more time to move to the rightmost lane, which in turn reduces the failure ratio.
+\section{Strengths and Weaknesses}
+\subsection{Strengths}
+\begin{itemize}
+  \item Our models are fairly robust to the changes in parameters based on sensitivity analysis. It means a slight change in parameters will not cause a significant change in the result.
+  \item Different types of vehicles are taken into consideration, and the mixing ratio is based on actual data. We consider the length of vehicles and different maximum speeds which makes the model closer to reality.
+  \item We come up with various criteria to compare different situations. Hence an overall comparison can be made based on these criteria.
+  \item Our models are capable of simulating the situation in real life. The results also agree with common sense and life experience.
+  \item A refined model is established to consider the role of ramps, which is a bright spot of our model.
+\end{itemize}
+\subsection{Weaknesses}
+\begin{itemize}
+  \item Factors of human judgments may be over-simplified. In order to consider that a driver may randomly decelerate and not choose to overtake when possible, we simply defined a possibility respectively. Actual situation may be more complicated.
+  \item Some of the parameters are based on semi-educated guess because few data are available. However, based on our sensitivity analysis, they will not make a great difference if slightly changed.
+  \item We did not consider the prediction of each driver. In our model, drivers change their speed only based on the information of the previous time step. But in fact, they can make a prediction and choose their speed in a more complicated way.
+\end{itemize}
+

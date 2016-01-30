@@ -1,0 +1,86 @@
+% !TEX encoding = UTF-8 Unicode
+
+%=====================µŒ=======ÑÔ==============================
+\documentclass[a4paper,12pt]{article}%\documentclass[a4paper,12pt,titlepage]{article}
+%======================Include Packages========================
+
+\usepackage[26333]{MCMthesis}  %¶ÓºÅÔÚÕâÀïÌîÐŽ
+%
+\usepackage{changepage}
+%±ížñ±êÌâ
+\usepackage[margin=10pt,font=small,
+            labelfont=bf,
+            labelsep=quad,figurename=Figure,
+            tablename=Table]{caption}
+%Ë«ÅÅÍŒÆ¬
+\usepackage{float}
+\usepackage{subfigure}
+
+%ÉÏ»®Ïß
+\usepackage{accents}
+\usepackage{statex}
+\makeatletter
+\def\wideubar{\underaccent{{\cc@style\underline{\mskip10mu}}}}
+\def\Wideubar{\underaccent{{\cc@style\underline{\mskip8mu}}}}
+\makeatother
+
+\makeatletter
+\def\widebar{\accentset{{\cc@style\underline{\mskip10mu}}}}
+\def\Widebar{\accentset{{\cc@style\underline{\mskip8mu}}}}
+\makeatother
+%È¥¶ÏÐÐ
+%Ä¿ÂŒ
+\setcounter{tocdepth}{2}
+%\usepackage{shorttoc}
+
+%===============ÉèÖÃÕýÎÄºÍÊýÑ§×ÖÌå=============================
+%×ÖÌå¶šÒå£¬ŽóŒÒ¿ÉÒÔ²Î¿ŽÍøÕŸ£ºhttp://www.tug.dk/FontCatalogue/
+%ÓÐ100¶à×ÖÌå£¬¿ÉÒÔžŽÖÆ·ÅÔÚÕâÀïÉèÖÃ×ÖÌå£¬Ò»°ãÓÃÄ¬ÈÏ×ÖÌåŒŽ¿É¡£
+%ÓÐÐ©×ÖÌåÐèÒª°²×°Ò»Ð©×ÖÌåÎÄŒþ£¬×¢Òâ±æ±ð¡£
+%ÎÒ²ÎÕÕ MCMÂÛÎÄŒ¯µÄ×ÖÌå Ê¹ÓÃÈçÏÂºê°üÀŽ¶šÖÆ×ÖÌå¡£
+\usepackage{palatino}
+
+%ÉèÖÃ¶ÎÂäÖ®ŒäµÄŸàÀë£¬Èô²»ÐèÒªÉŸ³ý»òÕß×¢ÊÍµôŒŽ¿É¡£
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%$$$$$$$==ÕýÎÄ¿ªÊŒ==$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%==========================ÂÛÎÄ±êÌâ===============================
+\title{Keep Right to Keep ``Right''}
+\author{\ Team $\#$26333}
+\date{\today}
+%=================================================================
+%==================================================================
+\begin{document}
+
+\maketitle
+%\thispagestyle{empty}
+%==================================================================
+
+%\vspace*{\fill}
+%====================Õª=======Òª===================================
+\input{abstract.tex}                                              %
+\newpage                                                          %
+%==================================================================
+
+
+%====================Éú=³É=Ä¿=ÂŒ===================================
+\tableofcontents
+%\shorttableofcontents{\textbf{Contents}}{2}                                                  %                                            %
+\setlength\parskip{.8\baselineskip}
+\setlength\parindent{0pt}
+
+\newpage                                                          %
+%==================================================================
+\input{body.tex}
+\input{model.tex}	
+%\end{flushleft}
+
+\bibliographystyle{aiaa}
+\bibliography{references}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%===========THE END OF PAPER============%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

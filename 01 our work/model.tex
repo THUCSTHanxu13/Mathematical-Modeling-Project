@@ -1,0 +1,116 @@
+@@ -0,0 +1,116 @@
+
+%======================?????????????====================================
+\section{Introduction}
+%\begin{adjustwidth}{1cm}{0cm}
+A more detailed introduction about the background of this problem. Some important terms to narrate this problem and how important it is to solve this problem(which is equivalent to say that our dedication is worthy).
+%\end{adjustwidth}
+\subsection{Restatement of the Problem}
+A little paragraph about what we are trying to solve. In the abstract and introduction, we have given the description of the real-world problem. In this section, we must try to formalize our problem in a more mathematical way which could be directly transformed to either evaluation or regulation or procedure of our model.
+
+\subsection{Literature Review}
+This section should give the readers a rough idea about what have already be done. It should at least give the introduction about those works from which you get your inspirations. Moreover, it is better to compare several well known models and give a brief summary about the relative strongness and weakness between them. Then, you could illustrate you own model at the end of this section.
+%======================??????????====================================
+\section{Assumptions and Justifications}
+This is a very important section. In this part, you should give all the basic assumption under which you build your model. Every model has its applicable range, so you must figure out what are those assumption at the beginning of building a model. Those assumption should be inspired and concordant with our daily intuition. The form of assumption and justification should be more or less like this:
+
+\begin{itemize}
+  \item \textbf{A sentence of assumption} A sentence of justification. Usually, this is a narrative of an intuition from which you derive your assumption. You should depict this intuition and its connection with the assumption.
+\end{itemize}
+
+%======================??????====================================
+\section{Notations}
+This part is not so important, only provide some convenience for the reader to figure out the meaning of each notation. We can adjust its size according to how many space we have in the real competition.
+%======================?????§Ö???????????====================================
+\section{Model}
+\subsection{Basic Model}
+\subsubsection{Overview}
+This is a fundamental model which will give us some insight into the network. Inspired by \cite{lu2011small}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occurs at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of information. This model only depicts the case that all users are the same, with no existence of influencial social media famous people or h...($$line truncated$$)...
+
+\subsubsection{Assumption and Justification}
+\begin{itemize}
+  \item \textbf{All nodes are identical} In this model, we do not consider famous people or huge media company, therefore, all nodes are equally important in the sense that they all have $k$ edges connecting with them.
+   \item \textbf{Each node has four states} Since we use a node to represent a person, a node has four states corresponding with a person has four attitudes towards an information, 'Unknown', 'Known', 'Approved' and 'Unconcerned'\cite{lu2011small}.
+    \item \textbf{Transferring from 'Known' to 'Approved' is a probabilistic event} Once a node heard a piece of news from its neighbor, it has a probability to transfer from 'Known' to 'Approved'. The more times it hears the same news, the higher probability it has to approve this news.
+\end{itemize}
+
+\subsubsection{Methodology}
+Our model is a time-discrete network model. We have a set of laws which update the parameters of the model every time-step. Those laws are based on previous assumptions and observations. In this part, we formalize those laws in a mathematical way, and explain how they could update parameters from time $t$ to time $t+1$.
+\begin{enumerate}[\textbf{Step} 1:]
+\item \textbf{Initializing the network}
+
+\begin{enumerate}
+\item Randomly constructing the network
+
+Our network is a randomly connecting network. It has $N$ nodes. Then we randomly connect nodes with edges and make sure that, for each node, there is always $k$ edges connected with it.
+\item Initializing the states
+
+To begin with, every nodes should be unknown to a piece of news except the node which originates this news. Therefore, we set every nodes in our network to the 'Unknown' state.
+\item Generating news
+
+We randomly choose a node to be the news producer, transferring its state from 'Unknown' to 'Approved'. This indicates that this node approves this news and is willing to tell its neighbors. The other nodes remain in the 'Unknown' state.
+\end{enumerate}
+\end{enumerate}
+
+
+\begin{enumerate}[\textbf{Step} 2:]
+\item \textbf{Propagating information}
+\begin{enumerate}
+\item Spreading news
+
+We traverse all nodes and find out those nodes with state 'Approved'. For each 'Approved' node, it is willing to spreading this news to its neighbors. If the neighbor is unknown about this news, it shift to known states. If the neighbor is already in known state but not approved state, it will memorize this event and has higher probability to transfer to approved state in later time. 
+
+Formalizing this step mathematically, we denote $m_i(t)$ to be how many times the $i^{th}$ node has heard this news from its neighbor until time $t$. For each 'Approved' node $A$ in our network, we manipulate the states of all its neighbors. Suppose node $B$ is one of its neighbor. If $B$ is in the state 'Unknown', we set $B$ to the state 'Known' and let $$m_i(t+1) = 1.$$ If $B$ is already in the state 'Known', we remain it at 'Known' and let $$m_i(t+1) = m_i(t+1) + 1.$$ If $B$ is in the state 'Unconcerned'...(line truncated)...
+
+\item Transferring from Known to Approved
+
+Based on our observation, once an individual hears a piece of news, he will choose to believe it or not depending on how many times he has heard it. The more times it is, the more willingly he is to trust it. Therefore, we use a probability model to describe this phenomenon. 
+
+For each 'Known' node, if it hears the news from its neighbor at time $t$, it has a probability to approve the news. Denoting $P(m)$ as the probability of a node transferring from 'Known' to 'Approved', we have$$P(m) = (\lambda-T)e^{-b(m-1)}+T,$$ where $m$ is $m_i(t)$ and $\lambda$, $T$, $b$ are network parameters. Once a node transfers to 'Approved', it will spread the news at next time-step, namely, at time $t+1$. 
+
+We need to mention that if a node does not hear news from its neighbors at time $t$, it will definitely not transfer to 'Approved', even though it may have heard the news once before $t-1$. This is in accordance with our intuition that one will not abruptly change his mind as long as he does not hear anything new.
+
+\item Iterating
+
+In previous steps, we have updated states and $m_i(t+1)$ for each nodes. By iterating those previous two steps, we could simulate the propagation of information.
+
+
+\end{enumerate}
+
+\end {enumerate}
+
+
+
+
+\subsection{Model 2}
+...
+
+%==================================?????§Ö???????????========================================
+\section{Results}
+1)All results we have
+
+2)What criteria we should use to evaluate our model and why
+
+3)Discussion and comparison of result and each model(Better if we could compare the result of our model and previous one, demonstrating our model is better in some sense).
+
+4)If we use different parameter value, is there any difference? How should we choose our parameter value?
+
+5)Can we use external data or proof(searching on Internet) to demonstrate our model is satisfactory?
+
+6)Any more specific discussion about model(par example, is there any probability distribution similar to our result?and why? Can we use a statistical way to evaluate our result(variance etc). If we aggrandize our data size, will our result be more convincible? Is our model computational friendly and in what extent it is? )
+
+
+%=========================================?????===========================================================
+\section{Sensitivity Analysis}
+This is actually the concern about whether our model is statistical robust to some outliers. Those outliers could be change in data, could be change in assumptions, could be change in parameter value. We should try our best to test under different outlier conditions, what are the behaviors of our model and compare them in details.
+
+
+
+%=========================================?????===========================================================
+\section{Further Discussions}
+I think this part is more adaptable to the problem requirement, namely we could find what the problem expect us to discuss in this part. Nevertheless, except those specific topic, there are some general things we should discuss no matter what the problem is. They are,\\
+1)Strengthness and weakness.
+
+2)What else can we do in the future.
+
+

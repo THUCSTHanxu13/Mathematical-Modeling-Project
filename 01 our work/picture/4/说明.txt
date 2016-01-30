@@ -1,0 +1,4 @@
+1 flow rate和speed
+如果打转向灯，则会影响2个时间步内后车的决策，使得加速变得困难。因此flow rate和speed在light和heavy的情况都有所减小。
+2 shift ratio和sharp braking frequency
+由于打转向等后，后车会予以让行，因此shift ratio有所增加。在正因为如此，后车不仅要关注与前车的距离，还要提前对左右两道的车辆做出反应，因此sharp也有所增加，但在heavy的情况变化不大。
