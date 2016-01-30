@@ -26,7 +26,41 @@
   journal={Journal of mathematical biology},
   volume={59},
   number={4},
+
+@inproceedings{ou2015impact,
+  title={The Impact of Heterogeneous Spreading Abilities of Network Ties on Information Spreading},
+  author={Ou, Chengeng and Jin, Xiaolong and Wang, Yuanzhuo and Chen, Wei and Cheng, Xueqi},
+  booktitle={Computer and Information Technology; Ubiquitous Computing and Communications; Dependable, Autonomic and Secure Computing; Pervasive Intelligence and Computing (CIT/IUCC/DASC/PICOM), 2015 IEEE International Conference on},
+  pages={454--460},
+  year={2015},
+  organization={IEEE}
+}
   pages={535--561},
   year={2009},
   publisher={Springer}
 }
+
+@book{stephens2007history,
+  title={A history of news},
+  author={Stephens, Mitchell},
+  year={2007},
+  publisher={Oxford University Press, USA}
+}
+
+@inproceedings{Kwak:2010:TSN:1772690.1772751,
+ author = {Kwak, Haewoon and Lee, Changhyun and Park, Hosung and Moon, Sue},
+ title = {What is Twitter, a Social Network or a News Media?},
+ booktitle = {Proceedings of the 19th International Conference on World Wide Web},
+ series = {WWW '10},
+ year = {2010},
+ isbn = {978-1-60558-799-8},
+ location = {Raleigh, North Carolina, USA},
+ pages = {591--600},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1772690.1772751},
+ doi = {10.1145/1772690.1772751},
+ acmid = {1772751},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Twitter, degree of separation, homophily, influential, information diffusion, online social network, pagerank, reciprocity, retweet},
+} 
