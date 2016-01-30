@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  30 JAN 2016 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  31 JAN 2016 00:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -690,39 +690,68 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 
  [2] (./body.tex
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 7.
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 17.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 8.
 
+Overfull \hbox (26.66283pt too wide) in paragraph at lines 9--10
+[]\OT1/ppl/m/n/12 In pre-vi-ous re-search, sci-en-tists usu-ally base their mod
+el on the well know susceptible-
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 16.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
- [3] [4]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
+ [3]
+
+LaTeX Warning: Citation `sw' on page 4 undefined on input line 54.
+
+[4]
+Overfull \hbox (466.66278pt too wide) detected at line 56
+\OML/cmm/m/it/12 Ourmodelconsistingoffourstates; describethetransferringofstate
+stomakeitclear\OT1/cmr/m/n/12 !!!!\OML/cmm/m/it/12 ieafterKnonw; ithasaprobtoap
+prove; afterapproveitspread; afterspreaditunconcerned
+ []
+
+[5]
 
 LaTeX Warning: The counter will not be printed.
-             The label is: \textbf {Step}\space 2: on input line 55.
+             The label is: \textbf {Step}\space 2: on input line 84.
 
-[5] [6]) [7] 
+[6] [7] [8]
+Missing character: There is no £ in font cmr12!
+Missing character: There is no ¬ in font cmr12!
+
+Overfull \hbox (0.47992pt too wide) in paragraph at lines 140--141
+[]\OT1/ppl/b/n/12 The edges from me-dia have speed at-tribute.\OT1/ppl/m/n/12 I
+n dif-fer-ent pe-ri-ods, the speed
+ []
+
+[9] [10]) (./ICM_paper.bbl [11]) 
 AED: lastpage setting LastPage
-[8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 92.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (./ICM_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 92.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `ICM_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 571692D39B33CE20DAEA5A8B4E439E53;606.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
+(rerunfilecheck)             Checksum: 5DAA0B3A8A1E625376876B0E0A653A26;537.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 10053 strings out of 493089
- 148689 string characters out of 6134841
- 269196 words of memory out of 5000000
- 13250 multiletter control sequences out of 15000+600000
- 29171 words of font info for 97 fonts, out of 8000000 for 9000
+ 10080 strings out of 493089
+ 149134 string characters out of 6134841
+ 270470 words of memory out of 5000000
+ 13258 multiletter control sequences out of 15000+600000
+ 30236 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,12n,45p,660b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,45p,797b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
@@ -731,11 +760,12 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on ICM_paper.pdf (8 pages, 107081 bytes).
+dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/urw/palatino/uplri8a.pfb>
+Output written on ICM_paper.pdf (12 pages, 144164 bytes).
 PDF statistics:
- 161 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 178 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

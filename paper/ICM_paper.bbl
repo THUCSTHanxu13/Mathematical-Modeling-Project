@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{zhao2012sihr}
+Zhao, L., Wang, J., Chen, Y., Wang, Q., Cheng, J., and Cui, H., \enquote{SIHR
+  rumor spreading model in social networks,} {\em Physica A: Statistical
+  Mechanics and its Applications\/}, Vol.~391, No.~7, 2012, pp.~2444--2453.
+
+\bibitem{tanaka2015study}
+Tanaka, M., Sakumoto, Y., Aida, M., and Kawashima, K., \enquote{Study on the
+  growth and decline of SNSs by using the infectious recovery SIR model,} {\em
+  Information and Telecommunication Technologies (APSITT), 2015 10th
+  Asia-Pacific Symposium on\/}, IEEE, 2015, pp. 1--3.
+
+\bibitem{karafyllidis1997model}
+Karafyllidis, I. and Thanailakis, A., \enquote{A model for predicting forest
+  fire spreading using cellular automata,} {\em Ecological Modelling\/},
+  Vol.~99, No.~1, 1997, pp.~87--97.
+
+\bibitem{zhao2011rumor}
+Zhao, L., Wang, Q., Cheng, J., Chen, Y., Wang, J., and Huang, W.,
+  \enquote{Rumor spreading model with consideration of forgetting mechanism: A
+  case of online blogging LiveJournal,} {\em Physica A: Statistical Mechanics
+  and its Applications\/}, Vol.~390, No.~13, 2011, pp.~2619--2625.
+
+\bibitem{gerberry2009seiqr}
+Gerberry, D.~J. and Milner, F.~A., \enquote{An SEIQR model for childhood
+  diseases,} {\em Journal of mathematical biology\/}, Vol.~59, No.~4.
+
+\bibitem{milgram1967small}
+Milgram, S., \enquote{The small world problem,} {\em Psychology today\/},
+  Vol.~2, No.~1, 1967, pp.~60--67.
+
+\bibitem{miritello2011dynamical}
+Miritello, G., Moro, E., and Lara, R., \enquote{Dynamical strength of social
+  ties in information spreading,} {\em Physical Review E\/}, Vol.~83, No.~4,
+  2011, pp.~045102.
+
+\bibitem{Kwak:2010:TSN:1772690.1772751}
+Kwak, H., Lee, C., Park, H., and Moon, S., \enquote{What is Twitter, a Social
+  Network or a News Media?} {\em Proceedings of the 19th International
+  Conference on World Wide Web\/}, WWW '10, ACM, New York, NY, USA, 2010, pp.
+  591--600.
+
+\end{thebibliography}

@@ -2,13 +2,32 @@
 %======================第一章：问题介绍====================================
 \section{Introduction}
 %\begin{adjustwidth}{1cm}{0cm}
-A more detailed introduction about the background of this problem. Some important terms to narrate this problem and how important it is to solve this problem(which is equivalent to say that our dedication is worthy).
-%\end{adjustwidth}
-\subsection{Restatement of the Problem}
-A little paragraph about what we are trying to solve. In the abstract and introduction, we have given the description of the real-world problem. In this section, we must try to formalize our problem in a more mathematical way which could be directly transformed to either evaluation or regulation or procedure of our model.
+Understanding process of information getting around society network has attracted increasing attention. Information flow in complex society network is of paramount importance when trying to solve the 
 
-\subsection{Literature Review}
-This section should give the readers a rough idea about what have already be done. It should at least give the introduction about those works from which you get your inspirations. Moreover, it is better to compare several well known models and give a brief summary about the relative strongness and weakness between them. Then, you could illustrate you own model at the end of this section.
+
+\subsection{literature review}
+In previous research, scientists usually base their model on the well know susceptible-infected-recovered ($SIR$) model. The advanced methodology of SIHR \cite{zhao2012sihr}, the further developed SEIQR model\cite{tanaka2015study}, inspired other research of this kind, therefore we can find some relatively mature research like the one by $Linyuan Lv$ and $Duan-Bing Chen$, which we based on to obtain our result. The basic idea of their's is to change the continuous SIR model into a discrete-time model to resemble the spreading of news, and introduce four similar situation of node to 
+represent the attitude of people towards news to describe the probalistic spreading of news. $$-------------work in the model part--------------$$
+
+Furthermore, there exist a couple of applications of the model or the variants of it, including the description of growth and decline of network service\cite{tanaka2015study}, predicting forest fire spreading\cite{karafyllidis1997model}. But when taking into consideration the details of the real world society, we find there are still things left to be discussed. 
+
+The nodes, links, and the information itself differs from that of a pure network. 
+\begin{itemize}
+	\item We can introduce a memory effect to resemble the actual memory loss\cite{zhao2011rumor}.
+	\item The information itself, or rather the value of it, determines to which degree people tend to believe it. This is discussed in this paper.
+	\item A link may be strong or weak, and the speed of information getting around differs. 
+\end{itemize}
+
+The topology structure is distinguished in the following aspects.
+\begin{itemize}
+	\item The change of link between nodes, namely the dynamic social network decribed in previous work\cite{gerberry2009seiqr}. It represents people making new contacts and lose touch with old friends.
+	\item The abidance of $Six Degrees of Separation$\cite{milgram1967small} is missed in previous work during simulation.
+	\item The difference of structure entropy, which makes such much difference that the Small World Structure, Random Structure and Regular Structure distinguishes from each other a lot\cite{miritello2011dynamical}. Furthermore, we witness a change of that when taking into account the historical trend of society, which we will discuss in our work.
+	\item The connection between the nodes are not to be simply described as non-directional link. Some links are . Data could be collected by crawling the real world network\cite{Kwak:2010:TSN:1772690.1772751}, and we will give it a thorough consideration in this paper. 
+\end{itemize}
+
+Despite of the previous research, there are essential points neglected such as the involvement of social media $$something here$$, the change of topology structure and the historical explanation of it, the inherent value of information as mentioned above. 
+
 %======================第二章：假设====================================
 \section{Assumptions and Justifications}
 This is a very important section. In this part, you should give all the basic assumption under which you build your model. Every model has its applicable range, so you must figure out what are those assumption at the beginning of building a model. Those assumption should be inspired and concordant with our daily intuition. The form of assumption and justification should be more or less like this:
@@ -19,12 +38,22 @@ This is a very important section. In this part, you should give all the basic as
 
 %======================第三章====================================
 \section{Notations}
-This part is not so important, only provide some convenience for the reader to figure out the meaning of each notation. We can adjust its size according to how many space we have in the real competition.
+
+
+
+
+
+
+
+
+
 %======================原模板中第四章和第五章====================================
 \section{Model}
 \subsection{Basic Model}
 \subsubsection{Overview}
 This is a fundamental model which will give us some insight into the network. Inspired by \cite{sw}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occur at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of informations. This model only depicts the case that all users are the same, with no existence of famous people or huge media company.
+
+$$Our model consisting of four states, describe the transferring of states to make it clear!!!!ie after Knonw, it has a prob to approve, after approve it spread, after spread it unconcerned$$
 
 \subsubsection{Assumption and Justification}
 \begin{itemize}
@@ -59,13 +88,13 @@ We randomly choose a node to be the news producer, transferring its state from '
 
 We traverse all nodes and find out those nodes with state 'Approved'. For each 'Approved' node, it is willing to spreading this news to its neighbors. If the neighbor is unknown about this news, it shift to known states. If the neighbor is already in known state but not approved state, it will memorize this event and has higher probability to transfer to approved state in later time. 
 
-Formalizing this step mathematically, we denote $m_i(t)$ to be how many times the $i^{th}$ node has heard this news from its neighbor until time $t$. For each 'Approved' node $A$ in our network, we manipulate the states of all its neighbors. Suppose node $B$ is one of its neighbor. If $B$ is in the state 'Unknown', we set $B$ to the state 'Known' and let $$m_i(t+1) = 1.$$ If $B$ is already in the state 'Known', we remain it at 'Known' and let $$m_i(t+1) = m_i(t+1) + 1.$$ If $B$ is in the state 'Unconcerned', we do not make any change to $B$. After doing this to all neighbors of $A$, we change its state to 'Unconcerned'.
+Formalizing this step mathematically, we denote $m_i(t)$ to be how many times the $i^{th}$ node has heard this news from its neighbor until time $t$. For obvious reason, this $m_i(t)$ could also be explained as belief. For each 'Approved' node $A$ in our network, we manipulate the states of all its neighbors. Suppose node $B$ is one of its neighbor. If $B$ is in the state 'Unknown', we set $B$ to the state 'Known' and let $$m_i(t+1) = 1.$$ If $B$ is already in the state 'Known', we remain it at 'Known' and let $$m_i(t+1) = m_i(t+1) + 1.  (1)$$ If $B$ is in the state 'Unconcerned', we do not make any change to $B$. After doing this to all neighbors of $A$, we change its state to 'Unconcerned'.
 
 \item Transferring from Known to Approved
 
 Based on our observation, once an individual hears a piece of news, he will choose to believe in or not depending on how many times he has heard it. The more times it is, the more willingly he is to trust it. Therefore, we use a probability model to describe this phenomenon. 
 
-For each 'Known' node, if it hears the news from its neighbor at time $t$, it has a probability to approve this news. Denoting $P(m)$ as the probability of a node transferring from 'Known' to 'Approved', we have$$P(m) = (\lambda-T)e^{-b(m-1)}+T,$$ where $m$ is $m_i(t)$ and $\lambda$, $T$, $b$ are network parameters.Once a node transfers to 'Approved', it will spread the news at next time-step, namely, at time $t+1$. 
+For each 'Known' node, if it hears the news from its neighbor at time $t$, it has a probability to approve this news. Denoting $P(m)$ as the probability of a node transferring from 'Known' to 'Approved', we have$$P(m) = (\lambda-T)e^{-b(m-1)}+T,$$ where $m$ is $m_i(t)$ and $\lambda$, $T$, $b$ are network parameters.Once a node transfers to 'Approved', it will spread the news at next time-step, namely, at time $t+1$. We could also observe that the larger $m$ is, the larger $P(m)$ is; this is in accordance with our previous observation.
 
 We need to mention that if a node does not hear news from its neighbors at time $t$, it will definitely not transfer to 'Approved', even though it may have heard the news once before $t-1$. This is in accordance with our intuition that one will not abruptly change his mind as long as he does not hear anything new.
 
@@ -81,8 +110,45 @@ In previous steps, we have updated states and $m_i(t+1)$ for each nodes. By iter
 
 
 
-\subsection{Model 2}
-...
+\subsection{Improved Model}
+\subsubsection{Overview}
+Our new model is a hierarchy, 3-layered, directed, weighted network, with belief cumulated and probabilistic transferring mechanism.
+
+\subsubsection{Modifications}
+In this section, we compare our new model with the previous one and illustrate the modifications explicitly.
+
+\begin{itemize}
+  \item \textbf{Constructing the network as a directed graph.}In the basic model, we only construct a undirected graph; information could flow either from $A$ to $B$ or $B$ to $A$. However, to consider a finer structure, we need to use a directed graph. Followers on Twitter and receivers of media are both good examples to support our choice.
+  \item \textbf{The effect of famous people.} In the basic model, we treat every individual equally. Nevertheless, in reality, there are famous people who are more significant to the social network, i.e. a people may have a large number of followers on Twitter and hence are more influential. In this new model, we allow a fraction of nodes to have much more edges to represent those significant roles in network. There are a huge amount of edges directed from them to the normal users, meaning that they have lots of followers and news could flow from them to lots of people. These nodes also have four states, and they use the same probabilistic transferring mechanism as other nodes.
+  \item \textbf{The effect of media.} In the basic model, there is no media or media companies. In the new model, we take them into account. We add one single node to represent the media, including newspapers, radios, . As for the structure of edges, there are edges from media node to every other nodes in the network, namely media permeates in everyone's life. There are also edges from every other nodes directing to media, meaning that media could gather information from all over the world.This media node also has four states, and it uses the same probabilistic transferring mechanism as other nodes.
+
+  \item \textbf{Every node has a authority value.} We introduce the concept of authority. In real world, we tend to believe the informations telling by a reliable person or a authoritative media company. We use $c_i$ to denote the degree of authority of $i^{th}$ node. Once the $i^{th}$ node is in state of 'Approved' and spread news to its neighbor $j$, the formula $(1)$ is replaced by 
+  $$m_j(t+1) = m_j(t)+c_i.  (2)$$
+  \item \textbf{Every edge has a weight value.} As the development of technology, we use different methods to receive news, such as newspaper, radio and internet. Hence, we can contact with more people; we have higher speed to spread news and we gradually change our source of informations. To simulate this evolution, we use a weighted edge graph. Every edge has a weight and this weight will influence how fast the belief $m_j(t)$ cumulates. Mathematically, formula (2) is replaced by 
+  $$m_j(t+1) = m_j(t)+w_{ij}*c_i, (3)$$
+  where $w_{ij} \in [0,1]$.
+  Although each edge has a weight, the meaning of weights for different types of edges are different. We illustrate this as follows.
+  \begin{enumerate}
+  \item
+  If the edge is connecting between two individuals(not including the media node), the weight represents the strength of social tie. With the help of technologies, we are able to communicate much more people compared with early stage, so it is reasonable to have more connections in our network model. However, in order to sustain the stability, we use a weight increasing with respect to time rather than increasing edges. From a probabilistic view, the expectation number of ones connections is $w_{ij}k$. If we increase $w_{ij}$ by time, we could simulate the effect that one has more and more friends in his social network.
+  \item
+  If the edge is directing from media node to individual, the weight represents to what extent people are exposed to social media. In early time, only a few people were able to buy newspapers. As the invention of radio and TV, more and more people are able to gather information from all kinds of media, and nowadays, the majority of human beings are exposed to media in daily life, whether they are willing or not. Thus, this weight is also a increasing parameter as time goes by. 
+  \item
+  if the edge is directing from individual to media, the weight represents to what extent media pay attention to this individual. In our model, media node could also gather information from individual, and, after it approves this news, the media node spread this news to other nodes. Since a media company will only believe credible people, we give more weights to famous people compared with normal people.
+  \end{enumerate}
+  \item \textbf{A node has an appetite of information source.} A node has different likelihood to gather informations from its neighbors depending on its neighbors' types. For example, in 1900s, people could only know news from newspaper. Now, some people are more likely to hear news from famous people's Twitter rather than from traditional media, even though they are exposed to traditional media everyday. We have used the weight of edge to depict the extent of exposure to media, now we use $[a_M,a_F,a_N]$ to depict people's willingness to get information from media, famous people and normal people respectively. Furthermore, we assume $$a_M+a_F+a_N=1，$$ since they also represents the ratio of information people get from different source.
+  \item \textbf{The edges from media have speed attribute.}In different periods, the speed of media is different, varying from a few days to a few hours. This will significant affect the speed of information propagation. Therefore, to observe this effect, we denote $v$ as the speed and the delivering of message from media node to an individual needs $\frac{1}{v}$ time steps. We calculate $v$ as the weighted average of speed of different media, discussing in later section.
+  \item \textbf{Each information has different inherent value.}As a matter of fact, people are more willing to spread valuable news. In our model, $\lambda$ depicts this willingness, since it is the probability a node transferring to 'Approved' when it first hears the news. We use $Model$ to evaluate the inherent value $\lambda_1$ of a piece of news and then let
+  $$\lambda = \lambda_1.(3)$$
+  \item \textbf{People have different bias.} In different periods, different people have different affection towards different types of news. We use $Model$ to evaluate a node's bias $\lambda_2$ towards a piece of news. Then, combining with previous modification, we replace (3) by 
+  $$\lambda = \lambda_1\lambda_2$$
+    
+\end{itemize}
+
+
+
+
+
 
 %==================================原模板中第六章和第七章========================================
 \section{Results}
