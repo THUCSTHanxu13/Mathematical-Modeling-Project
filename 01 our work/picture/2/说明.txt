@@ -1,9 +1,0 @@
-有3种情况：不设最高限速，最高限速为5，最高限速为4
-1 flowrate和speed
-在light traffic的情况，车辆能够以较高速度行驶，最高限速起控制作用，flowrate减小，speed也减小，并且影响很大。但在heavy traffic的情况，最高限速不起控制作用，对speed几乎没有影响。并且由于适当的最高限速可以避免车辆间距过快的变化，有利于整个交通流的顺利流动。但如果最高限速过低，则也不利于车辆及时调整车距，会使flow rate减小。
-2 shift ratio
-在light的情况，最高限速可以有效减小shift ratio和sharp braking frequency，更安全。
-在heavy的情况，由于最高限速不起控制作用，两个指标有一定减小，但变化不大。
-3 utilization ratio
-在light的情况，由于最高限速的作用，车辆的超车意愿减少，更少的车辆希望超车，因此最左道的利用率明显减小，另外两道的影响不明显。
-在heavy的情况，由于最高限速不起控制作用，基本没有影响。
