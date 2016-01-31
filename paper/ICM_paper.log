@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  31 JAN 2016 00:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  31 JAN 2016 10:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -587,7 +587,11 @@ LaTeX Font Info:    Overwriting math alphabet `\sfsl' in version `bold'
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/palatino.sty
 Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(./ICM_paper.aux)
+(./ICM_paper.aux
+
+LaTeX Warning: Label `tab3(1)' multiply defined.
+
+)
 \openout1 = `ICM_paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
@@ -605,8 +609,7 @@ LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 56.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -705,30 +708,34 @@ LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
  [3]
 
-LaTeX Warning: Citation `sw' on page 4 undefined on input line 54.
+LaTeX Warning: Reference `tab3(2)' on page 4 undefined on input line 41.
 
 [4]
-Overfull \hbox (466.66278pt too wide) detected at line 56
+
+LaTeX Warning: Citation `sw' on page 5 undefined on input line 101.
+
+[5]
+Overfull \hbox (466.66278pt too wide) detected at line 103
 \OML/cmm/m/it/12 Ourmodelconsistingoffourstates; describethetransferringofstate
 stomakeitclear\OT1/cmr/m/n/12 !!!!\OML/cmm/m/it/12 ieafterKnonw; ithasaprobtoap
 prove; afterapproveitspread; afterspreaditunconcerned
  []
 
-[5]
+[6]
 
 LaTeX Warning: The counter will not be printed.
-             The label is: \textbf {Step}\space 2: on input line 84.
+             The label is: \textbf {Step}\space 2: on input line 131.
 
-[6] [7] [8]
+[7] [8] [9]
 Missing character: There is no £ in font cmr12!
 Missing character: There is no ¬ in font cmr12!
 
-Overfull \hbox (0.47992pt too wide) in paragraph at lines 140--141
+Overfull \hbox (0.47992pt too wide) in paragraph at lines 187--188
 []\OT1/ppl/b/n/12 The edges from me-dia have speed at-tribute.\OT1/ppl/m/n/12 I
 n dif-fer-ent pe-ri-ods, the speed
  []
 
-[9] [10]) (./ICM_paper.bbl [11]) 
+[10]) (./ICM_paper.bbl [11]) 
 AED: lastpage setting LastPage
 [12]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
@@ -742,30 +749,35 @@ Package rerunfilecheck Info: File `ICM_paper.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 10080 strings out of 493089
- 149134 string characters out of 6134841
- 270470 words of memory out of 5000000
- 13258 multiletter control sequences out of 15000+600000
- 30236 words of font info for 99 fonts, out of 8000000 for 9000
+ 10103 strings out of 493089
+ 149468 string characters out of 6134841
+ 271562 words of memory out of 5000000
+ 13279 multiletter control sequences out of 15000+600000
+ 33306 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,12n,45p,797b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,45p,797b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/urw/palatino/uplri8a.pfb>
-Output written on ICM_paper.pdf (12 pages, 144164 bytes).
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/palatino/uplri8a.pfb>
+Output written on ICM_paper.pdf (12 pages, 162073 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 188 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

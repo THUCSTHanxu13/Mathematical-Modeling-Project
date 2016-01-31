@@ -38,13 +38,60 @@ This is a very important section. In this part, you should give all the basic as
 
 %======================第三章====================================
 \section{Notations}
+All the variables and constants used in this paper are listed in \textbf{Table \ref{tab3(1)}} and \textbf{Table \ref{tab3(2)}}.
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Symbol Table--Constants}
+\label{tab3(1)}
+\centerline{
+{\small
+\begin{tabular}{l l l}
+\toprule[1pt]
+Symbol& Definition& Units\\
+\midrule[2pt]
+\multicolumn{3}{c}{\textbf{Constants}}\\			
+$m_i(t)$& The number of times the $i^{th}$ node has heard the news until time $t$ & Local\\
+    & The confidence of $i^{th}$ node towards the news until time $t$&\\
+Unknown& The node has not yet heard the news, waiting for news& Local\\
+Known& The node has heard the news at least once&Local\\
+& and has a probability to approve& \\
+Approved& The node will spread the news to its neighbor &Local\\
+&and then shift to Unconcerned state& \\
+Unconcerned& The node will not participate in any procedure& Local\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
 
 
 
-
-
-
-
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Symbol Table--Constants}
+\label{tab3(1)}
+\centerline{
+{\small
+\begin{tabular}{l l l}
+\toprule[1pt]
+Symbol& Definition& Units\\
+\midrule[2pt]
+\multicolumn{3}{c}{\textbf{Constants}}\\			
+$\lambda$	 &The probability a node will approved when it first hears the news	&Local\\
+$\lambda_1$&The inherent value of the news	                   &Global\\
+$\lambda_2$ &An individual's bias towards news	          &Local\\
+$b$	&The degree of trust in a community (network)	               &Global\\
+$T$	    & &Global\\
+$c_i$	    & The authority of the $i^{th} $node	&Local\\
+$w_{ij}$	    & The weight of edge $e_{ij}$ &Local\\
+$t$	            &Time-step	                                       &Global\\
+$v$	&The spreading speed of news from media	&Global\\
+$a_M$ & The likelihood an individual get information from media&Local\\
+$a_F$ & The likelihood an individual get information from famous people&Local\\
+$a_N$ & The likelihood an individual get information from normal people&Local\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
 
 
 %======================原模板中第四章和第五章====================================
