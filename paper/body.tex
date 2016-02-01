@@ -36,28 +36,13 @@ In this paper, we present a network model inspired by variant of SIR model \cite
 $liangdianliangdianliangdianliangdianliangdian$
 
 \subsection{literature review}
-In previous research, scientists usually base their model on the well known susceptible-infected-recovered ($SIR$) model. The advanced methodology of SIHR \cite{zhao2012sihr}, the further developed SEIQR model\cite{tanaka2015study}, inspired other research of this kind, therefore we can find some relatively mature research like the one by $Linyuan Lv$ and $Duan-Bing Chen$, which is the initial inspiration of us. The basic idea of their's is to change the continuous SIR model into a discrete-time model to resemble the spreading of news, and introduce four situations of nodes to 
-represent the attitude of people towards news in order to describe the probalistic spreading of news. This model is thoroughly discussed in Section 2$$------intentionally left blank--------$$.
+In an very early stage, researchers believed that there are many similarities between spreading of news and spreading of epidemics. Thus, it is quite common to analyze spreading of news by an epidemic model, such as susceptible-infected-recovered (SIR) model. There are also studies based on advanced methodology, i.e. SIHR \cite{zhao2012sihr}. However, SIR is a analytical model; this lead to an inevitable problem that we can not take too many considerations into account. Therefore, more and more studies are focused on a cellular automata variant of SIR\cite{lu2011small}. This new class of model would enable us to consider a much finer network structure.
 
-Furthermore, there exist a couple of applications of the model or the variants of it, including the description of growth and decline of network service\cite{tanaka2015study}, predicting forest fire spreading\cite{karafyllidis1997model}. But when taking into consideration the details of the real world society, we find there are still things left to be discussed. 
+In this cellular automata variant of SIR, each node has four states, namely 'Unknown', 'Known', 'Approved' and 'Exhausted'. When a node receives a message from its neighbor, it transfers to 'Known' state and remains. Every time it receives this news, it has a probability to shift to 'Approved' and spread message to its neighbors. Thereafter, this node will remain at 'Exhausted' and do nothing. Since this is a discrete-time network model, one can investigate further by manipulating network structure.
 
-The nodes, links, and the information itself differs from that of a pure network. 
-\begin{itemize}
-	\item \textbf{Nodes}: We can introduce a decay effect to resemble the actual memory loss\cite{zhao2011rumor}; we consider how reliable the node is to others; and there's are different types of nodes representing the mass media, celebrities and normal people.
-	%这里用mass media and celebrities%
-	\item \textbf{Information}:The information itself, or rather the value of it, determines to which degree people tend to believe it. This is discussed in this paper.
-	\item \textbf{Links}:A link may be strong or weak, and the speed of information getting around differs. 
-\end{itemize}
+In recent years, researchers focus heavily on the effect of network structure. Liu et al. propose a dynamic network which could rewire its links during the procedure\cite{liu2014information}. Ou et al. discuss the effect of heterogeneous connections upon news spreading\cite{ou2015impact}. Kwak et al. crawl real data from Twitter and build a network to simulate the reality\cite{Kwak:2010:TSN:1772690.1772751}.
 
-The topology structure is distinguished in the following aspects.
-\begin{itemize}
-	\item \textbf{Adjustment of dynamic social network}, decribed in previous work\cite{gerberry2009seiqr}. It represents people making new contacts and lose touch with old friends.
-	\item \textbf{The abidance of $Six Degrees of Separation$\cite{milgram1967small}} is missed in previous work during simulation.
-	\item \textbf{Structure entropy}, which makes such much difference that the Small World Structure, Random Structure and Regular Structure distinguishes from each other a lot\cite{miritello2011dynamical}. Furthermore, we witness a change of that when taking into account the historical trend of society, which we will discuss in our work.
-	\item \textbf{Directed gragh},where the connection between the nodes are not to be simply described as non-directional links. Some links are unidirectional and some are bidirectional, enabling, for example, the description of information flow between celebrities and ordinary person. The celebrities pass information to the ordinary ones but never receive information from them. Data could be collected by crawling the real world network\cite{Kwak:2010:TSN:1772690.1772751}, and we will give it a thorough consideration in this paper. 
-\end{itemize}
-
-As mentioned above, despite the previous research, there are essential points neglected such as the involvement of social media $$something here$$, the change of topology structure and the historical explanation of it, the inherent value of information, etc. In this paper however, we weighed the factors against each other, and deliberately neglect some unimportant factors, the memory decay and periodic adjustment of dynamic social network topology, the influence of which is minor compared to that of the spreading information.  
+However, despite the fact that there are lots of studies on different structure, few people have compared social network in different periods. In the light of previous works, we devise our new network model. On the one hand, our model takes many important factors into consideration, such as probabilistic states transition, memory effect, directed information flow, heterogeneous structure, news value and public bias, etc. On the other hand, we incorporate a few network structure parameters which would vary depending on different periods. Thus, we could simulate and predict the development of social network for decades. 
 
 %======================第二章：假设====================================
 \section{Assumptions and Justifications}
@@ -129,7 +114,7 @@ $a_N$ & The likelihood an individual get information from normal people&Local\\
 \section{Model}
 \subsection{Basic Model}
 \subsubsection{Overview}
-This is a fundamental model which will give us some insight into the network. Inspired by \cite{sw}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occur at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of informations. This model only depicts the case that all users are the same, with no existence of celebrities or huge media company.
+This is a fundamental model which will give us some insight into the network. Inspired by \cite{lu2011small}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occur at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of informations. This model only depicts the case that all users are the same, with no existence of celebrities or huge media company.
 
 $$Our model consisting of four states, describe the transferring of states to make it clear!!!!ie after Knonw, it has a prob to approve, after approve it spread, after spread it unconcerned$$
 

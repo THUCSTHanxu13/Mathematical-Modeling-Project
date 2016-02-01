@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  1 FEB 2016 18:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  1 FEB 2016 21:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -692,67 +692,49 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 26.
 
-
-LaTeX Warning: Citation `lu2011small' on page 2 undefined on input line 33.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
 [2]
-Overfull \hbox (7.33664pt too wide) in paragraph at lines 39--40
-\OT1/ppl/m/n/12 susceptible-infected-recovered ($\OML/cmm/m/it/12 SIR$\OT1/ppl/
-m/n/12 ) model. The ad-vanced method-ol-ogy of SIHR
+Overfull \hbox (11.54347pt too wide) in paragraph at lines 39--40
+\OT1/ppl/m/n/12 infected-recovered (SIR) model. There are also stud-ies based o
+n ad-vanced method-
  []
 
-[3]
-Overfull \hbox (2.3754pt too wide) in paragraph at lines 56--57
-[]\OT1/ppl/b/n/12 Structure en-tropy\OT1/ppl/m/n/12 , which makes such much dif
--fer-ence that the Small World
- []
-
-
-Overfull \hbox (4.34254pt too wide) in paragraph at lines 56--57
-\OT1/ppl/m/n/12 Struc-ture, Ran-dom Struc-ture and Reg-u-lar Struc-ture dis-tin
--guishes from each
- []
-
-[4]
-
-LaTeX Warning: Citation `sw' on page 5 undefined on input line 132.
-
-[5]
-Overfull \hbox (466.66278pt too wide) detected at line 134
+[3] [4]
+Overfull \hbox (466.66278pt too wide) detected at line 119
 \OML/cmm/m/it/12 Ourmodelconsistingoffourstates; describethetransferringofstate
 stomakeitclear\OT1/cmr/m/n/12 !!!!\OML/cmm/m/it/12 ieafterKnonw; ithasaprobtoap
 prove; afterapproveitspread; afterspreaditunconcerned
  []
 
-[6]
+[5]
 
 LaTeX Warning: The counter will not be printed.
-             The label is: \textbf {Step}\space 2: on input line 162.
+             The label is: \textbf {Step}\space 2: on input line 147.
 
-[7] [8] [9]
+[6] [7] [8]
 Missing character: There is no £ in font cmr12!
 Missing character: There is no ¬ in font cmr12!
 
-Overfull \hbox (0.47992pt too wide) in paragraph at lines 218--219
+Overfull \hbox (0.47992pt too wide) in paragraph at lines 203--204
 []\OT1/ppl/b/n/12 The edges from me-dia have speed at-tribute.\OT1/ppl/m/n/12 I
 n dif-fer-ent pe-ri-ods, the speed
  []
 
-[10] [11]
-
-LaTeX Warning: Citation `stephens2007history' on page 12 undefined on input lin
-e 260.
-
+[9] [10] [11]
 Missing character: There is no ¡ in font pplr7t!
 Missing character: There is no ¯ in font pplr7t!
-[12]) (./ICM_paper.bbl [13]) 
+ [12]) (./ICM_paper.bbl
+Underfull \hbox (badness 1281) in paragraph at lines 15--18
+[]\OT1/ppl/m/n/12 Liu, C. and Zhang, Z.-K., ``In-for-ma-tion spread-ing on dy-n
+amic so-cial
+ []
+
+) 
 AED: lastpage setting LastPage
-[14]
+[13]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (./ICM_paper.aux)
@@ -760,20 +742,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `ICM_paper.out' has not changed.
 (rerunfilecheck)             Checksum: 50912014C48B065AB4D3D37606081F1E;1314.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 10155 strings out of 493089
- 150094 string characters out of 6134841
- 272576 words of memory out of 5000000
- 13309 multiletter control sequences out of 15000+600000
+ 10148 strings out of 493089
+ 149955 string characters out of 6134841
+ 271488 words of memory out of 5000000
+ 13305 multiletter control sequences out of 15000+600000
  40585 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,12n,45p,897b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,45p,897b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
@@ -787,10 +765,10 @@ xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dis
 t/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts
 /type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
 urw/palatino/uplri8a.pfb>
-Output written on ICM_paper.pdf (14 pages, 179858 bytes).
+Output written on ICM_paper.pdf (13 pages, 176361 bytes).
 PDF statistics:
- 274 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 266 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
