@@ -1,6 +1,9 @@
 \begin{thebibliography}{1}
 \newcommand{\enquote}[1]{``#1''}
 
+\bibitem{stephens2007history}
+Stephens, M., {\em A history of news\/}, Oxford University Press, USA, 2007.
+
 \bibitem{lu2011small}
 L{\"u}, L., Chen, D.-B., and Zhou, T., \enquote{The small world yields the most
   effective information spreading,} {\em New Journal of Physics\/}, Vol.~13,
@@ -29,8 +32,5 @@ Kwak, H., Lee, C., Park, H., and Moon, S., \enquote{What is Twitter, a Social
   Network or a News Media?} {\em Proceedings of the 19th International
   Conference on World Wide Web\/}, WWW '10, ACM, New York, NY, USA, 2010, pp.
   591--600.
-
-\bibitem{stephens2007history}
-Stephens, M., {\em A history of news\/}, Oxford University Press, USA, 2007.
 
 \end{thebibliography}

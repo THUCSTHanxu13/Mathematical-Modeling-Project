@@ -3,10 +3,9 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ICM_paper.aux
 The style file: aiaa.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "sw"
 You've used 6 entries,
             2292 wiz_defined-function locations,
-            627 strings with 5900 characters,
+            626 strings with 5898 characters,
 and the built_in function-call counts, 1766 in all, are:
 = -- 140
 > -- 74
@@ -45,4 +44,3 @@ warning$ -- 0
 while$ -- 17
 width$ -- 7
 write$ -- 59
-(There was 1 warning)

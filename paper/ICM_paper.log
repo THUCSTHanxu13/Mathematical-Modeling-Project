@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  1 FEB 2016 21:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  2 FEB 2016 01:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -590,21 +590,21 @@ Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR)
 (./ICM_paper.aux)
 \openout1 = `ICM_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 57.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
@@ -625,10 +625,10 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 56.
+(lastpage)             ! on input line 57.
 \c@lstlisting=\count152
 \AtBeginShipoutBox=\box39
-Package hyperref Info: Link coloring ON on input line 56.
+Package hyperref Info: Link coloring ON on input line 57.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -637,9 +637,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count153
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 
 (./ICM_paper.out) (./ICM_paper.out)
 \@outlinefile=\write4
@@ -648,22 +648,22 @@ LaTeX Info: Redefining \nameref on input line 56.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+LaTeX Font Info:    Try loading font information for U+msa on input line 62.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 61.
+LaTeX Font Info:    Try loading font information for U+msb on input line 62.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 61.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 62.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 61.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 62.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -703,22 +703,34 @@ n ad-vanced method-
  []
 
 [3] [4]
-Overfull \hbox (466.66278pt too wide) detected at line 119
+Overfull \hbox (507.54352pt too wide) detected at line 125
 \OML/cmm/m/it/12 Ourmodelconsistingoffourstates; describethetransferringofstate
 stomakeitclear\OT1/cmr/m/n/12 !!!!\OML/cmm/m/it/12 ieafterKnonw; ithasaprobtoap
-prove; afterapproveitspread; afterspreaditunconcerned
+prove; afterapproveitspread; afterspreaditUNCONCERNED
  []
 
 [5]
 
 LaTeX Warning: The counter will not be printed.
-             The label is: \textbf {Step}\space 2: on input line 147.
+             The label is: \textbf {Step}\space 2: on input line 153.
 
-[6] [7] [8]
+
+Overfull \hbox (14.78146pt too wide) in paragraph at lines 158--159
+[]\OT1/ppl/m/n/12 We tra-verse all nodes and find out those nodes with state AP
+-PROVED.
+ []
+
+[6]
+Overfull \hbox (5.24063pt too wide) in paragraph at lines 166--166
+\OT1/ppl/m/n/12 the prob-a-bil-ity of a node trans-fer-ring from KNOWN to AP-PR
+OVED,
+ []
+
+[7] [8]
 Missing character: There is no £ in font cmr12!
 Missing character: There is no ¬ in font cmr12!
 
-Overfull \hbox (0.47992pt too wide) in paragraph at lines 203--204
+Overfull \hbox (0.47992pt too wide) in paragraph at lines 209--210
 []\OT1/ppl/b/n/12 The edges from me-dia have speed at-tribute.\OT1/ppl/m/n/12 I
 n dif-fer-ent pe-ri-ods, the speed
  []
@@ -726,49 +738,54 @@ n dif-fer-ent pe-ri-ods, the speed
 [9] [10] [11]
 Missing character: There is no ¡ in font pplr7t!
 Missing character: There is no ¯ in font pplr7t!
- [12]) (./ICM_paper.bbl
-Underfull \hbox (badness 1281) in paragraph at lines 15--18
+ [12]
+Missing character: There is no â in font pplr7t!
+Missing character: There is no € in font pplr7t!
+Missing character: There is no ™ in font pplr7t!
+ [13]) (./ICM_paper.bbl
+Underfull \hbox (badness 1281) in paragraph at lines 18--21
 []\OT1/ppl/m/n/12 Liu, C. and Zhang, Z.-K., ``In-for-ma-tion spread-ing on dy-n
 amic so-cial
  []
 
-) 
+[14]) 
 AED: lastpage setting LastPage
-[13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
+[15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (./ICM_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
 Package rerunfilecheck Info: File `ICM_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 50912014C48B065AB4D3D37606081F1E;1314.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
+(rerunfilecheck)             Checksum: 3CD6ED0815662108CED35E30B5DEB3A1;1034.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 10148 strings out of 493089
- 149955 string characters out of 6134841
- 271488 words of memory out of 5000000
- 13305 multiletter control sequences out of 15000+600000
- 40585 words of font info for 130 fonts, out of 8000000 for 9000
+ 10120 strings out of 493089
+ 149624 string characters out of 6134841
+ 272567 words of memory out of 5000000
+ 13286 multiletter control sequences out of 15000+600000
+ 33306 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,12n,45p,897b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,45p,921b,520s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-urw/palatino/uplri8a.pfb>
-Output written on ICM_paper.pdf (13 pages, 176361 bytes).
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/urw/palatino/uplri8a.pfb>
+Output written on ICM_paper.pdf (15 pages, 191367 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 267 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

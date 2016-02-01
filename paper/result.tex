@@ -1,0 +1,37 @@
+\section{Result}
+Generally speaking, we are utilizing a social network model to simulate the information spreading process in real world society, during which a relationship is established between information value and the speed, flow of it as well as its influence on the audience.  
+In the following part, we define the the number of time steps required to obtain the steady result as \textbf{T}, the final number of approved individuals as \textbf{n}, and the number of approved ones divided by the steady time as $u$: $u=\frac{n}{T}$. $n$ and $u$ could be viewed as the breadth and speed of the information flow. 
+Furthermore, in order to predict the developing trend of social network, we collected data of some media. The developing trend 
+\subsection{Requirement A}
+To give a quantificationally description of news' character, we can evaluate the three properties of news\cite{stephens2007history}: dissemination, timeliness and value. The value could be represented by $\lambda_1$(see datails in Model Section and the Appendix), and dissemination along with timeliness describes the flow of information. The flow of information could be described by $n$ as the number of individuals approving it, and speed by $u$ as how fast the news get around.  
+
+With the increase of $\lambda$, 
+\begin{enumerate}
+	\item $n$ also increases following a 'S-Curve' pattern (Discussed in details in the latter section), indicating that when the value of news increases, the number of people approved($n$) also increases. When news value increases, in its first stage, the influence of the news increases slowly; and then in second stage its influence increases quickly, and finally the influence become relatively steady.
+	\item $T$ first increases and then decreases. This means that a worthless piece of news dies down quickly, and very valuable news gets spread over quickly, while the news of medium value takes a little longer time to spread.
+	\item $u$ increases monotonously which implies that the spreading speed of news increases along with the value. When the news is very valuable, its spreading speed increases very fast.
+\end{enumerate}
+
+In accordance with the three characters of news, we can give a mathematical definition: a piece of information that satisfies the following conditions could be defined as news: has a spreading speed over certain level, and spreads over to at least some number of people.
+
+From the 
+\subsection{Requirement B}
+In this part we give a time-based description of the social media involved in the model, so that we can predict the information communication situation for today. Based on our model, the diffusion process of a newly invented social medium is actually the same as diffusion of news. Imagine what happens when a new kind of medium is invented: if it is not attractive enough, it dies down; otherwise if it is, it will spread over the the social network like a piece of valuable news. This intuition can be partly illustrated by the graph describing the development of mobile phone and smart phone:
+
+Hence we take another look of the result for Requirement A. The relation between $\lambda$, $n$ is similar to a sigmoid function, making a mathematical analyse necessary: further research implies that spreading rage of news($n$) is can be simulated by a logistic function ($y = \frac{1}{1 + e^{-x}}$) of $\lambda$:
+
+The logistic function , which could be modified as $n = \frac{a}{1 + e^{-\lambda}b}+c$, fit with the actual data perfectly. Use the same function on the data of subscribers of cellular telecommunications in US, the result is quite satisfactory. The development of new medium could be resembled by the spreading of news, both of which could be described by the function $n = \frac{a}{1 + e^{-\lambda}b}+c$. And the declining of medium user is similarly explained: other social media replace its position, and the declining trend is described by a symmetric sigmoid function. 
+With the formula we have we can calculate the predicted usage of cellular telecommunication of 2014: 
+
+the bias of which is reasonable. On the other hand, we obtain the result for newspaper:
+
+\subsection{Requirement C}
+The formula we derived from the previous data enables the prediction of social network capacity and relationship.
+The capacity of a communication network could be described as the volume of data inside. After acquiring statistical data, we witness a mode for the 
+
+The pattern of data volume increasing was considered exponential, however, the experimental result shows that sigmoid function fits better than that of exponential model. 
+\subsection{Requirement D}
+When describing the influence of a piece of news on people's 'interest and opinion', we propose $n$ and $\Delta\lambda_2$ to describe the degree to which people's own opinion are influenced. The greater $n$, the more people approve the news and the greater $\Delta\lambda_2$, the more people change their mind.
+\subsection{Requirement E}
+The above mentioned parameter $\lambda_1$,$\lambda_1$, $b$ could correspondingly describe the information value, people’s initial opinion and bias, and strength of the information network; we can use the seed of information to resemble the source of the message; and accordingly we can vary the network structure to simulate the topology of information network.Spreading of information and influence on public opinion is measured by $u$,$n$, and the 
+$\Delta\lambda_2$

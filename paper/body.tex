@@ -10,13 +10,13 @@
 
 \section{Introduction}
 %\begin{adjustwidth}{1cm}{0cm}
-News is packaged information about current events happening somewhere else. $[Wiki]$It flows from individual to individual, from region to region. News could move through many different media, based on word of mouth, printing, broadcasting, and electronic communication. Thanks to the development of media and our tech-connected social network, the flow of information becomes such  easy and wide-ranging as it is today. Meanwhile, the contents of news and people's bias have also changed hugely. Therefore, it is intriguing to investigate how social network structure and information value could influence the spread of information and public opinion. In this paper, we bring up a network model to simulate the information spreading process and its influence upon public interests, as well as predicting how the network will develop in the future.
+News is packaged information about current events happening somewhere else\cite{stephens2007history}. It flows from individual to individual, from region to region. News could move through many different media, based on word of mouth, printing, broadcasting, and electronic communication. Thanks to the development of media and our tech-connected social network, the flow of information becomes such  easy and wide-ranging as it is today. Meanwhile, the contents of news and people's bias have also changed hugely. Therefore, it is intriguing to investigate how social network structure and information value could influence the spread of information and public opinion. In this paper, we bring up a network model to simulate the information spreading process and its influence upon public interests, as well as predicting how the network will develop in the future.
 
 We organize our paper in this following structure. 
 \begin{itemize}
 	\item \textbf{Introduction} includes background, restatement of problem and literature review.
 	\item \textbf{Model} includes illustrations of two models. We first build a basic model based on previous studies, and then devise a new model incorporating our observations.
-	\item \textbf{Result} includes simulation result for each task and explanations of some phenomena.
+	\item \textbf{Result} includes mathematical formalization of each task , simulation result for each task and further explanations of some phenomena.
 	\item \textbf{Sensitivity Analysis}
 	\item \textbf{Further Discussion} includes what we could have improved and what may have potential meaning and worth detailed experiment. 
 	\item \textbf{Strengths and Weakness}
@@ -38,7 +38,7 @@ $liangdianliangdianliangdianliangdianliangdian$
 \subsection{literature review}
 In an very early stage, researchers believed that there are many similarities between spreading of news and spreading of epidemics. Thus, it is quite common to analyze spreading of news by an epidemic model, such as susceptible-infected-recovered (SIR) model. There are also studies based on advanced methodology, i.e. SIHR \cite{zhao2012sihr}. However, SIR is a analytical model; this lead to an inevitable problem that we can not take too many considerations into account. Therefore, more and more studies are focused on a cellular automata variant of SIR\cite{lu2011small}. This new class of model would enable us to consider a much finer network structure.
 
-In this cellular automata variant of SIR, each node has four states, namely 'Unknown', 'Known', 'Approved' and 'Exhausted'. When a node receives a message from its neighbor, it transfers to 'Known' state and remains. Every time it receives this news, it has a probability to shift to 'Approved' and spread message to its neighbors. Thereafter, this node will remain at 'Exhausted' and do nothing. Since this is a discrete-time network model, one can investigate further by manipulating network structure.
+In this cellular automata variant of SIR, each node has four states, namely 'UNKNOWN', 'KNOWN', 'APPROVED' and 'EXHAUSTED'. When a node receives a message from its neighbor, it transfers to KNOWN state and remains. Every time it receives this news, it has a probability to shift to APPROVED and spread message to its neighbors. Thereafter, this node will remain at EXHAUSTED and do nothing. Since this is a discrete-time network model, one can investigate further by manipulating network structure.
 
 In recent years, researchers focus heavily on the effect of network structure. Liu et al. propose a dynamic network which could rewire its links during the procedure\cite{liu2014information}. Ou et al. discuss the effect of heterogeneous connections upon news spreading\cite{ou2015impact}. Kwak et al. crawl real data from Twitter and build a network to simulate the reality\cite{Kwak:2010:TSN:1772690.1772751}.
 
@@ -54,57 +54,63 @@ This is a very important section. In this part, you should give all the basic as
 
 %======================第三章====================================
 \section{Notations}
-All the variables and constants used in this paper are listed in \textbf{Table \ref{tab3(1)}} and \textbf{Table \ref{tab3(2)}}.
-\begin{table}[H]
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{10pt}
-\caption{Symbol Table--Constants}
-\label{tab3(1)}
-\centerline{
-{\small
-\begin{tabular}{l l l}
-\toprule[1pt]
-Symbol& Definition& Units\\
-\midrule[2pt]
-\multicolumn{3}{c}{\textbf{Constants}}\\			
-$m_i(t)$& The number of times the $i^{th}$ node has heard the news until time $t$ & Local\\
-    & The confidence of $i^{th}$ node towards the news until time $t$&\\
-Unknown& The node has not yet heard the news, waiting for news& Local\\
-Known& The node has heard the news at least once&Local\\
-& and has a probability to approve& \\
-Approved& The node will spread the news to its neighbor &Local\\
-&and then shift to Unconcerned state& \\
-Unconcerned& The node will not participate in any procedure& Local\\
-\bottomrule[1pt]
-\end{tabular}}}
-\end{table}
+All the variables and constants used in this paper are listed in \textbf{Table \ref{tab1(1)}} and \textbf{Table \ref{tab1(2)}}.
 
 
 
 \begin{table}[H]
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{10pt}
-\caption{Symbol Table--Constants}
-\label{tab3(2)}
+\caption{Symbol Table--Parameters}
+\label{tab1(1)}
 \centerline{
 {\small
 \begin{tabular}{l l l}
 \toprule[1pt]
-Symbol& Definition& Units\\
+Symbol& Definition& Type\\
 \midrule[2pt]
-\multicolumn{3}{c}{\textbf{Constants}}\\			
-$\lambda$	 &The probability a node will approved when it first hears the news	&Local\\
+\multicolumn{3}{c}{\textbf{Parameters}}\\			
+$\lambda$	 &The probability a node will APPROVED when it first hears the news	&Local\\
 $\lambda_1$&The inherent value of the news	                   &Global\\
-$\lambda_2$ &An individual's bias towards news	          &Local\\
 $b$	&The degree of trust in a community (network)	               &Global\\
-$T$	    & &Global\\
 $c_i$	    & The authority of the $i^{th} $node	&Local\\
 $w_{ij}$	    & The weight of edge $e_{ij}$ &Local\\
 $t$	            &Time-step	                                       &Global\\
 $v$	&The spreading speed of news from media	&Global\\
 $a_M$ & The likelihood an individual get information from media&Local\\
-$a_F$ & The likelihood an individual get information from celebrities&Local\\
+$a_F$ & The likelihood an individual get information from famous people&Local\\
 $a_N$ & The likelihood an individual get information from normal people&Local\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{Symbol Table--Variables}
+\label{tab1(2)}
+\centerline{
+{\small
+\begin{tabular}{l l l}
+\toprule[1pt]
+Symbol& Definition& Type\\
+\midrule[2pt]
+\multicolumn{3}{c}{\textbf{Variables}}\\			
+$m_i(t)$& The number of times the $i^{th}$ node has heard the news until time $t$ & Local\\
+    & The confidence of $i^{th}$ node towards the news until time $t$&\\
+UNKNOWN& The node has not yet heard the news, waiting for news& Local\\
+KNOWN& The node has heard the news at least once&Local\\
+& and has a probability to approve& \\
+APPROVED& The node will spread the news to its neighbor &Local\\
+&and then shift to UNCONCERNED state& \\
+UNCONCERNED& The node will not participate in any procedure& Local\\
+$\lambda_2$&An individual's initial bias towards a certain piece of news	          &Local\\
+$T$& Response variable, the final time the network takes to be steady& Global\\
+$n$& Response variable, the total number of APPROVED individuals &Global\\
+$u$& Response variable, the speed of information getting around&Global\\
+&defined by $u=\frac{n}{T}$&\\
+$\Delta\lambda_2$& Response variable, the fluctuation of $\lambda_2$ &Local\\
 \bottomrule[1pt]
 \end{tabular}}}
 \end{table}
@@ -116,13 +122,13 @@ $a_N$ & The likelihood an individual get information from normal people&Local\\
 \subsubsection{Overview}
 This is a fundamental model which will give us some insight into the network. Inspired by \cite{lu2011small}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occur at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of informations. This model only depicts the case that all users are the same, with no existence of celebrities or huge media company.
 
-$$Our model consisting of four states, describe the transferring of states to make it clear!!!!ie after Knonw, it has a prob to approve, after approve it spread, after spread it unconcerned$$
+$$Our model consisting of four states, describe the transferring of states to make it clear!!!!ie after Knonw, it has a prob to approve, after approve it spread, after spread it UNCONCERNED$$
 
 \subsubsection{Assumption and Justification}
 \begin{itemize}
   \item \textbf{All nodes are identical} In this model, we do not consider celebrities or huge media company, therefore, all nodes equally important in the sense that they all have $k$ edges connecting with them.
-   \item \textbf{Each node has four states} Since we use a node to represent a person, a node has four states corresponding with a person has four attitudes towards an information, 'Unknown', 'Known', 'Approved' and 'Unconcerned'.
-    \item \textbf{Transferring from 'Known' to 'Approved' is a probabilistic event} Once a node heard a piece of news from its neighbor, it has a probability to transfer from 'Known' to 'Approved'. The more times it hears the same news, the higher probability it has to approve this news.
+   \item \textbf{Each node has four states} Since we use a node to represent a person, a node has four states corresponding with a person has four attitudes towards an information, UNKNOWN, KNOWN, APPROVED and UNCONCERNED.
+    \item \textbf{Transferring from KNOWN to APPROVED is a probabilistic event} Once a node heard a piece of news from its neighbor, it has a probability to transfer from KNOWN to APPROVED. The more times it hears the same news, the higher probability it has to approve this news.
 \end{itemize}
 
 \subsubsection{Methodology}
@@ -136,10 +142,10 @@ Our model is a time-discrete network model. We have a set of laws which update t
 Our network is a randomly connecting network. It has $N$ nodes. Then we randomly connecting nodes with edges and make sure that, for each node, there is always $k$ edges connecting with it.
 \item Initializing the states
 
-To begin with, every nodes should be unknown to a piece of news except the node which originates this news. Therefore, we set every nodes in our network to the 'Unknown' state.
+To begin with, every nodes should be UNKNOWN to a piece of news except the node which originates this news. Therefore, we set every nodes in our network to the UNKNOWN state.
 \item Generating news
 
-We randomly choose a node to be the news producer, transferring its state from 'Unknown' to 'Approved'. This indicates that this node approves this news and is willing to tell its neighbors. The other nodes remain in the 'Unknown' state.
+We randomly choose a node to be the news producer, transferring its state from UNKNOWN to APPROVED. This indicates that this node approves this news and is willing to tell its neighbors. The other nodes remain in the UNKNOWN state.
 \end{enumerate}
 \end{enumerate}
 
@@ -149,17 +155,17 @@ We randomly choose a node to be the news producer, transferring its state from '
 \begin{enumerate}
 \item Spreading news
 
-We traverse all nodes and find out those nodes with state 'Approved'. For each 'Approved' node, it is willing to spreading this news to its neighbors. If the neighbor is unknown about this news, it shift to known states. If the neighbor is already in known state but not approved state, it will memorize this event and has higher probability to transfer to approved state in later time. 
+We traverse all nodes and find out those nodes with state APPROVED. For each APPROVED node, it is willing to spreading this news to its neighbors. If the neighbor is UNKNOWN about this news, it shift to KNOWN states. If the neighbor is already in KNOWN state but not APPROVED state, it will memorize this event and has higher probability to transfer to APPROVED state in later time. 
 
-Formalizing this step mathematically, we denote $m_i(t)$ to be how many times the $i^{th}$ node has heard this news from its neighbor until time $t$. For obvious reason, this $m_i(t)$ could also be explained as belief. For each 'Approved' node $A$ in our network, we manipulate the states of all its neighbors. Suppose node $B$ is one of its neighbor. If $B$ is in the state 'Unknown', we set $B$ to the state 'Known' and let $$m_i(t+1) = 1.$$ If $B$ is already in the state 'Known', we remain it at 'Known' and let $$m_i(t+1) = m_i(t+1) + 1.  (1)$$ If $B$ is in the state 'Unconcerned', we do not make any change to $B$. After doing this to all neighbors of $A$, we change its state to 'Unconcerned'.
+Formalizing this step mathematically, we denote $m_i(t)$ to be how many times the $i^{th}$ node has heard this news from its neighbor until time $t$. For obvious reason, this $m_i(t)$ could also be explained as belief. For each APPROVED node $A$ in our network, we manipulate the states of all its neighbors. Suppose node $B$ is one of its neighbor. If $B$ is in the state UNKNOWN, we set $B$ to the state KNOWN and let $$m_i(t+1) = 1.$$ If $B$ is already in the state KNOWN, we remain it at KNOWN and let $$m_i(t+1) = m_i(t+1) + 1.  (1)$$ If $B$ is in the state UNCONCERNED, we do not make any change to $B$. After doing this to all neighbors of $A$, we change its state to UNCONCERNED.
 
-\item Transferring from Known to Approved
+\item Transferring from KNOWN to APPROVED
 
 Based on our observation, once an individual hears a piece of news, he will choose to believe in or not depending on how many times he has heard it. The more times it is, the more willingly he is to trust it. Therefore, we use a probability model to describe this phenomenon. 
 
-For each 'Known' node, if it hears the news from its neighbor at time $t$, it has a probability to approve this news. Denoting $P(m)$ as the probability of a node transferring from 'Known' to 'Approved', we have$$P(m) = (\lambda-T)e^{-b(m-1)}+T,$$ where $m$ is $m_i(t)$ and $\lambda$, $T$, $b$ are network parameters.Once a node transfers to 'Approved', it will spread the news at next time-step, namely, at time $t+1$. We could also observe that the larger $m$ is, the larger $P(m)$ is; this is in accordance with our previous observation.
+For each KNOWN node, if it hears the news from its neighbor at time $t$, it has a probability to approve this news. Denoting $P(m)$ as the probability of a node transferring from KNOWN to APPROVED, we have$$P(m) = (\lambda-1)e^{-b(m-1)}+1,$$ where $m$ is $m_i(t)$ and $\lambda$, $b$ are network parameters.Once a node transfers to APPROVED, it will spread the news at next time-step, namely, at time $t+1$. We could also observe that the larger $m$ is, the larger $P(m)$ is; this is in accordance with our previous observation.
 
-We need to mention that if a node does not hear news from its neighbors at time $t$, it will definitely not transfer to 'Approved', even though it may have heard the news once before $t-1$. This is in accordance with our intuition that one will not abruptly change his mind as long as he does not hear anything new.
+We need to mention that if a node does not hear news from its neighbors at time $t$, it will definitely not transfer to APPROVED, even though it may have heard the news once before $t-1$. This is in accordance with our intuition that one will not abruptly change his mind as long as he does not hear anything new.
 
 \item Iterating
 
@@ -185,7 +191,7 @@ In this section, we compare our new model with the previous one and illustrate t
   \item \textbf{The effect of celebrities.} In the basic model, we treat every individual equally. Nevertheless, in reality, there are celebrities who are more significant to the social network, i.e. a people may have a large number of followers on Twitter and hence are more influential. In this new model, we allow a fraction of nodes to have much more edges to represent those significant roles in network. There are a huge amount of edges directed from them to the normal users, meaning that they have lots of followers and news could flow from them to lots of people. These nodes also have four states, and they use the same probabilistic transferring mechanism as other nodes.
   \item \textbf{The effect of media.} In the basic model, there is no media or media companies. In the new model, we take them into account. We add one single node to represent the media, including newspapers, radios, . As for the structure of edges, there are edges from media node to every other nodes in the network, namely media permeates in everyone's life. There are also edges from every other nodes directing to media, meaning that media could gather information from all over the world.This media node also has four states, and it uses the same probabilistic transferring mechanism as other nodes.
 
-  \item \textbf{Every node has a authority value.} We introduce the concept of authority. In real world, we tend to believe the informations telling by a reliable person or a authoritative media company. We use $c_i$ to denote the degree of authority of $i^{th}$ node. Once the $i^{th}$ node is in state of 'Approved' and spread news to its neighbor $j$, the formula $(1)$ is replaced by 
+  \item \textbf{Every node has a authority value.} We introduce the concept of authority. In real world, we tend to believe the informations telling by a reliable person or a authoritative media company. We use $c_i$ to denote the degree of authority of $i^{th}$ node. Once the $i^{th}$ node is in state of APPROVED and spread news to its neighbor $j$, the formula $(1)$ is replaced by 
   $$m_j(t+1) = m_j(t)+c_i.  (2)$$
   \item \textbf{Every edge has a weight value.} As the development of technology, we use different methods to receive news, such as newspaper, radio and internet. Hence, we can contact with more people; we have higher speed to spread news and we gradually change our source of informations. To simulate this evolution, we use a weighted edge graph. Every edge has a weight and this weight will influence how fast the belief $m_j(t)$ cumulates. Mathematically, formula (2) is replaced by 
   $$m_j(t+1) = m_j(t)+w_{ij}*c_i, (3)$$
@@ -201,7 +207,7 @@ In this section, we compare our new model with the previous one and illustrate t
   \end{enumerate}
   \item \textbf{A node has an appetite of information source.} A node has different likelihood to gather informations from its neighbors depending on its neighbors' types. For example, in 1900s, people could only know news from newspaper. Now, some people are more likely to hear news from celebrities' Twitter rather than from traditional media, even though they are exposed to traditional media everyday. We have used the weight of edge to depict the extent of exposure to media, now we use $[a_M,a_F,a_N]$ to depict people's willingness to get information from media, celebrities and normal people respectively. Furthermore, we assume $$a_M+a_F+a_N=1，$$ since they also represents the ratio of information people get from different source.
   \item \textbf{The edges from media have speed attribute.}In different periods, the speed of media is different, varying from a few days to a few hours. This will significant affect the speed of information propagation. Therefore, to observe this effect, we denote $v$ as the speed and the delivering of message from media node to an individual needs $\frac{1}{v}$ time steps. We calculate $v$ as the weighted average of speed of different media, discussing in later section.
-  \item \textbf{Each information has different inherent value.}As a matter of fact, people are more willing to spread valuable news. In our model, $\lambda$ depicts this willingness, since it is the probability a node transferring to 'Approved' when it first hears the news. We use $Model$ to evaluate the inherent value $\lambda_1$ of a piece of news and then let
+  \item \textbf{Each information has different inherent value.}As a matter of fact, people are more willing to spread valuable news. In our model, $\lambda$ depicts this willingness, since it is the probability a node transferring to APPROVED when it first hears the news. We use $Model$ to evaluate the inherent value $\lambda_1$ of a piece of news and then let
   $$\lambda = \lambda_1.(3)$$
   \item \textbf{People have different bias.} In different periods, different people have different affection towards different types of news. We use $Model$ to evaluate a node's bias $\lambda_2$ towards a piece of news. Then, combining with previous modification, we replace (3) by 
   $$\lambda = \lambda_1\lambda_2$$
@@ -228,33 +234,78 @@ In this section, we compare our new model with the previous one and illustrate t
 6)Any more specific discussion about model(par example, is there any probability distribution similar to our result?and why? Can we use a statistical way to evaluate our result(variance etc). If we aggrandize our data size, will our result be more convincible? Is our model computational friendly and in what extent it is? )
 
 \section{Result}
-\subsection{Verification of the initial model}
-In this part we define 
-build a virtual network to model the spreading of information, and validate it with data from past and now; use it for prediction in year 2050; use the controllable and deterministic factors of information, network topology, links and nodes, to influence and predict the spreading speed and the number of influenced individuals.
-\subsection{Validate the Improved Model with Data}
-The data we collect\cite{} here provides a standardized reference for our model. By measuring the $$-speed defined as \textsl{v} and flow defined as \textsl{n}-$$ against the actual data, we can evaluate the accuracy of the model. 
-Here we explain the criteria we use to evaluate our model.
-\subsection{Future Prediction}
-After validate our model with the data, we can change the parameters accordingly and describe 
-
-
-\section{Result}
-Generally speaking, we are utilizing a social network model to simulate the information spreading process in real world society, during which a relationship between information value and the 
-In the following part, we define the the number of time steps required to obtain the steady result as \textbf{T}, the final number of approved individuals as \textbf{n}, and the number of approved ones divided by the steady time as $\nu$: $\nu=\frac{n}{T}$. $n$ and $\nu$ could be viewed as the breadth and speed of the information flow. 
+Generally speaking, we are utilizing a network model to simulate the information spreading process in real world society, during which, information's content and network structure show their influences upon information's spreading and public interests. Formalizing the question mathematically, we define $T$ as the the number of time-steps required to obtain the steady result, $n$ as the final number of APPROVED nodes, and $u$ as the number of APPROVED ones divided by the steady time: $u=\frac{n}{T}$. $n$ and $u$ could be viewed as the breadth and speed of the information flow respectively. 
+Furthermore, in order to predict the developing trend of social network, we collected data of some media. The developing trend 
 \subsection{Requirement A}
-To give a quantificationally description of news' character, we can evaluate the three properties of news\cite{stephens2007history}: dissemination, timeliness and value. The value could be represented by $\lambda_1$(see datails in Model Section and the Appendix), while the dissemination could be described by $n$ as the number of individuals approving it, and timeliness by $\nu$ as how fast the news get around.
+This task asks us explore the flow of information and find what qualifies as news. To give a quantificational description of news , we evaluate the three properties of news\cite{stephens2007history}: dissemination, timeliness and inherent value. The inherent value is new's initial attribute depicted by $\lambda_1$(see datails in Model Section and the Appendix), while the dissemination and timeliness describe the flow of information. In the following part, we use the number of nodes approving news, $n$, to quantify dissemination and use how fast the news spreads, $u$, to quantify timeliness.  
+
+With the increase of $\lambda_1$, 
+\begin{enumerate}
+	\item $n$ also increases following a 'S-curve' pattern (Discussed in details in the latter section), indicating that when the value of news increases, the number of people APPROVED($n$) also increases. When news value increases, in its first stage, the influence of the news increases slowly; and then in second stage its influence increases quickly, and finally the influence become relatively steady.
+	\item $T$ first increases and then decreases. This means that a worthless piece of news dies down quickly, and very valuable news gets spread over quickly, while the news of medium value takes a little longer time to spread.
+	\item $u$ increases monotonously which implies that the spreading speed of news increases with respect to the value. When the news is very valuable, its spreading speed increases very fast.
+\end{enumerate}
+
+In accordance with the three characters of news, we can give a mathematical definition: a piece of information that satisfies the following conditions could be defined as news: has a spreading speed over certain level, and spreads over to at least some number of people.
+
+From the 
 \subsection{Requirement B}
-In this part we give a time-based description of the parameters: historical change take place when the 
+In this part we give a time-based description of the social media involved in the model, so that we can predict the information communication situation for today. Based on our model, the diffusion process of a newly invented social medium is actually the same as diffusion of news. Imagine what happens when a new kind of medium is invented: if it is not attractive enough, it dies down; otherwise if it is, it will spread over the the social network like a piece of valuable news. This intuition can be partly illustrated by the graph describing the development of mobile phone and smart phone:
+
+Hence we take another look of the result for Requirement A. The relation between $\lambda$, $n$ is similar to a sigmoid function, making a mathematical analyse necessary: further research implies that spreading rage of news($n$) is can be simulated by a logistic function ($y = \frac{1}{1 + e^{-x}}$) of $\lambda$:
+
+The logistic function , which could be modified as $n = \frac{a}{1 + e^{-\lambda}b}+c$, fit with the actual data perfectly. Use the same function on the data of subscribers of cellular telecommunications in US, the result is quite satisfactory. The development of new medium could be resembled by the spreading of news, both of which could be described by the function $n = \frac{a}{1 + e^{-\lambda}b}+c$. And the declining of medium user is similarly explained: other social media replace its position, and the declining trend is described by a symmetric sigmoid function. 
+With the formula we have we can calculate the predicted usage of cellular telecommunication of 2014: 
+
+the bias of which is reasonable. On the other hand, we obtain the result for newspaper:
+
 \subsection{Requirement C}
 The formula we derived from the previous data enables the prediction of social network capacity and relationship.
+The capacity of a communication network could be described as the volume of data inside. After acquiring statistical data, we witness a mode for the 
+
+The pattern of data volume increasing was considered exponential, however, the experimental result shows that sigmoid function fits better than that of exponential model. 
 \subsection{Requirement D}
-
+When describing the influence of a piece of news on people's 'interest and opinion', we propose $n$ and $\Delta\lambda_2$ to describe the degree to which people's own opinion are influenced. The greater $n$, the more people approve the news and the greater $\Delta\lambda_2$, the more people change their mind.
 \subsection{Requirement E}
-The above mentioned parameter $\lambda_1$,$\lambda_1$, $b$ could correspondingly describe the information value, people’s initial opinion and bias, and strength of the information network; we can use the seed of information to resemble the source of the message; and accordingly we can vary the network structure to simulate the topology of information network.Spreading of information and influence on public opinion is measured by $\nu$,$n$, and the $\footnote{$\Delta$}\lambda_1$
+This task requires us to determine how different factors could be used to spread information and influence public opinion. Those factors include information value, people’s initial opinion and bias, form of the message or its source, and the topology or strength of the information network in a region. Since the effect upon public opinion is to make them approve a piece of news, we use the number of approved nodes, $n$, to resemble the ultimate influence on public opinion. To make this problem more realistic, we propose such a scenario: Suppose we are government officers and we want to spread a piece of news. Obviously, we hope this news could influence as large as possible. Therefore, our task is to test each factor as well as evaluate the result, and ultimately find a method to spread our information as influential as possible.
+
+\begin{itemize}
+\item \textbf{Information value}
+We have showed this result in the section for requirement A. 
+
+\item \textbf{People's initial opinion and bias}
+
+\item \textbf{Source of message}
+As a matter of fact, mass media, celebrities and normal people have different importance upon the flow of information. In our model, they are distinguished by their degrees, their values of authorities and people's appetites of information source. 
+
+\begin{table}[H]
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\caption{The effect of source of information--Parameters}
+\label{tab6(1)}
+\centerline{
+{\small
+\begin{tabular}{l l l l l l}
+\toprule[1pt]
+Type&Number&Degrees&Authority&Appetite of source&Media's interests\\
+\midrule[2pt]		
+mass media&1&500&3&0.5&-\\
+celebrities&25&120&1&0.4&0.9\\
+normal people&475&6&0.5&0.1&0.1\\
+\bottomrule[1pt]
+\end{tabular}}}
+\end{table}
+\item \textbf{Topology and strength of network}
 
 
 
-%=========================================第八章===========================================================
+
+\end{itemize}
+
+
+
+The above mentioned parameter $\lambda_1$,$\lambda_1$, $b$ could correspondingly describe the information value, people鈥檚 initial opinion and bias, and strength of the information network; we can use the seed of information to resemble the source of the message; and accordingly we can vary the network structure to simulate the topology of information network.Spreading of information and influence on public opinion is measured by $u$,$n$, and the 
+$\Delta\lambda_2$%=========================================第八章===========================================================
 \section{Sensitivity Analysis}
 This is actually the concern about whether our model is statistical robust to some outliers. Those outliers could be change in data, could be change in assumptions, could be change in parameter value. We should try our best to test under different outlier conditions, what are the behaviors of our model and compare them in details.
 
