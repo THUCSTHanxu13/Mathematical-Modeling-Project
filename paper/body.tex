@@ -1,32 +1,63 @@
 
 %======================第一章：问题介绍====================================
+
+%======================第一章：问题介绍====================================
+
+
+
+
+
+
 \section{Introduction}
 %\begin{adjustwidth}{1cm}{0cm}
-Understanding process of information getting around society network has attracted increasing attention. Information flow in complex society network is of paramount importance when trying to solve the 
+News is packaged information about current events happening somewhere else. $[Wiki]$It flows from individual to individual, from region to region. News could move through many different media, based on word of mouth, printing, broadcasting, and electronic communication. Thanks to the development of media and our tech-connected social network, the flow of information becomes such  easy and wide-ranging as it is today. Meanwhile, the contents of news and people's bias have also changed hugely. Therefore, it is intriguing to investigate how social network structure and information value could influence the spread of information and public opinion. In this paper, we bring up a network model to simulate the information spreading process and its influence upon public interests, as well as predicting how the network will develop in the future.
 
+We organize our paper in this following structure. 
+\begin{itemize}
+	\item \textbf{Introduction} includes background, restatement of problem and literature review.
+	\item \textbf{Model} includes illustrations of two models. We first build a basic model based on previous studies, and then devise a new model incorporating our observations.
+	\item \textbf{Result} includes simulation result for each task and explanations of some phenomena.
+	\item \textbf{Sensitivity Analysis}
+	\item \textbf{Further Discussion} includes what we could have improved and what may have potential meaning and worth detailed experiment. 
+	\item \textbf{Strengths and Weakness}
+\end{itemize}
+
+
+\subsection{Restatement of Problem and Solutions}
+We are required to build a mathematical model to analyze the relationship between speed/flow of information vs inherent value of information. More specifically, we have five tasks; we categorize them into two sub-problems:
+ \begin{itemize}
+	\item Build a model to simulate the spread of information, and analyze the interaction between network structure and information flows.This includes (a),(d) and (e)
+	\item Build a model to simulate the development of social network, and use data from the past to predict the future. This includes (b) and (c).
+\end{itemize}
+
+In this paper, we present a network model inspired by variant of SIR model \cite{lu2011small}. We use nodes to represent individuals and edges to represent communication links between them. Given parameters, which depict structure of the network, we could simulate the spreading of news by updating network variables. Furthermore, we could change those parameters so as to mimic the development of our social network. This method solves first sub-problem satisfactory. As for the second sub-problem, we draw an analogy between the development of social network and news spreading procedure. We then derive some reasonable trending curves which accord with historical data. Moreover, our model could be used to explain diffusion of innovations and data explosion.\\
+
+
+$liangdianliangdianliangdianliangdianliangdian$
 
 \subsection{literature review}
-In previous research, scientists usually base their model on the well know susceptible-infected-recovered ($SIR$) model. The advanced methodology of SIHR \cite{zhao2012sihr}, the further developed SEIQR model\cite{tanaka2015study}, inspired other research of this kind, therefore we can find some relatively mature research like the one by $Linyuan Lv$ and $Duan-Bing Chen$, which we based on to obtain our result. The basic idea of their's is to change the continuous SIR model into a discrete-time model to resemble the spreading of news, and introduce four similar situation of node to 
-represent the attitude of people towards news to describe the probalistic spreading of news. $$-------------work in the model part--------------$$
+In previous research, scientists usually base their model on the well known susceptible-infected-recovered ($SIR$) model. The advanced methodology of SIHR \cite{zhao2012sihr}, the further developed SEIQR model\cite{tanaka2015study}, inspired other research of this kind, therefore we can find some relatively mature research like the one by $Linyuan Lv$ and $Duan-Bing Chen$, which is the initial inspiration of us. The basic idea of their's is to change the continuous SIR model into a discrete-time model to resemble the spreading of news, and introduce four situations of nodes to 
+represent the attitude of people towards news in order to describe the probalistic spreading of news. This model is thoroughly discussed in Section 2$$------intentionally left blank--------$$.
 
 Furthermore, there exist a couple of applications of the model or the variants of it, including the description of growth and decline of network service\cite{tanaka2015study}, predicting forest fire spreading\cite{karafyllidis1997model}. But when taking into consideration the details of the real world society, we find there are still things left to be discussed. 
 
 The nodes, links, and the information itself differs from that of a pure network. 
 \begin{itemize}
-	\item We can introduce a memory effect to resemble the actual memory loss\cite{zhao2011rumor}.
-	\item The information itself, or rather the value of it, determines to which degree people tend to believe it. This is discussed in this paper.
-	\item A link may be strong or weak, and the speed of information getting around differs. 
+	\item \textbf{Nodes}: We can introduce a decay effect to resemble the actual memory loss\cite{zhao2011rumor}; we consider how reliable the node is to others; and there's are different types of nodes representing the mass media, celebrities and normal people.
+	%这里用mass media and celebrities%
+	\item \textbf{Information}:The information itself, or rather the value of it, determines to which degree people tend to believe it. This is discussed in this paper.
+	\item \textbf{Links}:A link may be strong or weak, and the speed of information getting around differs. 
 \end{itemize}
 
 The topology structure is distinguished in the following aspects.
 \begin{itemize}
-	\item The change of link between nodes, namely the dynamic social network decribed in previous work\cite{gerberry2009seiqr}. It represents people making new contacts and lose touch with old friends.
-	\item The abidance of $Six Degrees of Separation$\cite{milgram1967small} is missed in previous work during simulation.
-	\item The difference of structure entropy, which makes such much difference that the Small World Structure, Random Structure and Regular Structure distinguishes from each other a lot\cite{miritello2011dynamical}. Furthermore, we witness a change of that when taking into account the historical trend of society, which we will discuss in our work.
-	\item The connection between the nodes are not to be simply described as non-directional link. Some links are . Data could be collected by crawling the real world network\cite{Kwak:2010:TSN:1772690.1772751}, and we will give it a thorough consideration in this paper. 
+	\item \textbf{Adjustment of dynamic social network}, decribed in previous work\cite{gerberry2009seiqr}. It represents people making new contacts and lose touch with old friends.
+	\item \textbf{The abidance of $Six Degrees of Separation$\cite{milgram1967small}} is missed in previous work during simulation.
+	\item \textbf{Structure entropy}, which makes such much difference that the Small World Structure, Random Structure and Regular Structure distinguishes from each other a lot\cite{miritello2011dynamical}. Furthermore, we witness a change of that when taking into account the historical trend of society, which we will discuss in our work.
+	\item \textbf{Directed gragh},where the connection between the nodes are not to be simply described as non-directional links. Some links are unidirectional and some are bidirectional, enabling, for example, the description of information flow between celebrities and ordinary person. The celebrities pass information to the ordinary ones but never receive information from them. Data could be collected by crawling the real world network\cite{Kwak:2010:TSN:1772690.1772751}, and we will give it a thorough consideration in this paper. 
 \end{itemize}
 
-Despite of the previous research, there are essential points neglected such as the involvement of social media $$something here$$, the change of topology structure and the historical explanation of it, the inherent value of information as mentioned above. 
+As mentioned above, despite the previous research, there are essential points neglected such as the involvement of social media $$something here$$, the change of topology structure and the historical explanation of it, the inherent value of information, etc. In this paper however, we weighed the factors against each other, and deliberately neglect some unimportant factors, the memory decay and periodic adjustment of dynamic social network topology, the influence of which is minor compared to that of the spreading information.  
 
 %======================第二章：假设====================================
 \section{Assumptions and Justifications}
@@ -69,7 +100,7 @@ Unconcerned& The node will not participate in any procedure& Local\\
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{10pt}
 \caption{Symbol Table--Constants}
-\label{tab3(1)}
+\label{tab3(2)}
 \centerline{
 {\small
 \begin{tabular}{l l l}
@@ -87,7 +118,7 @@ $w_{ij}$	    & The weight of edge $e_{ij}$ &Local\\
 $t$	            &Time-step	                                       &Global\\
 $v$	&The spreading speed of news from media	&Global\\
 $a_M$ & The likelihood an individual get information from media&Local\\
-$a_F$ & The likelihood an individual get information from famous people&Local\\
+$a_F$ & The likelihood an individual get information from celebrities&Local\\
 $a_N$ & The likelihood an individual get information from normal people&Local\\
 \bottomrule[1pt]
 \end{tabular}}}
@@ -98,13 +129,13 @@ $a_N$ & The likelihood an individual get information from normal people&Local\\
 \section{Model}
 \subsection{Basic Model}
 \subsubsection{Overview}
-This is a fundamental model which will give us some insight into the network. Inspired by \cite{sw}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occur at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of informations. This model only depicts the case that all users are the same, with no existence of famous people or huge media company.
+This is a fundamental model which will give us some insight into the network. Inspired by \cite{sw}, we use $N$ nodes to simulate $N$ identical users in reality and each node stochastically links to other $k$ nodes. When a given event occur at a node in this graph, we use a dynamic probabilistic information propagation model (DPIP), discussed in details as follows, to simulate the spreading of informations. This model only depicts the case that all users are the same, with no existence of celebrities or huge media company.
 
 $$Our model consisting of four states, describe the transferring of states to make it clear!!!!ie after Knonw, it has a prob to approve, after approve it spread, after spread it unconcerned$$
 
 \subsubsection{Assumption and Justification}
 \begin{itemize}
-  \item \textbf{All nodes are identical} In this model, we do not consider famous people or huge media company, therefore, all nodes equally important in the sense that they all have $k$ edges connecting with them.
+  \item \textbf{All nodes are identical} In this model, we do not consider celebrities or huge media company, therefore, all nodes equally important in the sense that they all have $k$ edges connecting with them.
    \item \textbf{Each node has four states} Since we use a node to represent a person, a node has four states corresponding with a person has four attitudes towards an information, 'Unknown', 'Known', 'Approved' and 'Unconcerned'.
     \item \textbf{Transferring from 'Known' to 'Approved' is a probabilistic event} Once a node heard a piece of news from its neighbor, it has a probability to transfer from 'Known' to 'Approved'. The more times it hears the same news, the higher probability it has to approve this news.
 \end{itemize}
@@ -166,7 +197,7 @@ In this section, we compare our new model with the previous one and illustrate t
 
 \begin{itemize}
   \item \textbf{Constructing the network as a directed graph.}In the basic model, we only construct a undirected graph; information could flow either from $A$ to $B$ or $B$ to $A$. However, to consider a finer structure, we need to use a directed graph. Followers on Twitter and receivers of media are both good examples to support our choice.
-  \item \textbf{The effect of famous people.} In the basic model, we treat every individual equally. Nevertheless, in reality, there are famous people who are more significant to the social network, i.e. a people may have a large number of followers on Twitter and hence are more influential. In this new model, we allow a fraction of nodes to have much more edges to represent those significant roles in network. There are a huge amount of edges directed from them to the normal users, meaning that they have lots of followers and news could flow from them to lots of people. These nodes also have four states, and they use the same probabilistic transferring mechanism as other nodes.
+  \item \textbf{The effect of celebrities.} In the basic model, we treat every individual equally. Nevertheless, in reality, there are celebrities who are more significant to the social network, i.e. a people may have a large number of followers on Twitter and hence are more influential. In this new model, we allow a fraction of nodes to have much more edges to represent those significant roles in network. There are a huge amount of edges directed from them to the normal users, meaning that they have lots of followers and news could flow from them to lots of people. These nodes also have four states, and they use the same probabilistic transferring mechanism as other nodes.
   \item \textbf{The effect of media.} In the basic model, there is no media or media companies. In the new model, we take them into account. We add one single node to represent the media, including newspapers, radios, . As for the structure of edges, there are edges from media node to every other nodes in the network, namely media permeates in everyone's life. There are also edges from every other nodes directing to media, meaning that media could gather information from all over the world.This media node also has four states, and it uses the same probabilistic transferring mechanism as other nodes.
 
   \item \textbf{Every node has a authority value.} We introduce the concept of authority. In real world, we tend to believe the informations telling by a reliable person or a authoritative media company. We use $c_i$ to denote the degree of authority of $i^{th}$ node. Once the $i^{th}$ node is in state of 'Approved' and spread news to its neighbor $j$, the formula $(1)$ is replaced by 
@@ -181,9 +212,9 @@ In this section, we compare our new model with the previous one and illustrate t
   \item
   If the edge is directing from media node to individual, the weight represents to what extent people are exposed to social media. In early time, only a few people were able to buy newspapers. As the invention of radio and TV, more and more people are able to gather information from all kinds of media, and nowadays, the majority of human beings are exposed to media in daily life, whether they are willing or not. Thus, this weight is also a increasing parameter as time goes by. 
   \item
-  if the edge is directing from individual to media, the weight represents to what extent media pay attention to this individual. In our model, media node could also gather information from individual, and, after it approves this news, the media node spread this news to other nodes. Since a media company will only believe credible people, we give more weights to famous people compared with normal people.
+  if the edge is directing from individual to media, the weight represents to what extent media pay attention to this individual. In our model, media node could also gather information from individual, and, after it approves this news, the media node spread this news to other nodes. Since a media company will only believe credible people, we give more weights to celebrities compared with normal people.
   \end{enumerate}
-  \item \textbf{A node has an appetite of information source.} A node has different likelihood to gather informations from its neighbors depending on its neighbors' types. For example, in 1900s, people could only know news from newspaper. Now, some people are more likely to hear news from famous people's Twitter rather than from traditional media, even though they are exposed to traditional media everyday. We have used the weight of edge to depict the extent of exposure to media, now we use $[a_M,a_F,a_N]$ to depict people's willingness to get information from media, famous people and normal people respectively. Furthermore, we assume $$a_M+a_F+a_N=1，$$ since they also represents the ratio of information people get from different source.
+  \item \textbf{A node has an appetite of information source.} A node has different likelihood to gather informations from its neighbors depending on its neighbors' types. For example, in 1900s, people could only know news from newspaper. Now, some people are more likely to hear news from celebrities' Twitter rather than from traditional media, even though they are exposed to traditional media everyday. We have used the weight of edge to depict the extent of exposure to media, now we use $[a_M,a_F,a_N]$ to depict people's willingness to get information from media, celebrities and normal people respectively. Furthermore, we assume $$a_M+a_F+a_N=1，$$ since they also represents the ratio of information people get from different source.
   \item \textbf{The edges from media have speed attribute.}In different periods, the speed of media is different, varying from a few days to a few hours. This will significant affect the speed of information propagation. Therefore, to observe this effect, we denote $v$ as the speed and the delivering of message from media node to an individual needs $\frac{1}{v}$ time steps. We calculate $v$ as the weighted average of speed of different media, discussing in later section.
   \item \textbf{Each information has different inherent value.}As a matter of fact, people are more willing to spread valuable news. In our model, $\lambda$ depicts this willingness, since it is the probability a node transferring to 'Approved' when it first hears the news. We use $Model$ to evaluate the inherent value $\lambda_1$ of a piece of news and then let
   $$\lambda = \lambda_1.(3)$$
@@ -211,6 +242,32 @@ In this section, we compare our new model with the previous one and illustrate t
 
 6)Any more specific discussion about model(par example, is there any probability distribution similar to our result?and why? Can we use a statistical way to evaluate our result(variance etc). If we aggrandize our data size, will our result be more convincible? Is our model computational friendly and in what extent it is? )
 
+\section{Result}
+\subsection{Verification of the initial model}
+In this part we define 
+build a virtual network to model the spreading of information, and validate it with data from past and now; use it for prediction in year 2050; use the controllable and deterministic factors of information, network topology, links and nodes, to influence and predict the spreading speed and the number of influenced individuals.
+\subsection{Validate the Improved Model with Data}
+The data we collect\cite{} here provides a standardized reference for our model. By measuring the $$-speed defined as \textsl{v} and flow defined as \textsl{n}-$$ against the actual data, we can evaluate the accuracy of the model. 
+Here we explain the criteria we use to evaluate our model.
+\subsection{Future Prediction}
+After validate our model with the data, we can change the parameters accordingly and describe 
+
+
+\section{Result}
+Generally speaking, we are utilizing a social network model to simulate the information spreading process in real world society, during which a relationship between information value and the 
+In the following part, we define the the number of time steps required to obtain the steady result as \textbf{T}, the final number of approved individuals as \textbf{n}, and the number of approved ones divided by the steady time as $\nu$: $\nu=\frac{n}{T}$. $n$ and $\nu$ could be viewed as the breadth and speed of the information flow. 
+\subsection{Requirement A}
+To give a quantificationally description of news' character, we can evaluate the three properties of news\cite{stephens2007history}: dissemination, timeliness and value. The value could be represented by $\lambda_1$(see datails in Model Section and the Appendix), while the dissemination could be described by $n$ as the number of individuals approving it, and timeliness by $\nu$ as how fast the news get around.
+\subsection{Requirement B}
+In this part we give a time-based description of the parameters: historical change take place when the 
+\subsection{Requirement C}
+The formula we derived from the previous data enables the prediction of social network capacity and relationship.
+\subsection{Requirement D}
+
+\subsection{Requirement E}
+The above mentioned parameter $\lambda_1$,$\lambda_1$, $b$ could correspondingly describe the information value, people’s initial opinion and bias, and strength of the information network; we can use the seed of information to resemble the source of the message; and accordingly we can vary the network structure to simulate the topology of information network.Spreading of information and influence on public opinion is measured by $\nu$,$n$, and the $\footnote{$\Delta$}\lambda_1$
+
+
 
 %=========================================第八章===========================================================
 \section{Sensitivity Analysis}
@@ -225,5 +282,15 @@ I think this part is more adaptable to the problem requirement, namely we could 
 
 2)What else can we do in the future.
 
+
+\section{Further Discussion}
+In the measurement against inherent value of news, there do exist some defective part, for example the Analytic Hierarchy Process ($AHP$) could be used to give a quantized measure of news value. However, due to lack of space and time, we are not expounding it in details. 
+
+On the other hand, we realized that our discussion on historical change of media is not convincible enough. Without enough time and professinal insight, we found it hard to obtain the first-hand data for the media. The flawed model we used can, to some degree reflect the fact for social network, but still requires some modification on the media related parameters.
+The topology structure here is another point to be discussed.
+
+The memory decay and new edge establishment is deliberately neglected here. 
+
+The numerical description of topology could possibly be acquired. Here we restrict the discussion within the categories of topology but did not give a more theoretical description.
 
 
