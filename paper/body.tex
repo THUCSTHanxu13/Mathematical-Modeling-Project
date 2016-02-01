@@ -77,6 +77,8 @@ $c_i$	    & The authority of the $i^{th} $node	&Local\\
 $w_{ij}$	    & The weight of edge $e_{ij}$ &Local\\
 $t$	            &Time-step	                                       &Global\\
 $v$	&The spreading speed of news from media	&Global\\
+$\alpha$& The step-size of feedback enhancement &Global\\
+$\beta$& The step-size of decay &Global\\
 $a_M$ & The likelihood an individual get information from media&Local\\
 $a_F$ & The likelihood an individual get information from famous people&Local\\
 $a_N$ & The likelihood an individual get information from normal people&Local\\
@@ -188,8 +190,8 @@ In this section, we compare our new model with the previous one and illustrate t
 
 \begin{itemize}
   \item \textbf{Constructing the network as a directed graph.}In the basic model, we only construct a undirected graph; information could flow either from $A$ to $B$ or $B$ to $A$. However, to consider a finer structure, we need to use a directed graph. Followers on Twitter and receivers of media are both good examples to support our choice.
-  \item \textbf{The effect of celebrities.} In the basic model, we treat every individual equally. Nevertheless, in reality, there are celebrities who are more significant to the social network, i.e. a people may have a large number of followers on Twitter and hence are more influential. In this new model, we allow a fraction of nodes to have much more edges to represent those significant roles in network. There are a huge amount of edges directed from them to the normal users, meaning that they have lots of followers and news could flow from them to lots of people. These nodes also have four states, and they use the same probabilistic transferring mechanism as other nodes.
-  \item \textbf{The effect of media.} In the basic model, there is no media or media companies. In the new model, we take them into account. We add one single node to represent the media, including newspapers, radios, . As for the structure of edges, there are edges from media node to every other nodes in the network, namely media permeates in everyone's life. There are also edges from every other nodes directing to media, meaning that media could gather information from all over the world.This media node also has four states, and it uses the same probabilistic transferring mechanism as other nodes.
+  \item \textbf{The effect of celebrities and mass media.} In the basic model, we treat every individual equally. Nevertheless, in reality, there are celebrities and mass media which are more significant to the social network, i.e. a person may have a large number of followers on Twitter and hence are more influential. In this new model, we allow a fraction of nodes to represent those significant celebrities and one node to represent mass media. \\
+ As for the edge structure, there are a huge amount of edges directed from each celebrity node to the normal users, meaning that they have lots of followers and news could flow from them to lots of people. Similarly, there are edges from media node to every other nodes in the network, namely media permeates in everyone's life. There are also edges from every other nodes directing to media, meaning that media could gather information from all over the world.All those nodes have four states, and it uses the same probabilistic transferring mechanism as other nodes.
 
   \item \textbf{Every node has a authority value.} We introduce the concept of authority. In real world, we tend to believe the informations telling by a reliable person or a authoritative media company. We use $c_i$ to denote the degree of authority of $i^{th}$ node. Once the $i^{th}$ node is in state of APPROVED and spread news to its neighbor $j$, the formula $(1)$ is replaced by 
   $$m_j(t+1) = m_j(t)+c_i.  (2)$$
@@ -211,6 +213,13 @@ In this section, we compare our new model with the previous one and illustrate t
   $$\lambda = \lambda_1.(3)$$
   \item \textbf{People have different bias.} In different periods, different people have different affection towards different types of news. We use $Model$ to evaluate a node's bias $\lambda_2$ towards a piece of news. Then, combining with previous modification, we replace (3) by 
   $$\lambda = \lambda_1\lambda_2$$
+  \item \textbf{Feedback and decay of people's bias} In reality, the information we receive could also have influence upon us. For example, if one's friend talks about basketball all day, he might also develop an interest in basketball. On the contrary, if a person is interested in basketball but unable to find a friend to chat with, he might lose his interest gradually. In the light of this observation, we introduce the mechanism of feedback and decay of $\lambda_2$ into our model. \\
+  Every piece of news will disappear ultimately. We could make an analogy between this life-span and the time $T$ our network model required to achieve the steady state. During $T$, if a node transfers to APPROVED, we aggregate its $\lambda_2$ by this formula,
+  $$\Delta\lambda_2 = \alpha \frac{\partial f(x)}{\partial x}\|_{x = \lambda_2},$$
+  where $f(x) = \frac{1}{1+e^{-x}}$ and $\alpha$ is the step-size parameter. This is used to simulate the feedback effect. The sigmoid function $f(x)$ could help to regulate $\lambda_2 \in [0,1]$.
+  On the contrary, after $T$, which means the storm of this news has already vanished, we need to decrease $\lambda_2$ at every node by this formula,
+  $$\Delta\lambda_2 = - \beta,$$
+  where $\beta$ is also a step-size parameter. This linear reduction could be used to represent the effect of memory decay.
     
 \end{itemize}
 
@@ -220,19 +229,6 @@ In this section, we compare our new model with the previous one and illustrate t
 
 
 %==================================原模板中第六章和第七章========================================
-\section{Results}
-1)All results we have
-
-2)What criteria we should use to evaluate our model and why
-
-3)Discussion and comparison of result and each model(Better if we could compare the result of our model and previous one, demonstrating our model is better in some sense).
-
-4)If we use different parameter value, is there any difference? How should we choose our parameter value?
-
-5)Can we use external data or proof(searching on Internet) to demonstrate our model is satisfactory?
-
-6)Any more specific discussion about model(par example, is there any probability distribution similar to our result?and why? Can we use a statistical way to evaluate our result(variance etc). If we aggrandize our data size, will our result be more convincible? Is our model computational friendly and in what extent it is? )
-
 \section{Result}
 Generally speaking, we are utilizing a network model to simulate the information spreading process in real world society, during which, information's content and network structure show their influences upon information's spreading and public interests. Formalizing the question mathematically, we define $T$ as the the number of time-steps required to obtain the steady result, $n$ as the final number of APPROVED nodes, and $u$ as the number of APPROVED ones divided by the steady time: $u=\frac{n}{T}$. $n$ and $u$ could be viewed as the breadth and speed of the information flow respectively. 
 Furthermore, in order to predict the developing trend of social network, we collected data of some media. The developing trend 
@@ -276,8 +272,7 @@ We have showed this result in the section for requirement A.
 \item \textbf{People's initial opinion and bias}
 
 \item \textbf{Source of message}
-As a matter of fact, mass media, celebrities and normal people have different importance upon the flow of information. In our model, they are distinguished by their degrees, their values of authorities and people's appetites of information source. 
-
+As a matter of fact, mass media, celebrities and normal people have different importance upon the flow of information. In our model, they are distinguished by their degrees, their values of authorities and people's appetites of information source. Therefore, choice of the starting point of news might have significant influence on the result. We use our model to simulate the effect of different choice, based on estimations of parameters which are showed in table 3.
 \begin{table}[H]
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{10pt}
@@ -295,7 +290,13 @@ normal people&475&6&0.5&0.1&0.1\\
 \bottomrule[1pt]
 \end{tabular}}}
 \end{table}
+We illustrate the result in figure$........$. From this graph, we could easily distinguish those curves. The leftmost one is result from averaged result of sending news from mass media, the middle one is from celebrities and the rightmost one is from normal people. It is no doubt that mass media is our best choice. However, we could observe that as the news' value becomes larger, the curve of mass media and the curve of celebrities tend to be identical. This implies that we could also choose celebrities as a relatively good choice.
+
 \item \textbf{Topology and strength of network}
+We investigate the spreading of news with respect to its value in two different topology of network, ordered network and random network. For both network, we use 500 nodes to build the network and each node has 6 edges. However, in the ordered network, we order those nodes evenly in a circle and require each node only connect to its nearest 6 nodes, whereas in the random network we connect them randomly. We show the results of $n$ versus $\lambda_1$ in $figure...........$.
+
+
+It is obvious that random network has a significant advantage of spreading news compared with ordered network when $\lambda_1$ is relatively large.We also calculate the corresponding diffusing speed and its result also prefer random network in most cases. However, we note that the situation is reversed when $\lambda_1$ getting smaller. 
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  2 FEB 2016 01:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.24)  2 FEB 2016 03:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -703,7 +703,7 @@ n ad-vanced method-
  []
 
 [3] [4]
-Overfull \hbox (507.54352pt too wide) detected at line 125
+Overfull \hbox (507.54352pt too wide) detected at line 127
 \OML/cmm/m/it/12 Ourmodelconsistingoffourstates; describethetransferringofstate
 stomakeitclear\OT1/cmr/m/n/12 !!!!\OML/cmm/m/it/12 ieafterKnonw; ithasaprobtoap
 prove; afterapproveitspread; afterspreaditUNCONCERNED
@@ -712,16 +712,16 @@ prove; afterapproveitspread; afterspreaditUNCONCERNED
 [5]
 
 LaTeX Warning: The counter will not be printed.
-             The label is: \textbf {Step}\space 2: on input line 153.
+             The label is: \textbf {Step}\space 2: on input line 155.
 
 
-Overfull \hbox (14.78146pt too wide) in paragraph at lines 158--159
+Overfull \hbox (14.78146pt too wide) in paragraph at lines 160--161
 []\OT1/ppl/m/n/12 We tra-verse all nodes and find out those nodes with state AP
 -PROVED.
  []
 
 [6]
-Overfull \hbox (5.24063pt too wide) in paragraph at lines 166--166
+Overfull \hbox (5.24063pt too wide) in paragraph at lines 168--168
 \OT1/ppl/m/n/12 the prob-a-bil-ity of a node trans-fer-ring from KNOWN to AP-PR
 OVED,
  []
@@ -730,7 +730,7 @@ OVED,
 Missing character: There is no £ in font cmr12!
 Missing character: There is no ¬ in font cmr12!
 
-Overfull \hbox (0.47992pt too wide) in paragraph at lines 209--210
+Overfull \hbox (0.47992pt too wide) in paragraph at lines 211--212
 []\OT1/ppl/b/n/12 The edges from me-dia have speed at-tribute.\OT1/ppl/m/n/12 I
 n dif-fer-ent pe-ri-ods, the speed
  []
@@ -738,17 +738,17 @@ n dif-fer-ent pe-ri-ods, the speed
 [9] [10] [11]
 Missing character: There is no ¡ in font pplr7t!
 Missing character: There is no ¯ in font pplr7t!
- [12]
+ [12] [13]
 Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no ™ in font pplr7t!
- [13]) (./ICM_paper.bbl
+ [14]) (./ICM_paper.bbl
 Underfull \hbox (badness 1281) in paragraph at lines 18--21
 []\OT1/ppl/m/n/12 Liu, C. and Zhang, Z.-K., ``In-for-ma-tion spread-ing on dy-n
 amic so-cial
  []
 
-[14]) 
+) 
 AED: lastpage setting LastPage
 [15]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
@@ -756,36 +756,68 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (./ICM_paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
-Package rerunfilecheck Info: File `ICM_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 3CD6ED0815662108CED35E30B5DEB3A1;1034.
+
+
+Package rerunfilecheck Warning: File `ICM_paper.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ICM_paper.out':
+(rerunfilecheck)             Before: 3CD6ED0815662108CED35E30B5DEB3A1;1034
+(rerunfilecheck)             After:  AB1B1A01C573F77384891A0959A6CE54;991.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 10120 strings out of 493089
- 149624 string characters out of 6134841
- 272567 words of memory out of 5000000
+ 10126 strings out of 493089
+ 149701 string characters out of 6134841
+ 273567 words of memory out of 5000000
  13286 multiletter control sequences out of 15000+600000
  33306 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,12n,45p,921b,520s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/urw/palatino/uplri8a.pfb>
-Output written on ICM_paper.pdf (15 pages, 191367 bytes).
+pdfTeX warning (dest): name{page.16} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{section.9} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.6.5} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.6.4} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.6.3} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.6.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.6.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
+w/palatino/uplri8a.pfb>
+Output written on ICM_paper.pdf (15 pages, 202722 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 278 PDF objects out of 1000 (max. 8388607)
+ 244 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
